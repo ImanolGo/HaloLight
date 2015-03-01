@@ -7,21 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A3CDA147662E0D53C807110 /* NeoPixelRing24px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3AF0E74CE02311F0000B6E8 /* NeoPixelRing24px.cpp */; };
-		270A7AA8B6F540913EFAE139 /* NeoPixelStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55AC23042694C547FF6AD424 /* NeoPixelStrip.cpp */; };
-		2B4D2C1CF6A1B9D7521B69A0 /* NeoPixelStick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8278ACA7B072839C081D1AD /* NeoPixelStick.cpp */; };
-		3DF7A3616CB8C114363D58C7 /* NeoPixelGrid8x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7836AC8642CF61A7676A6BCD /* NeoPixelGrid8x8.cpp */; };
-		42C51C3A7B05A090E008CB81 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = BFBCB82578DB91580FC3C6B2 /* ReadMe.md */; };
-		4EE34D904284F6B20662DD82 /* SettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEFD4BB2146652F07346117B /* SettingsManager.cpp */; };
-		55A8D130A5127EE63E0D3CE4 /* HaloLightApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8485F0A908722C7EBE766954 /* HaloLightApp.cpp */; };
-		58793374C5F50C2CF72D0FFC /* NeoPixelGrid32x32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5027C21D529CF438AC2231A /* NeoPixelGrid32x32.cpp */; };
-		63338803E10F63A3A28A4820 /* NeoPixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9793C4EA277BB6E16F97A2 /* NeoPixel.cpp */; };
-		658322744AD7A765C9468D1D /* NeoPixelRing16px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C980B8F3570D054DEA1D3A0D /* NeoPixelRing16px.cpp */; };
-		A598659A3A1F85547C7C4A75 /* NeoPixelRing12px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3633B73EE282B12CD2F34DE /* NeoPixelRing12px.cpp */; };
-		A689466F8C4A720E4DBC8638 /* ofxOPC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C12F5E1D82B9DFAF4964AB6B /* ofxOPC.cpp */; };
-		B9E0804F40C971B16B18EEAC /* NeoPixelRing60px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76B7457C57F80544FE524 /* NeoPixelRing60px.cpp */; };
+		08E4F0461AA33C5200714830 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08E4F0441AA33C5200714830 /* LayoutManager.cpp */; };
+		11263DD5787331C9CA71BD36 /* NeoPixelGrid32x32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C52E7BEE6804CC169C6A3CBF /* NeoPixelGrid32x32.cpp */; };
+		18FA42C471CF66795EF9EB97 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3766129862C931409F5C3D4 /* ofxTCPClient.cpp */; };
+		1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5056FC61E30B9810903B814D /* AppManager.cpp */; };
+		24D768C6C84C61F3CBD97997 /* NeoPixelShield5x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82294747CDA8826204E84289 /* NeoPixelShield5x8.cpp */; };
+		2A4EB329701354C644FC7683 /* NeoPixelGrid8x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC3ECB222AF32D3ECAEF6D19 /* NeoPixelGrid8x8.cpp */; };
+		2F327561F7FA3FC4C2AB0363 /* NeoPixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F8BAA922CF76DBE00342D /* NeoPixel.cpp */; };
+		325F3943C3EF9FCFF6C34AC0 /* ofxOPC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C1FB61376A6A54BEE24E8A /* ofxOPC.cpp */; };
+		350F08FF61B2B09D462D4D6E /* NeoPixelRing60px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9523F6E7493B67421FCAE61F /* NeoPixelRing60px.cpp */; };
+		3A6C7D72771284673CBE247D /* ImageVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F661FE0411AA0AC01E34CB7 /* ImageVisual.cpp */; };
+		44D0F3D21AC4097A857F0638 /* NeoPixelStick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7967AB42670A05F21D252CF6 /* NeoPixelStick.cpp */; };
+		48F94177806B5CB8D3C0F283 /* CameraAnimations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A05F1DCF8180DEEC9FBAE585 /* CameraAnimations.cpp */; };
+		5333265E1B11FF3577F62A0E /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7725EB5002D6F869E2B37B77 /* Font.cpp */; };
+		543B6642609D783E6FB032AF /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = D7A53CFBD5E4DB74ADCB31B3 /* ReadMe.md */; };
+		58BCEB4034B30CB4A3456FC7 /* SettingsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73D7AA4CF4895FC3DEEC2978 /* SettingsManager.cpp */; };
+		62910678AFC55FB016541F66 /* NeoPixelRing12px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E50E3AA103792C5F91D4E30 /* NeoPixelRing12px.cpp */; };
+		638F4F2E9D8C4E322522038B /* NeoPixelRing24px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E874855C5F711D89163FA8C /* NeoPixelRing24px.cpp */; };
+		66A6F1C16CF15F386BA660C2 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD8277CE37B4415D3D4ED84 /* ofxTCPManager.cpp */; };
+		6F36C225B48477DFCCA6FB64 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA64D51DA6D1619944A259C /* ResourceManager.cpp */; };
+		7F06984C0BB75CBACACB10CA /* NeoPixelStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507298DAC719FC1C10DAAAD5 /* NeoPixelStrip.cpp */; };
+		875651AF8693D3DE4CC23485 /* VisualEffects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB9CB9C1093718FA5F131FA /* VisualEffects.cpp */; };
+		8BC3D4AABDF5E655706BA3B8 /* SvgVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19361E6857FB31277A2FEE46 /* SvgVisual.cpp */; };
+		8C9DFFBD826A20F752ED0CD6 /* CameraManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89DFBB918E3BCAFB0C93CAF3 /* CameraManager.cpp */; };
+		8CB0A46B3A54F961BA55A6A6 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91AC3F3D3E7AE70429272D9E /* ofxUDPManager.cpp */; };
+		9144DA601D35D209DD2C5B58 /* Instructions.txt in Sources */ = {isa = PBXBuildFile; fileRef = B3C91EAD16AC83AFD4BB633D /* Instructions.txt */; };
+		916ADEB631696DEEED3ACEBA /* HaloManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B82F1016E111F99C20832 /* HaloManager.cpp */; };
+		944C582F1366C745FFE8A0EB /* HaloRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C840A1E20392AF630547906 /* HaloRing.cpp */; };
+		9D9E0E996DA1B9AC9952C889 /* ViewManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FE37A31C904F445222B25FC /* ViewManager.cpp */; };
+		B790DA4F42194210B9259E42 /* VisualEffectsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEDDA11B665FA62A298B7C39 /* VisualEffectsManager.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		DB46C9611294E83A38C93943 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2580E049A4ED64E05E2C4ED /* main.cpp */; };
+		C5CCD16B524E215288E47400 /* HaloLightApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E525E094C2C0F02CEAD7CAF /* HaloLightApp.cpp */; };
+		C6B3BFC2668F137F745DC3C6 /* CameraAnimationsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FEEAD29823C01C4EEC27 /* CameraAnimationsManager.cpp */; };
+		D40A61B2ACD21548A068C892 /* NeoPixelRing16px.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3EF7125E4D108D465FDC410 /* NeoPixelRing16px.cpp */; };
+		DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E3F47F486843AA062205007 /* main.cpp */; };
+		DB05E98D002D6650AA23E87B /* TextVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0227F9BE14631C9FE7CA55B1 /* TextVisual.cpp */; };
+		DC16DA963E4E5873F0AE7C9E /* LightManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09F8F2DF1D53E65319F30B96 /* LightManager.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -38,8 +59,9 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
-		F3A915FA3ECAE8805363400E /* AppManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF6A8D267F5FCCB83D70645C /* AppManager.cpp */; };
-		FCB80653C9C8FBE467D8C365 /* NeoPixelShield5x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5E0CC4191217EECAED531 /* NeoPixelShield5x8.cpp */; };
+		F60A8CA415750AA5DDCC6169 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D5A3D829B70F3ADF69A0F1C /* ofxTCPServer.cpp */; };
+		F7EA3801298F5E54967C119B /* ImageVisual3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6F074B2A9C65331157B2C /* ImageVisual3D.cpp */; };
+		FDBF3E3276ACAF0114532C4B /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5226C8680238D2C7A07EEFB /* KeyboardManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,47 +95,79 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		08210D641AA1371F0014238A /* Instructions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Instructions.txt; sourceTree = "<group>"; };
-		08210D661AA1371F0014238A /* ofxNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxNetwork.h; sourceTree = "<group>"; };
-		08210D671AA1371F0014238A /* ofxNetworkUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxNetworkUtils.h; sourceTree = "<group>"; };
-		08210D681AA1371F0014238A /* ofxTCPClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPClient.cpp; sourceTree = "<group>"; };
-		08210D691AA1371F0014238A /* ofxTCPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTCPClient.h; sourceTree = "<group>"; };
-		08210D6A1AA1371F0014238A /* ofxTCPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPManager.cpp; sourceTree = "<group>"; };
-		08210D6B1AA1371F0014238A /* ofxTCPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTCPManager.h; sourceTree = "<group>"; };
-		08210D6C1AA1371F0014238A /* ofxTCPServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPServer.cpp; sourceTree = "<group>"; };
-		08210D6D1AA1371F0014238A /* ofxTCPServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTCPServer.h; sourceTree = "<group>"; };
-		08210D6E1AA1371F0014238A /* ofxUDPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUDPManager.cpp; sourceTree = "<group>"; };
-		08210D6F1AA1371F0014238A /* ofxUDPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUDPManager.h; sourceTree = "<group>"; };
-		212BC455A80D9C8B5475B898 /* NeoPixelRing24px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing24px.h; path = src/addons/ofxOPC/src/NeoPixelRing24px.h; sourceTree = SOURCE_ROOT; };
-		2ACAA9CB7AECF6D1BAFA3197 /* NeoPixelShield5x8.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelShield5x8.h; path = src/addons/ofxOPC/src/NeoPixelShield5x8.h; sourceTree = SOURCE_ROOT; };
-		32F5E0CC4191217EECAED531 /* NeoPixelShield5x8.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelShield5x8.cpp; path = src/addons/ofxOPC/src/NeoPixelShield5x8.cpp; sourceTree = SOURCE_ROOT; };
-		3DC76B7457C57F80544FE524 /* NeoPixelRing60px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing60px.cpp; path = src/addons/ofxOPC/src/NeoPixelRing60px.cpp; sourceTree = SOURCE_ROOT; };
-		4A0338B67406B33C057675B6 /* ofxOPC.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOPC.h; path = src/addons/ofxOPC/src/ofxOPC.h; sourceTree = SOURCE_ROOT; };
-		4D9793C4EA277BB6E16F97A2 /* NeoPixel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixel.cpp; path = src/addons/ofxOPC/src/NeoPixel.cpp; sourceTree = SOURCE_ROOT; };
-		50306ACCE916D987309EC8FB /* NeoPixelStrip.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelStrip.h; path = src/addons/ofxOPC/src/NeoPixelStrip.h; sourceTree = SOURCE_ROOT; };
-		508089B0C04992A26C4167EA /* SettingsManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SettingsManager.h; path = src/main/SettingsManager.h; sourceTree = SOURCE_ROOT; };
-		55AC23042694C547FF6AD424 /* NeoPixelStrip.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelStrip.cpp; path = src/addons/ofxOPC/src/NeoPixelStrip.cpp; sourceTree = SOURCE_ROOT; };
-		7836AC8642CF61A7676A6BCD /* NeoPixelGrid8x8.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelGrid8x8.cpp; path = src/addons/ofxOPC/src/NeoPixelGrid8x8.cpp; sourceTree = SOURCE_ROOT; };
-		8485F0A908722C7EBE766954 /* HaloLightApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = HaloLightApp.cpp; path = src/main/HaloLightApp.cpp; sourceTree = SOURCE_ROOT; };
-		8718BA8A475BAE51E7FBD3B2 /* NeoPixelRing12px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing12px.h; path = src/addons/ofxOPC/src/NeoPixelRing12px.h; sourceTree = SOURCE_ROOT; };
-		8BFF98CB6A4A0E10C4AE65D2 /* NeoPixelRing60px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing60px.h; path = src/addons/ofxOPC/src/NeoPixelRing60px.h; sourceTree = SOURCE_ROOT; };
-		A0E84C1F8FA8BEE3E7B0BCEB /* ofxNeoPixels.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNeoPixels.h; path = src/addons/ofxOPC/src/ofxNeoPixels.h; sourceTree = SOURCE_ROOT; };
-		A3633B73EE282B12CD2F34DE /* NeoPixelRing12px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing12px.cpp; path = src/addons/ofxOPC/src/NeoPixelRing12px.cpp; sourceTree = SOURCE_ROOT; };
-		B2580E049A4ED64E05E2C4ED /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = main.cpp; path = src/main/main.cpp; sourceTree = SOURCE_ROOT; };
-		B3AF0E74CE02311F0000B6E8 /* NeoPixelRing24px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing24px.cpp; path = src/addons/ofxOPC/src/NeoPixelRing24px.cpp; sourceTree = SOURCE_ROOT; };
-		B5027C21D529CF438AC2231A /* NeoPixelGrid32x32.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelGrid32x32.cpp; path = src/addons/ofxOPC/src/NeoPixelGrid32x32.cpp; sourceTree = SOURCE_ROOT; };
-		B769708D915EFAE7A5D99B0E /* HaloLightApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = HaloLightApp.h; path = src/main/HaloLightApp.h; sourceTree = SOURCE_ROOT; };
+		004EEF328125D63370DCE7B1 /* NeoPixelRing12px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing12px.h; path = src/Addons/ofxOPC/src/NeoPixelRing12px.h; sourceTree = SOURCE_ROOT; };
+		0227F9BE14631C9FE7CA55B1 /* TextVisual.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = TextVisual.cpp; path = src/Engine/Visuals/TextVisual.cpp; sourceTree = SOURCE_ROOT; };
+		08E4F0441AA33C5200714830 /* LayoutManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LayoutManager.cpp; path = Layout/LayoutManager.cpp; sourceTree = "<group>"; };
+		08E4F0451AA33C5200714830 /* LayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LayoutManager.h; path = Layout/LayoutManager.h; sourceTree = "<group>"; };
+		08E4F0471AA3537300714830 /* HaloLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = HaloLight.app; path = /Users/imanolgo/Applications/of_v0.8.4_osx_release/apps/myApps/HaloLight/bin/HaloLight.app; sourceTree = "<absolute>"; };
+		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
+		0D5A3D829B70F3ADF69A0F1C /* ofxTCPServer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTCPServer.cpp; path = src/Addons/ofxNetwork/src/ofxTCPServer.cpp; sourceTree = SOURCE_ROOT; };
+		0D9F8BAA922CF76DBE00342D /* NeoPixel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixel.cpp; path = src/Addons/ofxOPC/src/NeoPixel.cpp; sourceTree = SOURCE_ROOT; };
+		11C490A0CA5771C60AE54B4B /* ImageVisual.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ImageVisual.h; path = src/Engine/Visuals/ImageVisual.h; sourceTree = SOURCE_ROOT; };
+		1550BD03779C30A60DAC78D7 /* NeoPixelStick.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelStick.h; path = src/Addons/ofxOPC/src/NeoPixelStick.h; sourceTree = SOURCE_ROOT; };
+		1631492253F7EFF48DB8F6B4 /* NeoPixelRing60px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing60px.h; path = src/Addons/ofxOPC/src/NeoPixelRing60px.h; sourceTree = SOURCE_ROOT; };
+		19361E6857FB31277A2FEE46 /* SvgVisual.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SvgVisual.cpp; path = src/Engine/Visuals/SvgVisual.cpp; sourceTree = SOURCE_ROOT; };
+		1A8B82F1016E111F99C20832 /* HaloManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = HaloManager.cpp; path = src/Halo/HaloManager.cpp; sourceTree = SOURCE_ROOT; };
+		1D7B4D07648F9CB293716166 /* ImageVisual3D.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ImageVisual3D.h; path = src/Engine/Visuals/ImageVisual3D.h; sourceTree = SOURCE_ROOT; };
+		1E50E3AA103792C5F91D4E30 /* NeoPixelRing12px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing12px.cpp; path = src/Addons/ofxOPC/src/NeoPixelRing12px.cpp; sourceTree = SOURCE_ROOT; };
+		271C32860D26476A3062B447 /* NeoPixelRing16px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing16px.h; path = src/Addons/ofxOPC/src/NeoPixelRing16px.h; sourceTree = SOURCE_ROOT; };
+		2A2B7E7FDC1CFF4A547CC661 /* VisualEffects.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = VisualEffects.h; path = src/Engine/Visuals/VisualEffects.h; sourceTree = SOURCE_ROOT; };
+		2E8E2205F39B5CE04950F6F1 /* NeoPixelGrid8x8.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelGrid8x8.h; path = src/Addons/ofxOPC/src/NeoPixelGrid8x8.h; sourceTree = SOURCE_ROOT; };
+		33C1FB61376A6A54BEE24E8A /* ofxOPC.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOPC.cpp; path = src/Addons/ofxOPC/src/ofxOPC.cpp; sourceTree = SOURCE_ROOT; };
+		35B7F954496FF74FD0883657 /* HaloRing.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = HaloRing.h; path = src/Halo/HaloRing.h; sourceTree = SOURCE_ROOT; };
+		3656BF3981C35A273806DCEB /* BasicVisual.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = BasicVisual.h; path = src/Engine/Visuals/BasicVisual.h; sourceTree = SOURCE_ROOT; };
+		3C01FEEAD29823C01C4EEC27 /* CameraAnimationsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CameraAnimationsManager.cpp; path = src/Engine/3D/CameraAnimationsManager.cpp; sourceTree = SOURCE_ROOT; };
+		3DD6F074B2A9C65331157B2C /* ImageVisual3D.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ImageVisual3D.cpp; path = src/Engine/Visuals/ImageVisual3D.cpp; sourceTree = SOURCE_ROOT; };
+		446760FB4E87774375C1C5E9 /* NeoPixelGrid32x32.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelGrid32x32.h; path = src/Addons/ofxOPC/src/NeoPixelGrid32x32.h; sourceTree = SOURCE_ROOT; };
+		496FB8BB67BF37BF8B96AD33 /* SettingsManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SettingsManager.h; path = src/Main/SettingsManager.h; sourceTree = SOURCE_ROOT; };
+		4DAEBF101D1761DC6DE05F91 /* NeoPixelStrip.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelStrip.h; path = src/Addons/ofxOPC/src/NeoPixelStrip.h; sourceTree = SOURCE_ROOT; };
+		4F661FE0411AA0AC01E34CB7 /* ImageVisual.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ImageVisual.cpp; path = src/Engine/Visuals/ImageVisual.cpp; sourceTree = SOURCE_ROOT; };
+		4FE37A31C904F445222B25FC /* ViewManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ViewManager.cpp; path = src/Engine/Visuals/ViewManager.cpp; sourceTree = SOURCE_ROOT; };
+		5056FC61E30B9810903B814D /* AppManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = AppManager.cpp; path = src/Main/AppManager.cpp; sourceTree = SOURCE_ROOT; };
+		507298DAC719FC1C10DAAAD5 /* NeoPixelStrip.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelStrip.cpp; path = src/Addons/ofxOPC/src/NeoPixelStrip.cpp; sourceTree = SOURCE_ROOT; };
+		53641B0567D9C72229D835C5 /* ofxTCPManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTCPManager.h; path = src/Addons/ofxNetwork/src/ofxTCPManager.h; sourceTree = SOURCE_ROOT; };
+		5FA64D51DA6D1619944A259C /* ResourceManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ResourceManager.cpp; path = src/Engine/Resources/ResourceManager.cpp; sourceTree = SOURCE_ROOT; };
+		6488AAE888CF2FFF835082F6 /* ofxOPC.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOPC.h; path = src/Addons/ofxOPC/src/ofxOPC.h; sourceTree = SOURCE_ROOT; };
+		682CD55D28B06CEDCFD63D68 /* CameraManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CameraManager.h; path = src/Engine/3D/CameraManager.h; sourceTree = SOURCE_ROOT; };
+		68A02C9D01ED911C09E9874B /* ViewManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ViewManager.h; path = src/Engine/Visuals/ViewManager.h; sourceTree = SOURCE_ROOT; };
+		6AF954655E1FAD895EA1DA49 /* NeoPixelRing24px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing24px.h; path = src/Addons/ofxOPC/src/NeoPixelRing24px.h; sourceTree = SOURCE_ROOT; };
+		6C840A1E20392AF630547906 /* HaloRing.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = HaloRing.cpp; path = src/Halo/HaloRing.cpp; sourceTree = SOURCE_ROOT; };
+		6E3F47F486843AA062205007 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = main.cpp; path = src/Main/main.cpp; sourceTree = SOURCE_ROOT; };
+		6E874855C5F711D89163FA8C /* NeoPixelRing24px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing24px.cpp; path = src/Addons/ofxOPC/src/NeoPixelRing24px.cpp; sourceTree = SOURCE_ROOT; };
+		737D5FFC20E0808A448E192B /* SvgVisual.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SvgVisual.h; path = src/Engine/Visuals/SvgVisual.h; sourceTree = SOURCE_ROOT; };
+		73D7AA4CF4895FC3DEEC2978 /* SettingsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SettingsManager.cpp; path = src/Main/SettingsManager.cpp; sourceTree = SOURCE_ROOT; };
+		7725EB5002D6F869E2B37B77 /* Font.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Font.cpp; path = src/Engine/Tools/Font.cpp; sourceTree = SOURCE_ROOT; };
+		7967AB42670A05F21D252CF6 /* NeoPixelStick.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelStick.cpp; path = src/Addons/ofxOPC/src/NeoPixelStick.cpp; sourceTree = SOURCE_ROOT; };
+		82294747CDA8826204E84289 /* NeoPixelShield5x8.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelShield5x8.cpp; path = src/Addons/ofxOPC/src/NeoPixelShield5x8.cpp; sourceTree = SOURCE_ROOT; };
+		87C6C06C1FD872777629B675 /* KeyboardManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = KeyboardManager.h; path = src/Engine/Tools/KeyboardManager.h; sourceTree = SOURCE_ROOT; };
+		89DFBB918E3BCAFB0C93CAF3 /* CameraManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CameraManager.cpp; path = src/Engine/3D/CameraManager.cpp; sourceTree = SOURCE_ROOT; };
+		8E525E094C2C0F02CEAD7CAF /* HaloLightApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = HaloLightApp.cpp; path = src/Main/HaloLightApp.cpp; sourceTree = SOURCE_ROOT; };
+		9195BE81DE37A63064A15851 /* HaloLightApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = HaloLightApp.h; path = src/Main/HaloLightApp.h; sourceTree = SOURCE_ROOT; };
+		91AC3F3D3E7AE70429272D9E /* ofxUDPManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUDPManager.cpp; path = src/Addons/ofxNetwork/src/ofxUDPManager.cpp; sourceTree = SOURCE_ROOT; };
+		9523F6E7493B67421FCAE61F /* NeoPixelRing60px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing60px.cpp; path = src/Addons/ofxOPC/src/NeoPixelRing60px.cpp; sourceTree = SOURCE_ROOT; };
+		9832C4CD7A3E361A52805E05 /* ofxUDPManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUDPManager.h; path = src/Addons/ofxNetwork/src/ofxUDPManager.h; sourceTree = SOURCE_ROOT; };
+		9A41D072889FC9C8F4082F5C /* CameraAnimationsManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CameraAnimationsManager.h; path = src/Engine/3D/CameraAnimationsManager.h; sourceTree = SOURCE_ROOT; };
+		9C67249D70841A7148965565 /* TextVisual.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TextVisual.h; path = src/Engine/Visuals/TextVisual.h; sourceTree = SOURCE_ROOT; };
+		A05F1DCF8180DEEC9FBAE585 /* CameraAnimations.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CameraAnimations.cpp; path = src/Engine/3D/CameraAnimations.cpp; sourceTree = SOURCE_ROOT; };
+		A782EA05F149B785F84A8A9F /* ofxNetwork.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNetwork.h; path = src/Addons/ofxNetwork/src/ofxNetwork.h; sourceTree = SOURCE_ROOT; };
+		B3C91EAD16AC83AFD4BB633D /* Instructions.txt */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = Instructions.txt; path = src/Addons/ofxNetwork/docs/Instructions.txt; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		BC7DAD15296E125942FCB302 /* NeoPixelStick.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelStick.h; path = src/addons/ofxOPC/src/NeoPixelStick.h; sourceTree = SOURCE_ROOT; };
-		BEFD4BB2146652F07346117B /* SettingsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SettingsManager.cpp; path = src/main/SettingsManager.cpp; sourceTree = SOURCE_ROOT; };
-		BFBCB82578DB91580FC3C6B2 /* ReadMe.md */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = ReadMe.md; path = src/addons/ofxOPC/ReadMe.md; sourceTree = SOURCE_ROOT; };
-		C12F5E1D82B9DFAF4964AB6B /* ofxOPC.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOPC.cpp; path = src/addons/ofxOPC/src/ofxOPC.cpp; sourceTree = SOURCE_ROOT; };
-		C8278ACA7B072839C081D1AD /* NeoPixelStick.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelStick.cpp; path = src/addons/ofxOPC/src/NeoPixelStick.cpp; sourceTree = SOURCE_ROOT; };
-		C980B8F3570D054DEA1D3A0D /* NeoPixelRing16px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing16px.cpp; path = src/addons/ofxOPC/src/NeoPixelRing16px.cpp; sourceTree = SOURCE_ROOT; };
-		CEE3DE38BE8C1E120720B43D /* NeoPixel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixel.h; path = src/addons/ofxOPC/src/NeoPixel.h; sourceTree = SOURCE_ROOT; };
-		D489D8C206036AAF722C5BD2 /* NeoPixelRing16px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing16px.h; path = src/addons/ofxOPC/src/NeoPixelRing16px.h; sourceTree = SOURCE_ROOT; };
-		DC6A4B26C98DA40E90482163 /* AppManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AppManager.h; path = src/main/AppManager.h; sourceTree = SOURCE_ROOT; };
-		DF6A8D267F5FCCB83D70645C /* AppManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = AppManager.cpp; path = src/main/AppManager.cpp; sourceTree = SOURCE_ROOT; };
+		BCCDDC884835D8E0D60C9A94 /* VisualEffectsManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = VisualEffectsManager.h; path = src/Engine/Visuals/VisualEffectsManager.h; sourceTree = SOURCE_ROOT; };
+		BEDDA11B665FA62A298B7C39 /* VisualEffectsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = VisualEffectsManager.cpp; path = src/Engine/Visuals/VisualEffectsManager.cpp; sourceTree = SOURCE_ROOT; };
+		BFD8277CE37B4415D3D4ED84 /* ofxTCPManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTCPManager.cpp; path = src/Addons/ofxNetwork/src/ofxTCPManager.cpp; sourceTree = SOURCE_ROOT; };
+		C3766129862C931409F5C3D4 /* ofxTCPClient.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTCPClient.cpp; path = src/Addons/ofxNetwork/src/ofxTCPClient.cpp; sourceTree = SOURCE_ROOT; };
+		C52E7BEE6804CC169C6A3CBF /* NeoPixelGrid32x32.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelGrid32x32.cpp; path = src/Addons/ofxOPC/src/NeoPixelGrid32x32.cpp; sourceTree = SOURCE_ROOT; };
+		CB509858A4D1989E86AAB480 /* Font.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Font.h; path = src/Engine/Tools/Font.h; sourceTree = SOURCE_ROOT; };
+		D16710555B0245A7CA19B4E0 /* HaloManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = HaloManager.h; path = src/Halo/HaloManager.h; sourceTree = SOURCE_ROOT; };
+		D26C09D837E4FD6CBDBE2B8C /* AppManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AppManager.h; path = src/Main/AppManager.h; sourceTree = SOURCE_ROOT; };
+		D3EF7125E4D108D465FDC410 /* NeoPixelRing16px.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelRing16px.cpp; path = src/Addons/ofxOPC/src/NeoPixelRing16px.cpp; sourceTree = SOURCE_ROOT; };
+		D4F6A4A691305A483A3724C4 /* ofxTCPClient.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTCPClient.h; path = src/Addons/ofxNetwork/src/ofxTCPClient.h; sourceTree = SOURCE_ROOT; };
+		D7A53CFBD5E4DB74ADCB31B3 /* ReadMe.md */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = ReadMe.md; path = src/Addons/ofxOPC/ReadMe.md; sourceTree = SOURCE_ROOT; };
+		D92CFDB23F7ED5A579A00607 /* ofxNeoPixels.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNeoPixels.h; path = src/Addons/ofxOPC/src/ofxNeoPixels.h; sourceTree = SOURCE_ROOT; };
+		DA2BEEEFB535A7D4C2159448 /* LightManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = LightManager.h; path = src/Engine/3D/LightManager.h; sourceTree = SOURCE_ROOT; };
+		DCB9CB9C1093718FA5F131FA /* VisualEffects.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = VisualEffects.cpp; path = src/Engine/Visuals/VisualEffects.cpp; sourceTree = SOURCE_ROOT; };
+		E119E1DEDDEEE6F44355F53D /* NeoPixel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixel.h; path = src/Addons/ofxOPC/src/NeoPixel.h; sourceTree = SOURCE_ROOT; };
+		E19220014DEF2997A58A0F9C /* ofxTCPServer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTCPServer.h; path = src/Addons/ofxNetwork/src/ofxTCPServer.h; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -123,19 +177,22 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* HaloLightDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaloLightDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4973548CB0AD1D6DE2B0901 /* NeoPixelShield5x8.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelShield5x8.h; path = src/Addons/ofxOPC/src/NeoPixelShield5x8.h; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		E4DCDF1A91BCB16E6A0A7184 /* NeoPixelGrid8x8.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelGrid8x8.h; path = src/addons/ofxOPC/src/NeoPixelGrid8x8.h; sourceTree = SOURCE_ROOT; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E5226C8680238D2C7A07EEFB /* KeyboardManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = KeyboardManager.cpp; path = src/Engine/Tools/KeyboardManager.cpp; sourceTree = SOURCE_ROOT; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		F76A61BA402AE91B44F5B2FE /* Manager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Manager.h; path = src/main/Manager.h; sourceTree = SOURCE_ROOT; };
-		FEFFAE667D771A6A7F416AB1 /* NeoPixelGrid32x32.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelGrid32x32.h; path = src/addons/ofxOPC/src/NeoPixelGrid32x32.h; sourceTree = SOURCE_ROOT; };
+		F08A1B4CCDE20208A074813B /* ofxNetworkUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNetworkUtils.h; path = src/Addons/ofxNetwork/src/ofxNetworkUtils.h; sourceTree = SOURCE_ROOT; };
+		F7D513F7C92E3C60F81B1A61 /* ResourceManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ResourceManager.h; path = src/Engine/Resources/ResourceManager.h; sourceTree = SOURCE_ROOT; };
+		F94F04C2A3BFBCB8D6F36DEB /* Manager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Manager.h; path = src/Main/Manager.h; sourceTree = SOURCE_ROOT; };
+		FC3ECB222AF32D3ECAEF6D19 /* NeoPixelGrid8x8.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixelGrid8x8.cpp; path = src/Addons/ofxOPC/src/NeoPixelGrid8x8.cpp; sourceTree = SOURCE_ROOT; };
+		FD4DF2284F5D80C655A0D429 /* CameraAnimations.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CameraAnimations.h; path = src/Engine/3D/CameraAnimations.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,63 +222,140 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08210D621AA1371F0014238A /* ofxNetwork */ = {
+		1646F71220FE0F0638559519 /* 3D */ = {
 			isa = PBXGroup;
 			children = (
-				08210D631AA1371F0014238A /* docs */,
-				08210D651AA1371F0014238A /* src */,
+				A05F1DCF8180DEEC9FBAE585 /* CameraAnimations.cpp */,
+				FD4DF2284F5D80C655A0D429 /* CameraAnimations.h */,
+				3C01FEEAD29823C01C4EEC27 /* CameraAnimationsManager.cpp */,
+				9A41D072889FC9C8F4082F5C /* CameraAnimationsManager.h */,
+				89DFBB918E3BCAFB0C93CAF3 /* CameraManager.cpp */,
+				682CD55D28B06CEDCFD63D68 /* CameraManager.h */,
+				09F8F2DF1D53E65319F30B96 /* LightManager.cpp */,
+				DA2BEEEFB535A7D4C2159448 /* LightManager.h */,
+			);
+			name = 3D;
+			sourceTree = "<group>";
+		};
+		2456C9C996BBA9FBF32C647A /* Halo */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B82F1016E111F99C20832 /* HaloManager.cpp */,
+				D16710555B0245A7CA19B4E0 /* HaloManager.h */,
+				6C840A1E20392AF630547906 /* HaloRing.cpp */,
+				35B7F954496FF74FD0883657 /* HaloRing.h */,
+			);
+			name = Halo;
+			sourceTree = "<group>";
+		};
+		28F8599521CDD8F15E3BED58 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				08E4F0441AA33C5200714830 /* LayoutManager.cpp */,
+				08E4F0451AA33C5200714830 /* LayoutManager.h */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		51215486FD04C7A6B90A7559 /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				3656BF3981C35A273806DCEB /* BasicVisual.h */,
+				4F661FE0411AA0AC01E34CB7 /* ImageVisual.cpp */,
+				11C490A0CA5771C60AE54B4B /* ImageVisual.h */,
+				3DD6F074B2A9C65331157B2C /* ImageVisual3D.cpp */,
+				1D7B4D07648F9CB293716166 /* ImageVisual3D.h */,
+				19361E6857FB31277A2FEE46 /* SvgVisual.cpp */,
+				737D5FFC20E0808A448E192B /* SvgVisual.h */,
+				0227F9BE14631C9FE7CA55B1 /* TextVisual.cpp */,
+				9C67249D70841A7148965565 /* TextVisual.h */,
+				4FE37A31C904F445222B25FC /* ViewManager.cpp */,
+				68A02C9D01ED911C09E9874B /* ViewManager.h */,
+				DCB9CB9C1093718FA5F131FA /* VisualEffects.cpp */,
+				2A2B7E7FDC1CFF4A547CC661 /* VisualEffects.h */,
+				BEDDA11B665FA62A298B7C39 /* VisualEffectsManager.cpp */,
+				BCCDDC884835D8E0D60C9A94 /* VisualEffectsManager.h */,
+			);
+			name = Visuals;
+			sourceTree = "<group>";
+		};
+		5C73414BDD3C2D5896B30DB4 /* ofxNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				D6E0506FBE16FF03EA0A04B6 /* docs */,
+				9D91B9A237709CA2D703E141 /* src */,
 			);
 			name = ofxNetwork;
-			path = addons/ofxNetwork;
 			sourceTree = "<group>";
 		};
-		08210D631AA1371F0014238A /* docs */ = {
+		728DA49418A9019918441104 /* ofxOPC */ = {
 			isa = PBXGroup;
 			children = (
-				08210D641AA1371F0014238A /* Instructions.txt */,
-			);
-			path = docs;
-			sourceTree = "<group>";
-		};
-		08210D651AA1371F0014238A /* src */ = {
-			isa = PBXGroup;
-			children = (
-				08210D661AA1371F0014238A /* ofxNetwork.h */,
-				08210D671AA1371F0014238A /* ofxNetworkUtils.h */,
-				08210D681AA1371F0014238A /* ofxTCPClient.cpp */,
-				08210D691AA1371F0014238A /* ofxTCPClient.h */,
-				08210D6A1AA1371F0014238A /* ofxTCPManager.cpp */,
-				08210D6B1AA1371F0014238A /* ofxTCPManager.h */,
-				08210D6C1AA1371F0014238A /* ofxTCPServer.cpp */,
-				08210D6D1AA1371F0014238A /* ofxTCPServer.h */,
-				08210D6E1AA1371F0014238A /* ofxUDPManager.cpp */,
-				08210D6F1AA1371F0014238A /* ofxUDPManager.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		5EDBB7FA6F37DA99E69C9575 /* main */ = {
-			isa = PBXGroup;
-			children = (
-				DF6A8D267F5FCCB83D70645C /* AppManager.cpp */,
-				DC6A4B26C98DA40E90482163 /* AppManager.h */,
-				8485F0A908722C7EBE766954 /* HaloLightApp.cpp */,
-				B769708D915EFAE7A5D99B0E /* HaloLightApp.h */,
-				B2580E049A4ED64E05E2C4ED /* main.cpp */,
-				F76A61BA402AE91B44F5B2FE /* Manager.h */,
-				BEFD4BB2146652F07346117B /* SettingsManager.cpp */,
-				508089B0C04992A26C4167EA /* SettingsManager.h */,
-			);
-			name = main;
-			sourceTree = "<group>";
-		};
-		698F4D7488E1970447D23E66 /* ofxOPC */ = {
-			isa = PBXGroup;
-			children = (
-				BFBCB82578DB91580FC3C6B2 /* ReadMe.md */,
-				C8F7B29C7E43748A6F7577DF /* src */,
+				D7A53CFBD5E4DB74ADCB31B3 /* ReadMe.md */,
+				F3F7086A2F0DAB0DBBD5B665 /* src */,
 			);
 			name = ofxOPC;
+			sourceTree = "<group>";
+		};
+		9D4CA964E6167024C0594095 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5FA64D51DA6D1619944A259C /* ResourceManager.cpp */,
+				F7D513F7C92E3C60F81B1A61 /* ResourceManager.h */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9D91B9A237709CA2D703E141 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A782EA05F149B785F84A8A9F /* ofxNetwork.h */,
+				F08A1B4CCDE20208A074813B /* ofxNetworkUtils.h */,
+				C3766129862C931409F5C3D4 /* ofxTCPClient.cpp */,
+				D4F6A4A691305A483A3724C4 /* ofxTCPClient.h */,
+				BFD8277CE37B4415D3D4ED84 /* ofxTCPManager.cpp */,
+				53641B0567D9C72229D835C5 /* ofxTCPManager.h */,
+				0D5A3D829B70F3ADF69A0F1C /* ofxTCPServer.cpp */,
+				E19220014DEF2997A58A0F9C /* ofxTCPServer.h */,
+				91AC3F3D3E7AE70429272D9E /* ofxUDPManager.cpp */,
+				9832C4CD7A3E361A52805E05 /* ofxUDPManager.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		A61C485F7880BB9B79F26287 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				7725EB5002D6F869E2B37B77 /* Font.cpp */,
+				CB509858A4D1989E86AAB480 /* Font.h */,
+				E5226C8680238D2C7A07EEFB /* KeyboardManager.cpp */,
+				87C6C06C1FD872777629B675 /* KeyboardManager.h */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		AD642137CCDF61FB3E6CCEA2 /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+				5C73414BDD3C2D5896B30DB4 /* ofxNetwork */,
+				728DA49418A9019918441104 /* ofxOPC */,
+			);
+			name = Addons;
+			sourceTree = "<group>";
+		};
+		AF4FDCF7E02C59FCC5FE54A2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5056FC61E30B9810903B814D /* AppManager.cpp */,
+				D26C09D837E4FD6CBDBE2B8C /* AppManager.h */,
+				8E525E094C2C0F02CEAD7CAF /* HaloLightApp.cpp */,
+				9195BE81DE37A63064A15851 /* HaloLightApp.h */,
+				6E3F47F486843AA062205007 /* main.cpp */,
+				F94F04C2A3BFBCB8D6F36DEB /* Manager.h */,
+				73D7AA4CF4895FC3DEEC2978 /* SettingsManager.cpp */,
+				496FB8BB67BF37BF8B96AD33 /* SettingsManager.h */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -260,34 +394,23 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
-		C8F7B29C7E43748A6F7577DF /* src */ = {
+		D6E0506FBE16FF03EA0A04B6 /* docs */ = {
 			isa = PBXGroup;
 			children = (
-				4D9793C4EA277BB6E16F97A2 /* NeoPixel.cpp */,
-				CEE3DE38BE8C1E120720B43D /* NeoPixel.h */,
-				B5027C21D529CF438AC2231A /* NeoPixelGrid32x32.cpp */,
-				FEFFAE667D771A6A7F416AB1 /* NeoPixelGrid32x32.h */,
-				7836AC8642CF61A7676A6BCD /* NeoPixelGrid8x8.cpp */,
-				E4DCDF1A91BCB16E6A0A7184 /* NeoPixelGrid8x8.h */,
-				A3633B73EE282B12CD2F34DE /* NeoPixelRing12px.cpp */,
-				8718BA8A475BAE51E7FBD3B2 /* NeoPixelRing12px.h */,
-				C980B8F3570D054DEA1D3A0D /* NeoPixelRing16px.cpp */,
-				D489D8C206036AAF722C5BD2 /* NeoPixelRing16px.h */,
-				B3AF0E74CE02311F0000B6E8 /* NeoPixelRing24px.cpp */,
-				212BC455A80D9C8B5475B898 /* NeoPixelRing24px.h */,
-				3DC76B7457C57F80544FE524 /* NeoPixelRing60px.cpp */,
-				8BFF98CB6A4A0E10C4AE65D2 /* NeoPixelRing60px.h */,
-				32F5E0CC4191217EECAED531 /* NeoPixelShield5x8.cpp */,
-				2ACAA9CB7AECF6D1BAFA3197 /* NeoPixelShield5x8.h */,
-				C8278ACA7B072839C081D1AD /* NeoPixelStick.cpp */,
-				BC7DAD15296E125942FCB302 /* NeoPixelStick.h */,
-				55AC23042694C547FF6AD424 /* NeoPixelStrip.cpp */,
-				50306ACCE916D987309EC8FB /* NeoPixelStrip.h */,
-				A0E84C1F8FA8BEE3E7B0BCEB /* ofxNeoPixels.h */,
-				C12F5E1D82B9DFAF4964AB6B /* ofxOPC.cpp */,
-				4A0338B67406B33C057675B6 /* ofxOPC.h */,
+				B3C91EAD16AC83AFD4BB633D /* Instructions.txt */,
 			);
-			name = src;
+			name = docs;
+			sourceTree = "<group>";
+		};
+		E2C62C2B4F591B9A20DAF22A /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				1646F71220FE0F0638559519 /* 3D */,
+				9D4CA964E6167024C0594095 /* Resources */,
+				A61C485F7880BB9B79F26287 /* Tools */,
+				51215486FD04C7A6B90A7559 /* Visuals */,
+			);
+			name = Engine;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -316,15 +439,17 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* HaloLightDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E9B41616011648F9E8AD33EB /* addons */,
-				5EDBB7FA6F37DA99E69C9575 /* main */,
+				28F8599521CDD8F15E3BED58 /* Layout */,
+				AD642137CCDF61FB3E6CCEA2 /* Addons */,
+				E2C62C2B4F591B9A20DAF22A /* Engine */,
+				2456C9C996BBA9FBF32C647A /* Halo */,
+				AF4FDCF7E02C59FCC5FE54A2 /* Main */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -338,13 +463,34 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
-		E9B41616011648F9E8AD33EB /* addons */ = {
+		F3F7086A2F0DAB0DBBD5B665 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				08210D621AA1371F0014238A /* ofxNetwork */,
-				698F4D7488E1970447D23E66 /* ofxOPC */,
+				0D9F8BAA922CF76DBE00342D /* NeoPixel.cpp */,
+				E119E1DEDDEEE6F44355F53D /* NeoPixel.h */,
+				C52E7BEE6804CC169C6A3CBF /* NeoPixelGrid32x32.cpp */,
+				446760FB4E87774375C1C5E9 /* NeoPixelGrid32x32.h */,
+				FC3ECB222AF32D3ECAEF6D19 /* NeoPixelGrid8x8.cpp */,
+				2E8E2205F39B5CE04950F6F1 /* NeoPixelGrid8x8.h */,
+				1E50E3AA103792C5F91D4E30 /* NeoPixelRing12px.cpp */,
+				004EEF328125D63370DCE7B1 /* NeoPixelRing12px.h */,
+				D3EF7125E4D108D465FDC410 /* NeoPixelRing16px.cpp */,
+				271C32860D26476A3062B447 /* NeoPixelRing16px.h */,
+				6E874855C5F711D89163FA8C /* NeoPixelRing24px.cpp */,
+				6AF954655E1FAD895EA1DA49 /* NeoPixelRing24px.h */,
+				9523F6E7493B67421FCAE61F /* NeoPixelRing60px.cpp */,
+				1631492253F7EFF48DB8F6B4 /* NeoPixelRing60px.h */,
+				82294747CDA8826204E84289 /* NeoPixelShield5x8.cpp */,
+				E4973548CB0AD1D6DE2B0901 /* NeoPixelShield5x8.h */,
+				7967AB42670A05F21D252CF6 /* NeoPixelStick.cpp */,
+				1550BD03779C30A60DAC78D7 /* NeoPixelStick.h */,
+				507298DAC719FC1C10DAAAD5 /* NeoPixelStrip.cpp */,
+				4DAEBF101D1761DC6DE05F91 /* NeoPixelStrip.h */,
+				D92CFDB23F7ED5A579A00607 /* ofxNeoPixels.h */,
+				33C1FB61376A6A54BEE24E8A /* ofxOPC.cpp */,
+				6488AAE888CF2FFF835082F6 /* ofxOPC.h */,
 			);
-			name = addons;
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +512,7 @@
 			);
 			name = HaloLight;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* HaloLightDebug.app */;
+			productReference = 08E4F0471AA3537300714830 /* HaloLight.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -434,22 +580,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42C51C3A7B05A090E008CB81 /* ReadMe.md in Sources */,
-				63338803E10F63A3A28A4820 /* NeoPixel.cpp in Sources */,
-				58793374C5F50C2CF72D0FFC /* NeoPixelGrid32x32.cpp in Sources */,
-				3DF7A3616CB8C114363D58C7 /* NeoPixelGrid8x8.cpp in Sources */,
-				A598659A3A1F85547C7C4A75 /* NeoPixelRing12px.cpp in Sources */,
-				658322744AD7A765C9468D1D /* NeoPixelRing16px.cpp in Sources */,
-				0A3CDA147662E0D53C807110 /* NeoPixelRing24px.cpp in Sources */,
-				B9E0804F40C971B16B18EEAC /* NeoPixelRing60px.cpp in Sources */,
-				FCB80653C9C8FBE467D8C365 /* NeoPixelShield5x8.cpp in Sources */,
-				2B4D2C1CF6A1B9D7521B69A0 /* NeoPixelStick.cpp in Sources */,
-				270A7AA8B6F540913EFAE139 /* NeoPixelStrip.cpp in Sources */,
-				A689466F8C4A720E4DBC8638 /* ofxOPC.cpp in Sources */,
-				F3A915FA3ECAE8805363400E /* AppManager.cpp in Sources */,
-				55A8D130A5127EE63E0D3CE4 /* HaloLightApp.cpp in Sources */,
-				DB46C9611294E83A38C93943 /* main.cpp in Sources */,
-				4EE34D904284F6B20662DD82 /* SettingsManager.cpp in Sources */,
+				9144DA601D35D209DD2C5B58 /* Instructions.txt in Sources */,
+				18FA42C471CF66795EF9EB97 /* ofxTCPClient.cpp in Sources */,
+				66A6F1C16CF15F386BA660C2 /* ofxTCPManager.cpp in Sources */,
+				F60A8CA415750AA5DDCC6169 /* ofxTCPServer.cpp in Sources */,
+				8CB0A46B3A54F961BA55A6A6 /* ofxUDPManager.cpp in Sources */,
+				543B6642609D783E6FB032AF /* ReadMe.md in Sources */,
+				2F327561F7FA3FC4C2AB0363 /* NeoPixel.cpp in Sources */,
+				11263DD5787331C9CA71BD36 /* NeoPixelGrid32x32.cpp in Sources */,
+				2A4EB329701354C644FC7683 /* NeoPixelGrid8x8.cpp in Sources */,
+				62910678AFC55FB016541F66 /* NeoPixelRing12px.cpp in Sources */,
+				D40A61B2ACD21548A068C892 /* NeoPixelRing16px.cpp in Sources */,
+				638F4F2E9D8C4E322522038B /* NeoPixelRing24px.cpp in Sources */,
+				350F08FF61B2B09D462D4D6E /* NeoPixelRing60px.cpp in Sources */,
+				24D768C6C84C61F3CBD97997 /* NeoPixelShield5x8.cpp in Sources */,
+				44D0F3D21AC4097A857F0638 /* NeoPixelStick.cpp in Sources */,
+				7F06984C0BB75CBACACB10CA /* NeoPixelStrip.cpp in Sources */,
+				325F3943C3EF9FCFF6C34AC0 /* ofxOPC.cpp in Sources */,
+				48F94177806B5CB8D3C0F283 /* CameraAnimations.cpp in Sources */,
+				C6B3BFC2668F137F745DC3C6 /* CameraAnimationsManager.cpp in Sources */,
+				08E4F0461AA33C5200714830 /* LayoutManager.cpp in Sources */,
+				8C9DFFBD826A20F752ED0CD6 /* CameraManager.cpp in Sources */,
+				DC16DA963E4E5873F0AE7C9E /* LightManager.cpp in Sources */,
+				6F36C225B48477DFCCA6FB64 /* ResourceManager.cpp in Sources */,
+				5333265E1B11FF3577F62A0E /* Font.cpp in Sources */,
+				FDBF3E3276ACAF0114532C4B /* KeyboardManager.cpp in Sources */,
+				3A6C7D72771284673CBE247D /* ImageVisual.cpp in Sources */,
+				F7EA3801298F5E54967C119B /* ImageVisual3D.cpp in Sources */,
+				8BC3D4AABDF5E655706BA3B8 /* SvgVisual.cpp in Sources */,
+				DB05E98D002D6650AA23E87B /* TextVisual.cpp in Sources */,
+				9D9E0E996DA1B9AC9952C889 /* ViewManager.cpp in Sources */,
+				875651AF8693D3DE4CC23485 /* VisualEffects.cpp in Sources */,
+				B790DA4F42194210B9259E42 /* VisualEffectsManager.cpp in Sources */,
+				916ADEB631696DEEED3ACEBA /* HaloManager.cpp in Sources */,
+				944C582F1366C745FFE8A0EB /* HaloRing.cpp in Sources */,
+				1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */,
+				C5CCD16B524E215288E47400 /* HaloLightApp.cpp in Sources */,
+				DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */,
+				58BCEB4034B30CB4A3456FC7 /* SettingsManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,9 +654,17 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					src/addons/ofxOPC,
-					src/addons/ofxOPC/src,
-					src/main,
+					src/Addons/ofxNetwork/docs,
+					src/Addons/ofxNetwork/src,
+					src/Addons/ofxOPC,
+					src/Addons/ofxOPC/src,
+					src/Engine/3D,
+					src/Engine/Layout,
+					src/Engine/Resources,
+					src/Engine/Tools,
+					src/Engine/Visuals,
+					src/Halo,
+					src/Main,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -523,9 +699,17 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					src/addons/ofxOPC,
-					src/addons/ofxOPC/src,
-					src/main,
+					src/Addons/ofxNetwork/docs,
+					src/Addons/ofxNetwork/src,
+					src/Addons/ofxOPC,
+					src/Addons/ofxOPC/src,
+					src/Engine/3D,
+					src/Engine/Layout,
+					src/Engine/Resources,
+					src/Engine/Tools,
+					src/Engine/Visuals,
+					src/Halo,
+					src/Main,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
