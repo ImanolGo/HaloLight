@@ -50,11 +50,14 @@ void HaloRing::update()
     
     this->grabImageData();
     this->updateLeds();
+}
+
+void HaloRing::updateLeds()
+{
     
-    // Clear the colors and pixels each frame
     m_ledColors.clear();
     m_screenPixels.clear();
- 
+    
     // Transfer grab data to the pixel array
     m_screenPixels = m_screenImage.getPixelsRef();
     
@@ -67,7 +70,7 @@ void HaloRing::update()
 vector <ofColor> HaloRing::colorData()
 {
     // Transmit Data
-    return colors;
+    return m_ledColors;
 }
 //--------------------------------------------------------------
 void HaloRing::grabImageData()
@@ -85,6 +88,9 @@ void HaloRing::drawGrabRegion(bool hideArea)
         ofNoFill();
         ofSetLineWidth(2);
         ofSetColor(255, 255);
+        
+        ofEllipse(float x, float y, float width, float height){
+        ofEllipse();
         ofCircle(_pos.x, _pos.y, radius+12);
         ofCircle(_pos.x, _pos.y, radius-12);
         ofPopStyle();

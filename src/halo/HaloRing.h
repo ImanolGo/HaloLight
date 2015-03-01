@@ -34,6 +34,8 @@ class HaloRing: public BasicVisual {
     private:
     
         void grabImageData();
+            
+        void updateLeds();
     
         void setupLedRing();
     

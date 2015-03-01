@@ -97,9 +97,9 @@
 /* Begin PBXFileReference section */
 		004EEF328125D63370DCE7B1 /* NeoPixelRing12px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing12px.h; path = src/Addons/ofxOPC/src/NeoPixelRing12px.h; sourceTree = SOURCE_ROOT; };
 		0227F9BE14631C9FE7CA55B1 /* TextVisual.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = TextVisual.cpp; path = src/Engine/Visuals/TextVisual.cpp; sourceTree = SOURCE_ROOT; };
+		0874301E1AA3C6580071DE2E /* HaloLightDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaloLightDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E4F0441AA33C5200714830 /* LayoutManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LayoutManager.cpp; path = Layout/LayoutManager.cpp; sourceTree = "<group>"; };
 		08E4F0451AA33C5200714830 /* LayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LayoutManager.h; path = Layout/LayoutManager.h; sourceTree = "<group>"; };
-		08E4F0471AA3537300714830 /* HaloLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = HaloLight.app; path = /Users/imanolgo/Applications/of_v0.8.4_osx_release/apps/myApps/HaloLight/bin/HaloLight.app; sourceTree = "<absolute>"; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0D5A3D829B70F3ADF69A0F1C /* ofxTCPServer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTCPServer.cpp; path = src/Addons/ofxNetwork/src/ofxTCPServer.cpp; sourceTree = SOURCE_ROOT; };
 		0D9F8BAA922CF76DBE00342D /* NeoPixel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NeoPixel.cpp; path = src/Addons/ofxOPC/src/NeoPixel.cpp; sourceTree = SOURCE_ROOT; };
@@ -439,6 +439,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
+				0874301E1AA3C6580071DE2E /* HaloLightDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -512,7 +513,7 @@
 			);
 			name = HaloLight;
 			productName = myOFApp;
-			productReference = 08E4F0471AA3537300714830 /* HaloLight.app */;
+			productReference = 0874301E1AA3C6580071DE2E /* HaloLightDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
