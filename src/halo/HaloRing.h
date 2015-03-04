@@ -7,25 +7,26 @@
 #include <iostream>
 #include "ofMain.h"
 #include "BasicVisual.h"
-#include "HaloLed"
 
 
 class HaloRing: public BasicVisual {
     
     public:
     
-        HaloRing(const BasicVisual& visual, unsigned int id, int numberLeds);
+        HaloRing(const BasicVisual& visual, int id, int numberLeds);
         virtual ~HaloRing();
     
         void setup();
         void update();
     
-        void drawGrabRegion(bool hideArea);
+        void drawGrabRegion(bool hideArea = false);
         void drawRing(int x, int y);
     
         int getId(){return m_id;}
     
-        int getNumberLeds(){return int getId(){return m_id;}
+        int getNumberLeds(){return m_numberLeds;}
+    
+        void setPreviewPosition(const ofPoint& pos){m_previewPosition = pos;}
 
     
         // Return Data Method
@@ -44,9 +45,6 @@ class HaloRing: public BasicVisual {
     
     private:
             
-        typedef ofPtr<HaloLed>  HaloLedPtr;
-        typedef vector<HaloLedPtr> HaloLedVector;
-    
         // Hold the Captured Colors
         vector <ofColor> m_ledColors;
     
@@ -60,6 +58,8 @@ class HaloRing: public BasicVisual {
         // Variables
         int     m_numberLeds;
         int     m_id;
+    
+        ofPoint   m_previewPosition;
     
 };
 

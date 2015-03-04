@@ -11,9 +11,10 @@
 
 #include "SettingsManager.h"
 
+
 SettingsManager::SettingsManager(): Manager(), m_appHeight(0.0), m_appWidth(0.0)
 {
-	//Intentionally left empty
+    //Intentionally left empty
 }
 
 
@@ -135,7 +136,8 @@ void SettingsManager::setNetworkProperties()
         typedef   std::map<string, string>   AttributesMap;
         AttributesMap attributes = m_xmlSettings.getAttributes();
 
-        m_udpPort  = ofToInt(attributes["udpPort"]);
+        m_port  = ofToInt(attributes["port"]);
+        m_ipAddress  = ofToString(attributes["ipAddress"]);
 
 
         ofLogNotice() <<"SettingsManager::setNetworkProperties->  successfully loaded the network settings" ;

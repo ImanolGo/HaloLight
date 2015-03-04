@@ -23,12 +23,12 @@ typedef             map<string,string>               ResourcesPathMap;       ///
 class SettingsManager: public Manager
 {
     public:
-
-        //! Constructor
-        SettingsManager();
-
+    
         //! Destructor
         ~SettingsManager();
+    
+        //! Constructor
+        SettingsManager();
 
         //! Compares two transition objects
         void setup();
@@ -42,8 +42,10 @@ class SettingsManager: public Manager
         float getAppWidth() const {return m_appWidth;}
 
         float getAppHeight() const {return m_appHeight;}
+    
+        string getIpAddress() const {return m_ipAddress;}
 
-        int getUdpPort() const {return m_udpPort;}
+        int getPort() const {return m_port;}
 
 
     private:
@@ -85,7 +87,8 @@ class SettingsManager: public Manager
         ColorMap                m_colors;               ///< stores all the application's colors
         float                   m_appWidth;             ///< stores the applications width
         float                   m_appHeight;            ///< stores the applications height
-        int                     m_udpPort;              ///< stores the UDP port used for the TUIO communications
+        int                     m_port;                 ///< stores the UDP port used for the Network communications
+        string                  m_ipAddress;             ///< stores the Ip Address used for the Network communications
 };
 
 

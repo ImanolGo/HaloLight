@@ -12,8 +12,6 @@
 #include "ViewManager.h"
 
 #include "AppManager.h"
-#include "VoronoiManager.h"
-#include "SeedsManager.h"
 
 #include "ofMain.h"
 
@@ -36,8 +34,8 @@ void ViewManager::setup()
 
     Manager::setup();
 
-    this->setupGL();
-    this->setup3D();
+    //this->setupGL();
+    //this->setup3D();
     this->setupTextVisuals();
     this->addListeners();
 
@@ -47,6 +45,7 @@ void ViewManager::setup()
 void ViewManager::setupGL()
 {
     
+    ofSetVerticalSync(false);
     ofEnableLighting();
     ofEnableAlphaBlending();
     ofEnableSmoothing();
@@ -80,7 +79,7 @@ void ViewManager::setupTextVisuals()
     float height = fontSize;
     string text = "";
     string fontName ="fonts/helvetica-neue-medium.ttf";
-    ofColor textColor = ofColor::black;
+    ofColor textColor = ofColor::white;
 
     m_frameRateText = ofPtr<TextVisual> (new TextVisual(position,width,height));
     m_frameRateText->setText(text,fontName,fontSize,textColor);
@@ -116,10 +115,11 @@ void ViewManager::draw()
 
 void ViewManager::drawBackround()
 {
+    ofClear ( 0 );
     //ofBackgroundGradient(ofColor::white, ofColor::gray);
-    ofColor centerColor = AppManager::getInstance().getSettingsManager()->getColor("CenterBackgroundColor");
-    ofColor edgeColor = AppManager::getInstance().getSettingsManager()->getColor("EdgeBackgroundColor");
-    ofBackgroundGradient(centerColor,edgeColor,OF_GRADIENT_CIRCULAR);
+    //ofColor centerColor = AppManager::getInstance().getSettingsManager()->getColor("CenterBackgroundColor");
+    //ofColor edgeColor = AppManager::getInstance().getSettingsManager()->getColor("EdgeBackgroundColor");
+    //ofBackgroundGradient(centerColor,edgeColor,OF_GRADIENT_CIRCULAR);
 }
 
 void ViewManager::drawVisuals()
@@ -130,10 +130,7 @@ void ViewManager::drawVisuals()
     m_light.enable();
     ofEnableLighting();
     glEnable(GL_DEPTH_TEST);
-    
-    AppManager::getInstance().getVoronoiManager()->draw();
-    
-    AppManager::getInstance().getSeedsManager()->draw();
+  
     
     for(VisualList::iterator it = m_visuals.begin(); it != m_visuals.end(); it++) {
         ofPushMatrix();

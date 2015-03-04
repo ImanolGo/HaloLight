@@ -6,8 +6,8 @@
  */
 
 
-#include "../Main/AppManager.h"
-#include "../Resources/ResourceManager.h"
+#include "AppManager.h"
+#include "ResourceManager.h"
 
 #include "ImageVisual.h"
 

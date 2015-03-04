@@ -10,6 +10,8 @@
 #pragma once
 
 #include "Manager.h"
+#include "HaloRing.h"
+#include "ofxOPC.h"
 
 //========================== class HaloManager ==============================
 //============================================================================
@@ -21,6 +23,10 @@
 
 class HaloManager: public Manager
 {
+    static const int NUM_FADE_CANDYS;
+    static const int NUM_HALO_RINGS;
+    static const int NUM_HALO_LEDS;
+    
     public:
 
         //! Constructor
@@ -34,19 +40,28 @@ class HaloManager: public Manager
 
         //! Update the Halo Manager
         void update();
+    
+        //! Draw the Halo Manager
+        void draw();
 
 
     private:
-
-
-
+    
+        void createHaloRings();
+    
+        void setupOPC();
+    
+        void updateHaloRings();
+    
+    void drawHaloRings();
+    
     private:
     
         typedef             ofPtr<HaloRing>                 HaloRingPtr;
-        typedef             map<id,HaloRingPtr>               HaloRingMap;       ///< defines a map of Halo Rings attached to its id
+        typedef             map<int,HaloRingPtr>            HaloRingMap;       ///< defines a map of Halo Rings attached to its id
 
-    
-        ofxOPC                  m_opcClient;            ///< instance of the Open Pixel Control client
+        HaloRingMap         m_haloRings;
+        ofxOPC              m_opcClient;            ///< instance of the Open Pixel Control client
 
 };
 

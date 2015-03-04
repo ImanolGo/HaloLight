@@ -63,19 +63,6 @@ void LayoutManager::createImageVisuals()
 
 void LayoutManager::createBackground()
 {
-    float appWidth =  AppManager::getInstance().getSettingsManager()->getAppWidth();
-    float appHeight = AppManager::getInstance().getSettingsManager()->getAppHeight();
-    
-    ofVec3f position(0,0);
-    string resourceName = "Background";
-    ofPtr<ImageVisual> imageVisual = ofPtr<ImageVisual>(new ImageVisual(position,resourceName));
-    imageVisual->setWidth(appWidth);
-    imageVisual->setHeight(appHeight);
-    
-    m_imageVisuals[resourceName] = imageVisual;
-    
-    int depthLevel = -2;
-    AppManager::getInstance().getViewManager()->addOverlay(m_imageVisuals[resourceName],depthLevel);
 }
 
 void LayoutManager::addVisuals()
@@ -84,11 +71,11 @@ void LayoutManager::addVisuals()
     for(SvgMap::iterator it = m_svgVisuals.begin(); it!= m_svgVisuals.end(); ++it){
         AppManager::getInstance().getViewManager()->addOverlay(it->second,depthLevel);
     }
-
+    
     for(TextMap::iterator it = m_textVisuals.begin(); it!= m_textVisuals.end(); ++it){
         AppManager::getInstance().getViewManager()->addOverlay(it->second,depthLevel);
     }
-
+    
     for(ImageMap::iterator it = m_imageVisuals.begin(); it!= m_imageVisuals.end(); ++it){
         AppManager::getInstance().getViewManager()->addOverlay(it->second,depthLevel);
     }

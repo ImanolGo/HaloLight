@@ -137,6 +137,14 @@ The following example config file supports two Fadecandy devices with distinct s
         ]
     }
 
+Each Fadecandy board controls exactly 512 NeoPixels: 8 lines of 64 pixels each. This is unvarying and by design.
+These map sections let us address the LEDs contiguously in software, despite the gaps in the physical layout. Each line contains four values:
+
+A channel number. This will always be 0 in our application.
+A starting pixel number as we’d like to address them. For example, the first pixel of the second strand will be 60 (normally it would be 64). First pixel of the third strand will be 120. And so forth through 1380, the first pixel of the last strand.
+The corresponding pixel number as handled by this Fadecandy board. Remember, it regards every strand as 64 pixels, always, even if physically shorter. So we’ve mapped the second strand to position 64, third to 128, etc. Unlike the prior value, these numbers apply to the current board only, not globally, so they’ll always be from 0 to 511, never larger.
+The number of pixels being remapped. 60 in this case, the length of our strips.
+
 Using Open Pixel Control with DMX
 ---------------------------------
 

@@ -13,6 +13,11 @@
 #include "Manager.h"
 
 #include "SettingsManager.h"
+#include "ResourceManager.h"
+#include "ViewManager.h"
+#include "VisualEffectsManager.h"
+#include "LayoutManager.h"
+#include "KeyboardManager.h"
 
 //========================== class AppManager ==============================
 //============================================================================
@@ -40,13 +45,24 @@ public:
     //! calls the view manager to draw
     void draw();
 
-    //! defines what happens if the key is pressed
-    virtual void keyPressed(ofKeyEventArgs &e);
-
     //==========================================================================
 
     //! Returns the settings manager
     ofPtr<SettingsManager> getSettingsManager() { return m_settingsManager; }
+    
+    //! Returns the resource manager
+    ofPtr<ResourceManager> getResourceManager() { return m_resourceManager; }
+    
+    //! Returns the view manager
+    ofPtr<ViewManager>    getViewManager() { return m_viewManager; }
+    
+    //! Returns the visual effects manager
+    ofPtr<VisualEffectsManager>   getVisualEffectsManager() { return m_visualEffectsManager; }
+    
+    //==========================================================================
+    
+    void toggleVerbose();
+    
 
 private:
 
@@ -76,7 +92,12 @@ private:
 
 private:
 
-    ofPtr<SettingsManager>          m_settingsManager;          ///< Manages the window settings
+    ofPtr<SettingsManager>          m_settingsManager;          ///< Manages the application's settings
+    ofPtr<ResourceManager>          m_resourceManager;          ///< Manages the application's resources
+    ofPtr<ViewManager>              m_viewManager;              ///< Manages visuals
+    ofPtr<VisualEffectsManager>     m_visualEffectsManager;     ///< Manages visual effects
+    ofPtr<LayoutManager>            m_layoutManager;            ///< Manages the layout
+    ofPtr<KeyboardManager>          m_keyboardManager;          ///< Manages the keyboard
 
     bool                            m_logVerbose;
 };

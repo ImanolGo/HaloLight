@@ -8,6 +8,9 @@
 #include "ofxNetwork.h"
 #include "ofxNeoPixels.h"
 
+#define FADE_CANDY_NUM_CHANNELS 8
+#define LEDS_PER_CHANNEL 64
+
 //------------------------------------------------------------------------------
 typedef struct OPCPacket_Header {
     // Standard OPC-packet header
@@ -40,7 +43,7 @@ typedef struct OPCPacket {
 class ofxOPC  {
     
     public:
-        void setup(string address,int port);
+        void setup(string address,int port, int numFC = 1);
         void update();
         void draw();
     
@@ -52,17 +55,17 @@ class ofxOPC  {
         void sendFirmwareConfigPacket(); // Not used
     
         // For writing custom channels
-        void writeChannel(uint8_t channel, vector <ofColor> pix);
+        void writeChannel(uint8_t channel, vector <ofColor> pix, int fadeCandyIdx = 1);
     
         // Write Channels or Pin data
-        void writeChannelOne(vector <ofColor> pix);
-        void writeChannelTwo(vector <ofColor> pix);
-        void writeChannelThree(vector <ofColor> pix);
-        void writeChannelFour(vector <ofColor> pix);
-        void writeChannelFive(vector <ofColor> pix);
-        void writeChannelSix(vector <ofColor> pix);
-        void writeChannelSeven(vector <ofColor> pix);
-        void writeChannelEight(vector <ofColor> pix);
+        void writeChannelOne(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelTwo(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelThree(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelFour(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelFive(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelSix(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelSeven(vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannelEight(vector <ofColor> pix, int fadeCandyIdx = 1);
     
         //Chaining TODO:
         void writeChannel(uint8_t channel, vector <ofColor> pix1,vector <ofColor> pix2,vector <ofColor> pix3);

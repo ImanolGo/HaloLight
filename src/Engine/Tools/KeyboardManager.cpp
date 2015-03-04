@@ -7,7 +7,6 @@
 
 
 #include "KeyboardManager.h"
-#include "StateManager.h"
 #include "AppManager.h"
 
 
@@ -46,65 +45,10 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
     
     ofLogNotice() <<"KeyboardManager::keyPressed-> " + ofToString(key);
     
-    if(key == '1'){
-        //AppManager::getInstance().getStateManager()->changeState("SimpleVoronoiState");
-        AppManager::getInstance().getSeedsManager()->setSeedsScale(20);
+    if(key == ' ') {
+        AppManager::getInstance().toggleVerbose();
     }
 
-    else if(key == '2'){
-        AppManager::getInstance().getSeedsManager()->setSeedsScale(0);
-    }
-	else if(key == '3'){
-        AppManager::getInstance().getSeedsManager()->setParticlesScale(4);
-	}
-	else if(key == '4'){
-        AppManager::getInstance().getSeedsManager()->setParticlesScale(0);
-	}
-    
-    else if(key == '5'){
-        ofColor color = AppManager::getInstance().getSettingsManager()->getColor("RockColor1");
-        AppManager::getInstance().getSeedsManager()->setColor(color);
-    }
-    
-    else if(key == '6'){
-        ofColor color = AppManager::getInstance().getSettingsManager()->getColor("RockColor2");
-        AppManager::getInstance().getSeedsManager()->setColor(color);
-    }
-    
-    else if(key == '7'){
-        ofColor color = AppManager::getInstance().getSettingsManager()->getColor("RockColor3");
-        AppManager::getInstance().getSeedsManager()->setColor(color);
-    }
-    
-    else if(key == '8'){
-        ofColor color = AppManager::getInstance().getSettingsManager()->getColor("RockColorBlack");
-        AppManager::getInstance().getSeedsManager()->setColor(color);
-    }
-    
-    else if(key == 'a'){
-        AppManager::getInstance().getVoronoiManager()->enableJitter();
-    }
-    
-    else if(key == 'q'){
-        AppManager::getInstance().getVoronoiManager()->disableJitter();
-    }
-    
-    else if(key == 's'){
-        AppManager::getInstance().getVoronoiManager()->enableMagnifying();
-    }
-    
-    else if(key == 'w'){
-        AppManager::getInstance().getVoronoiManager()->disableMagnifying();
-    }
-    
-    else if(key == 'd'){
-        AppManager::getInstance().getVoronoiManager()->enableOrbit();
-    }
-    
-    else if(key == 'e'){
-        AppManager::getInstance().getVoronoiManager()->disableOrbit();
-    }
-    
 }
 
 void KeyboardManager::keyReleased(ofKeyEventArgs &e)

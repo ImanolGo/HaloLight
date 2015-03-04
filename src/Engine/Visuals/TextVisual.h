@@ -8,8 +8,7 @@
 #pragma once
 
 
-#include "../Addons/ofxFontStash/src/ofxFontStash.h"
-#include "../Tools/Font.h"
+#include "Font.h"
 
 
 #include "BasicVisual.h"
@@ -55,7 +54,6 @@ class TextVisual: public BasicVisual
 
     private:
 
-        //ofxFontStash      m_font;		 ///< ofxFontStash class
         Font              m_font;		 ///< Font class
         std::string       m_text;        ///< text to be rendered
         float             m_fontSize;    ///< saves the font size

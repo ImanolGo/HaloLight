@@ -6,7 +6,7 @@
 //
 #include "ofxOPC.h"
 //--------------------------------------------------------------
-void ofxOPC::setup(string address, int port)
+void ofxOPC::setup(string address, int port, int numFC)
 {
     // Copy the Address and port to the variables
     _port = port;
@@ -21,7 +21,7 @@ void ofxOPC::setup(string address, int port)
     connect();
     
     // Determine the length of the data section, as a multiple of the SPCData type
-    uint16_t data_length = 8 * 64 * sizeof(OPCPacket_SPCData_t);
+    uint16_t data_length = numFC * FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL * sizeof(OPCPacket_SPCData_t);
     
     // Add the header-section's length to the data-section's to determine the total packet length; allocate the packet
     OPC_SPC_packet_length = sizeof(OPCPacket_Header_t) + data_length;
@@ -50,59 +50,59 @@ void ofxOPC::update()
     timer = ofGetElapsedTimeMillis() - startTime;
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelOne(vector<ofColor>pix)
+void ofxOPC::writeChannelOne(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_ONE, pix);
+    writeChannel(CHANNEL_ONE, pix,fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelTwo(vector<ofColor>pix)
+void ofxOPC::writeChannelTwo(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_TWO, pix);
+    writeChannel(CHANNEL_TWO, pix, fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelThree(vector<ofColor>pix)
+void ofxOPC::writeChannelThree(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_THREE, pix);
+    writeChannel(CHANNEL_THREE, pix),fadeCandyIdx;
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelFour(vector<ofColor>pix)
+void ofxOPC::writeChannelFour(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_FOUR, pix);
+    writeChannel(CHANNEL_FOUR, pix,fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelFive(vector<ofColor>pix)
+void ofxOPC::writeChannelFive(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_FIVE, pix);
+    writeChannel(CHANNEL_FIVE, pix,fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelSix(vector<ofColor>pix)
+void ofxOPC::writeChannelSix(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_SIX, pix);
+    writeChannel(CHANNEL_SIX, pix,fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelSeven(vector<ofColor>pix)
+void ofxOPC::writeChannelSeven(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_SEVEN, pix);
+    writeChannel(CHANNEL_SEVEN, pix,fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannelEight(vector<ofColor>pix)
+void ofxOPC::writeChannelEight(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_EIGHT, pix);
+    writeChannel(CHANNEL_EIGHT, pix,fadeCandyIdx);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix)
+void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix, int fadeCandyIdx)
 {
     // Bail early if there's no pixel data
     if(pix.empty())
     {
         return;
 
-    } else if(channel < 1 || channel > 8) {
+    } else if(channel < 1 || channel > FADE_CANDY_NUM_CHANNELS) {
         // TODO: Emit error
         return;
     }
 
-    uint16_t channel_offset = (channel - 1) * 64;
+    uint16_t channel_offset = fadeCandyIdx * (channel - 1) * LEDS_PER_CHANNEL;
     
     // Copy the data
     for (int i = 0; i < pix.size(); i++)
@@ -115,6 +115,8 @@ void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix)
     // Send the data
     client.sendRawBytes((char *)(OPC_SPC_packet), OPC_SPC_packet_length);
 }
+
+
 //--------------------------------------------------------------
 void ofxOPC::writeChannel(uint8_t channel, vector <ofColor> pix1,vector <ofColor> pix2,vector <ofColor> pix3)
 {
@@ -126,12 +128,12 @@ void ofxOPC::writeChannel(uint8_t channel, vector <ofColor> pix1,vector <ofColor
     {
         return;
         
-    } else if(channel < 1 || channel > 8) {
+    } else if(channel < 1 || channel > FADE_CANDY_NUM_CHANNELS) {
         // TODO: Emit error
         return;
     }
     
-    uint16_t channel_offset = (channel - 1) * 64;
+    uint16_t channel_offset = (channel - 1) * LEDS_PER_CHANNEL;
     
     // Copy the data
     for (int i = 0; i < pix1.size(); i++)

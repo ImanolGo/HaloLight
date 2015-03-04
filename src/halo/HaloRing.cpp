@@ -10,12 +10,11 @@
 
 HaloRing::HaloRing(const BasicVisual& visual, int id, int numberLeds)
 {
-    m_position = BasicVisual.getPosition();
-    m_width = BasicVisual.getWidth();
-    m_height = BasicVisual.getHeight();
+    m_position = visual.getPosition();
+    m_width = visual.getWidth();
+    m_height = visual.getHeight();
     m_id = id;
     m_numberLeds = numberLeds;
-    
 }
 
 HaloRing::~HaloRing()
@@ -26,13 +25,13 @@ HaloRing::~HaloRing()
 
 void HaloRing::setup()
 {
-    this->setupLedRing;
+    this->setupLedRing();
 }
 
 void HaloRing::setupLedRing()
 {
     // Set the pixel data
-    pixels.allocate(m_width, m_height,GL_RGB);
+    m_screenPixels.allocate(m_width, m_height,GL_RGB);
     
     for (int i = 0; i < m_numberLeds; i++)
     {
@@ -63,6 +62,8 @@ void HaloRing::updateLeds()
     
     for (int i = 0; i < m_ledPositions.size(); i++)
     {
+        float x = m_ledPositions[i].x - m_position.x + m_width*0.5;
+        float y = m_ledPositions[i].y - m_position.y + m_height*0.5;
         m_ledColors.push_back(m_screenPixels.getColor(m_ledPositions[i].x, m_ledPositions[i].y));
     }
 }
@@ -81,6 +82,8 @@ void HaloRing::grabImageData()
 //--------------------------------------------------------------
 void HaloRing::drawGrabRegion(bool hideArea)
 {
+    float innerSpace = 24;
+    
     if (hideArea == true)
     {
         // Draw Interaction Area
@@ -88,11 +91,8 @@ void HaloRing::drawGrabRegion(bool hideArea)
         ofNoFill();
         ofSetLineWidth(2);
         ofSetColor(255, 255);
-        
-        ofEllipse(float x, float y, float width, float height){
-        ofEllipse();
-        ofCircle(_pos.x, _pos.y, radius+12);
-        ofCircle(_pos.x, _pos.y, radius-12);
+        ofEllipse(m_position.x, m_position.y, (m_width+innerSpace)*0.5,(m_height+innerSpace)*0.5);
+        ofEllipse(m_position.x, m_position.y, (m_width-innerSpace)*0.5,(m_height-innerSpace)*0.5);
         ofPopStyle();
         
         // Visualise the Grabber
@@ -105,47 +105,29 @@ void HaloRing::drawGrabRegion(bool hideArea)
         ofSetColor(0, 175);
         ofNoFill();
     }
-    ofCircle(_pos.x, _pos.y, radius+6);
-    ofCircle(_pos.x, _pos.y, radius-6);
-
-    for (int i = 0; i < pos.size(); i++)
+    
+    innerSpace = 12;
+    ofEllipse(m_position.x, m_position.y, (m_width+innerSpace)*0.5,(m_height+innerSpace)*0.5);
+    ofEllipse(m_position.x, m_position.y, (m_width-innerSpace)*0.5,(m_height-innerSpace)*0.5);
+    
+    for (int i = 0; i < m_numberLeds; i++)
     {
-        ofCircle(pos[i]+ofVec2f(_pos.x-x, _pos.y-y),2);
+        ofCircle(m_ledPositions[i],2);
     }
 }
 //--------------------------------------------------------------
 void HaloRing::ledRing()
 {
     ofSetColor(0, 175);
-    ofBeginShape();
-    
-        for (int i = 0; i < size; i++)
-        {
-            float angle = (1.0 * i) * (2.0 * M_PI)/(1.0 * size-1);
-            
-            // Make Circle Points
-            float rx = x-x + ((radius+6) * cos(angle));
-            float ry = y-y + ((radius+6) * sin(angle));
-            ofVertex(rx, ry);
-        }
-    
-        for (int i = 0; i < size; i++)
-        {
-            float angle = (1.0 * i) * (2.0 * M_PI)/(1.0 * size-1);
-            
-            // Make Circle Points
-            float rx = x-x + ((radius-6)  * cos(angle));
-            float ry = y-y + ((radius-6)  * sin(angle));
-            ofVertex(rx, ry);
-        }
-    
-    ofEndShape(true);
-    
-    for (int i = 0; i < size; i++)
+    float innerSpace = 12;
+    ofEllipse(m_position.x, m_position.y, (m_width+innerSpace)*0.5,(m_height+innerSpace)*0.5);
+    ofEllipse(m_position.x, m_position.y, (m_width-innerSpace)*0.5,(m_height-innerSpace)*0.5);
+   
+    for (int i = 0; i < m_numberLeds; i++)
     {
         ofFill();
-        ofSetColor(colors[i]);
-        ofCircle(pos[i].x-x, pos[i].y-y,4);
+        ofSetColor(m_ledColors[i]);
+        ofCircle(m_ledPositions[i],4);
     }
 }
 //--------------------------------------------------------------
