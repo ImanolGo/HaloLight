@@ -99,6 +99,6 @@ void HaloManager::draw()
 void HaloManager::drawHaloRings()
 {
     for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
-        it->second->drawGrabRegion(false);
+        it->second->drawGrabRegion(true);
     }
 }

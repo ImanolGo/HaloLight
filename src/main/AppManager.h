@@ -18,6 +18,7 @@
 #include "VisualEffectsManager.h"
 #include "LayoutManager.h"
 #include "KeyboardManager.h"
+#include "HaloManager.h"
 
 //========================== class AppManager ==============================
 //============================================================================
@@ -98,6 +99,7 @@ private:
     ofPtr<VisualEffectsManager>     m_visualEffectsManager;     ///< Manages visual effects
     ofPtr<LayoutManager>            m_layoutManager;            ///< Manages the layout
     ofPtr<KeyboardManager>          m_keyboardManager;          ///< Manages the keyboard
+    ofPtr<HaloManager>              m_haloManager;              ///< Manages the halo lights
 
     bool                            m_logVerbose;
 };

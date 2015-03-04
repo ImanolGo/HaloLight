@@ -15,6 +15,7 @@ HaloRing::HaloRing(const BasicVisual& visual, int id, int numberLeds)
     m_height = visual.getHeight();
     m_id = id;
     m_numberLeds = numberLeds;
+    this->setup();
 }
 
 HaloRing::~HaloRing()
@@ -91,8 +92,8 @@ void HaloRing::drawGrabRegion(bool hideArea)
         ofNoFill();
         ofSetLineWidth(2);
         ofSetColor(255, 255);
-        ofEllipse(m_position.x, m_position.y, (m_width+innerSpace)*0.5,(m_height+innerSpace)*0.5);
-        ofEllipse(m_position.x, m_position.y, (m_width-innerSpace)*0.5,(m_height-innerSpace)*0.5);
+        ofEllipse(m_position.x, m_position.y, m_width+innerSpace, m_height+innerSpace);
+        ofEllipse(m_position.x, m_position.y, m_width-innerSpace, m_height-innerSpace);
         ofPopStyle();
         
         // Visualise the Grabber
@@ -107,10 +108,10 @@ void HaloRing::drawGrabRegion(bool hideArea)
     }
     
     innerSpace = 12;
-    ofEllipse(m_position.x, m_position.y, (m_width+innerSpace)*0.5,(m_height+innerSpace)*0.5);
-    ofEllipse(m_position.x, m_position.y, (m_width-innerSpace)*0.5,(m_height-innerSpace)*0.5);
+    ofEllipse(m_position.x, m_position.y, m_width+innerSpace,m_height+innerSpace);
+    ofEllipse(m_position.x, m_position.y, m_width-innerSpace,m_height-innerSpace);
     
-    for (int i = 0; i < m_numberLeds; i++)
+    for (int i = 0; i < m_ledPositions.size(); i++)
     {
         ofCircle(m_ledPositions[i],2);
     }
@@ -120,9 +121,9 @@ void HaloRing::ledRing()
 {
     ofSetColor(0, 175);
     float innerSpace = 12;
-    ofEllipse(m_position.x, m_position.y, (m_width+innerSpace)*0.5,(m_height+innerSpace)*0.5);
-    ofEllipse(m_position.x, m_position.y, (m_width-innerSpace)*0.5,(m_height-innerSpace)*0.5);
-   
+    ofEllipse(m_position.x, m_position.y, m_width+innerSpace, m_height+innerSpace);
+    ofEllipse(m_position.x, m_position.y, m_width-innerSpace, m_height-innerSpace);
+    
     for (int i = 0; i < m_numberLeds; i++)
     {
         ofFill();

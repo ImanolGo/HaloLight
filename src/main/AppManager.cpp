@@ -41,6 +41,7 @@ void AppManager::createManagers()
     m_viewManager = ofPtr<ViewManager>(new ViewManager());
     m_layoutManager = ofPtr<LayoutManager>(new LayoutManager());
     m_keyboardManager = ofPtr<KeyboardManager>(new KeyboardManager());
+    m_haloManager = ofPtr<HaloManager>(new HaloManager());
 }
 
 void AppManager::setup()
@@ -70,18 +71,21 @@ void AppManager::setupManagers()
     m_visualEffectsManager->setup();
     m_layoutManager->setup();
     m_keyboardManager->setup();
+    m_haloManager->setup();
 }
 
 void AppManager::update()
 {
     m_visualEffectsManager->update();
     m_viewManager->update();
+    m_haloManager->update();
 }
 
 
 void AppManager::draw()
 {
     m_viewManager->draw();
+    m_haloManager->draw();
 }
 
 void AppManager::toggleVerbose()

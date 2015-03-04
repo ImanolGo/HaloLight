@@ -6,15 +6,19 @@
 #
 #-----------------------------------------------------------
 
-echo 'Halo Light Script'
+echo '-> Halo Light Script'
 
-echo 'Starting Fade Candy Server'
+echo '-> Starting Fade Candy Server'
 
 cd ../fcserver
-./fcserver-osx ServerConfig.json
+./fcserver-osx ServerConfig.json 
 
-echo 'Starting Halo Light Application'
+echo '-> waiting...'
+
+sleep 10
+
+echo '-> Starting Halo Light Application'
 
 cd ../bin
-./HaloLightRelease
+open HaloLight.app
 
