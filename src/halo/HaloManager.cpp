@@ -58,6 +58,8 @@ void HaloManager::createHaloRings()
     int index = 1;
     int numLeds = 48;
     ofPtr<HaloRing> haloRing = ofPtr<HaloRing>(new HaloRing(basicVisual, index, numLeds));
+    position.x-= (width*2);
+    haloRing->setPreviewPosition(position);
     m_haloRings[index] = haloRing;
 }
 
@@ -104,6 +106,6 @@ void HaloManager::draw()
 void HaloManager::drawHaloRings()
 {
     for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
-        it->second->drawGrabRegion(true);
+        it->second->draw();
     }
 }

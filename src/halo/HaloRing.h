@@ -18,9 +18,10 @@ class HaloRing: public BasicVisual {
     
         void setup();
         void update();
+        void draw();
     
         void drawGrabRegion(bool hideArea = false);
-        void drawRing(int x, int y);
+        void drawRing();
     
         int getId(){return m_id;}
     

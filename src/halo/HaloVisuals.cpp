@@ -77,7 +77,7 @@ void HaloVisuals::drawEffects()
             ofPushMatrix();
             ofTranslate(-size*0.5,-size*0.5);
             ofEnableBlendMode(OF_BLENDMODE_ADD);
-            ofColor color = ofColor::green;
+            ofColor color = ofColor(0, 255,20);
             ofVec3f pos = ofVec3f(size/4, size/4);
             m_imageVisual->setWidth(size);
             m_imageVisual->setHeight(size);
@@ -85,13 +85,14 @@ void HaloVisuals::drawEffects()
             m_imageVisual->setPosition(pos);
             m_imageVisual->draw();
             
-            color = ofColor::red;
+            
+            color = ofColor(255, 0,20);;
             pos = ofVec3f((size/4*3), size/4);
             m_imageVisual->setColor(color);
             m_imageVisual->setPosition(pos);
             m_imageVisual->draw();
             
-            color = ofColor::blue;
+            color = ofColor(0, 0, 255);
             pos = ofVec3f(size/4, (size/4*3));
             m_imageVisual->setColor(color);
             m_imageVisual->setPosition(pos);
