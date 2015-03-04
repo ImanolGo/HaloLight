@@ -42,7 +42,10 @@ void HaloManager::setup()
     this->createHaloRings();
     this->setupOPC();
     
+    m_haloVisuals.setup();
+    
 }
+
 
 void HaloManager::createHaloRings()
 {
@@ -73,6 +76,7 @@ void HaloManager::setupOPC()
 void HaloManager::update()
 {
     this->updateHaloRings();
+    m_haloVisuals.update();
 }
 
 void HaloManager::updateHaloRings()
@@ -93,6 +97,7 @@ void HaloManager::updateHaloRings()
 
 void HaloManager::draw()
 {
+    m_haloVisuals.draw();
     this->drawHaloRings();
 }
 

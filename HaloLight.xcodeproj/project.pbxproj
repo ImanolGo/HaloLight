@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0466B9E6A55078A9F39B1B4B /* svgtiny_gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4F639B12AA5C1013177E49 /* svgtiny_gradient.cpp */; };
+		082CA1061AA7B6770078441A /* HaloVisuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 082CA1041AA7B6770078441A /* HaloVisuals.cpp */; };
 		11263DD5787331C9CA71BD36 /* NeoPixelGrid32x32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C52E7BEE6804CC169C6A3CBF /* NeoPixelGrid32x32.cpp */; };
 		18FA42C471CF66795EF9EB97 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3766129862C931409F5C3D4 /* ofxTCPClient.cpp */; };
 		1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5056FC61E30B9810903B814D /* AppManager.cpp */; };
@@ -109,6 +110,8 @@
 		004EEF328125D63370DCE7B1 /* NeoPixelRing12px.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NeoPixelRing12px.h; path = src/Addons/ofxOPC/src/NeoPixelRing12px.h; sourceTree = SOURCE_ROOT; };
 		0227F9BE14631C9FE7CA55B1 /* TextVisual.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = TextVisual.cpp; path = src/Engine/Visuals/TextVisual.cpp; sourceTree = SOURCE_ROOT; };
 		074978820820325AB8737225 /* README.md */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = README.md; path = src/Addons/ofxUnicode/README.md; sourceTree = SOURCE_ROOT; };
+		082CA1041AA7B6770078441A /* HaloVisuals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HaloVisuals.cpp; path = Halo/HaloVisuals.cpp; sourceTree = "<group>"; };
+		082CA1051AA7B6770078441A /* HaloVisuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HaloVisuals.h; path = Halo/HaloVisuals.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0ACA94EAF2C7DCA9EE906D69 /* svgtiny_internal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = svgtiny_internal.h; path = src/Addons/ofxSvg/libs/svgTiny/src/svgtiny_internal.h; sourceTree = SOURCE_ROOT; };
@@ -292,6 +295,8 @@
 		2456C9C996BBA9FBF32C647A /* Halo */ = {
 			isa = PBXGroup;
 			children = (
+				082CA1041AA7B6770078441A /* HaloVisuals.cpp */,
+				082CA1051AA7B6770078441A /* HaloVisuals.h */,
 				1A8B82F1016E111F99C20832 /* HaloManager.cpp */,
 				D16710555B0245A7CA19B4E0 /* HaloManager.h */,
 				6C840A1E20392AF630547906 /* HaloRing.cpp */,
@@ -777,6 +782,7 @@
 				8CB0A46B3A54F961BA55A6A6 /* ofxUDPManager.cpp in Sources */,
 				543B6642609D783E6FB032AF /* ReadMe.md in Sources */,
 				2F327561F7FA3FC4C2AB0363 /* NeoPixel.cpp in Sources */,
+				082CA1061AA7B6770078441A /* HaloVisuals.cpp in Sources */,
 				11263DD5787331C9CA71BD36 /* NeoPixelGrid32x32.cpp in Sources */,
 				2A4EB329701354C644FC7683 /* NeoPixelGrid8x8.cpp in Sources */,
 				62910678AFC55FB016541F66 /* NeoPixelRing12px.cpp in Sources */,

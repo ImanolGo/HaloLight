@@ -48,6 +48,10 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
     if(key == ' ') {
         AppManager::getInstance().toggleVerbose();
     }
+    
+    if(key >= 48 && key <= 57) {
+        AppManager::getInstance().getHaloManager()->setMode(key - 48);
+    }
 
 }
 

@@ -11,6 +11,7 @@
 
 #include "Manager.h"
 #include "HaloRing.h"
+#include "HaloVisuals.h"
 #include "ofxOPC.h"
 
 //========================== class HaloManager ==============================
@@ -43,6 +44,9 @@ class HaloManager: public Manager
     
         //! Draw the Halo Manager
         void draw();
+    
+        //! Set the mode of the Halo Visuals
+        void setMode(int mode) {m_haloVisuals.setMode(mode);}
 
 
     private:
@@ -61,7 +65,8 @@ class HaloManager: public Manager
         typedef             map<int,HaloRingPtr>            HaloRingMap;       ///< defines a map of Halo Rings attached to its id
 
         HaloRingMap         m_haloRings;
-        ofxOPC              m_opcClient;            ///< instance of the Open Pixel Control client
+        ofxOPC              m_opcClient;                    ///< instance of the Open Pixel Control client
+        HaloVisuals         m_haloVisuals;
 
 };
 

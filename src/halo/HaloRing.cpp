@@ -8,7 +8,7 @@
 #include "HaloRing.h"
 
 
-HaloRing::HaloRing(const BasicVisual& visual, int id, int numberLeds)
+HaloRing::HaloRing(const BasicVisual& visual, int id, int numberLeds): BasicVisual()
 {
     m_position = visual.getPosition();
     m_width = visual.getWidth();

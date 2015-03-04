@@ -60,6 +60,10 @@ public:
     //! Returns the visual effects manager
     ofPtr<VisualEffectsManager>   getVisualEffectsManager() { return m_visualEffectsManager; }
     
+    //! Returns the visual halo manager
+    ofPtr<HaloManager>   getHaloManager() { return m_haloManager; }
+
+    
     //==========================================================================
     
     void toggleVerbose();
@@ -67,8 +71,8 @@ public:
 
 private:
 
-    //! Constructor
-    AppManager();
+     //! Constructor
+     AppManager();
 
 	//! Stop the compiler generating methods of copy the object
 	 AppManager(AppManager const& copy);              // Don't Implement
