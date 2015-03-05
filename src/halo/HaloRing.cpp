@@ -8,13 +8,13 @@
 #include "HaloRing.h"
 
 
-HaloRing::HaloRing(const BasicVisual& visual, int id, int numberLeds): BasicVisual()
+HaloRing::HaloRing(const BasicVisual& visual, const HaloRingSettings& settings): BasicVisual()
 {
     m_position = visual.getPosition();
     m_width = visual.getWidth();
     m_height = visual.getHeight();
-    m_id = id;
-    m_numberLeds = numberLeds;
+    m_settings = settings;
+    
     this->setup();
 }
 
@@ -27,6 +27,7 @@ HaloRing::~HaloRing()
 void HaloRing::setup()
 {
     this->setupLedRing();
+    this->setupTextVisual();
 }
 
 void HaloRing::setupLedRing()
@@ -34,9 +35,9 @@ void HaloRing::setupLedRing()
     // Set the pixel data
     m_screenPixels.allocate(m_width, m_height,GL_RGB);
     
-    for (int i = 0; i < m_numberLeds; i++)
+    for (int i = 0; i < m_settings.numberLeds; i++)
     {
-        float angle = (i * 2.0 * M_PI)/m_numberLeds;
+        float angle = (i * 2.0 * M_PI)/m_settings.numberLeds;
         
         // Generate the position of the grabber points
         float rx = m_position.x  + 0.5 * m_width * cos(angle);
@@ -45,6 +46,17 @@ void HaloRing::setupLedRing()
         m_ledColors.push_back(ofColor::black);
     }
 }
+
+void HaloRing::setupTextVisual()
+{
+    string fontPath = "fonts/helvetica-neue-medium.ttf";
+    float fontSize = 16;
+    string stringId = ofToString(m_settings.id);
+    
+    m_textVisual = ofPtr<TextVisual>(new TextVisual(ofVec3f(0),m_width,m_height,true));
+    m_textVisual->setText(stringId,fontPath,fontSize,ofColor::white);
+}
+
 //--------------------------------------------------------------
 void HaloRing::update()
 {
@@ -126,7 +138,7 @@ void HaloRing::ledRing()
     ofEllipse(0, 0, m_width+innerSpace, m_height+innerSpace);
     ofEllipse(0, 0, m_width-innerSpace, m_height-innerSpace);
     ofFill();
-    for (int i = 0; i < m_numberLeds; i++)
+    for (int i = 0; i < m_settings.numberLeds; i++)
     {
         ofFill();
         ofSetColor(m_ledColors[i]);
@@ -141,7 +153,6 @@ void HaloRing::drawRing()
 {
     // Where to draw the ring!
     ofPushMatrix();
-    ofTranslate(m_previewPosition.x, m_previewPosition.y);
     ofFill();
     int width = m_width*1.2;
     int height = m_height*1.2;
@@ -154,5 +165,10 @@ void HaloRing::drawRing()
 void HaloRing::draw()
 {
     this->drawGrabRegion();
+    
+    ofPushMatrix();
+    ofTranslate(m_previewPosition.x, m_previewPosition.y);
     this->drawRing();
+    m_textVisual->draw();
+    ofPopMatrix();
 }

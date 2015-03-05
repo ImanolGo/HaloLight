@@ -55,12 +55,16 @@ void HaloManager::createHaloRings()
     int height = 100;
     BasicVisual basicVisual = BasicVisual(position, width, height);
     
-    int index = 1;
-    int numLeds = 48;
-    ofPtr<HaloRing> haloRing = ofPtr<HaloRing>(new HaloRing(basicVisual, index, numLeds));
+    HaloRingSettings settings;
+    settings.id = 1;
+    settings.numberLeds = 48;
+    settings.channel = 1;
+    settings.fadeCandyInd = 48;
+
+    ofPtr<HaloRing> haloRing = ofPtr<HaloRing>(new HaloRing(basicVisual,settings));
     position.x-= (width*2);
     haloRing->setPreviewPosition(position);
-    m_haloRings[index] = haloRing;
+    m_haloRings[settings.id] = haloRing;
 }
 
 void HaloManager::setupOPC()
@@ -92,7 +96,7 @@ void HaloManager::updateHaloRings()
   
     for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
         it->second->update();
-        m_opcClient.writeChannelOne( it->second->colorData());
+        m_opcClient.writeChannel( it->second->getChannel(), it->second->colorData(), it->second->getFadeCandyNum());
     }
     
 }

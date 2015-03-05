@@ -7,13 +7,32 @@
 #include <iostream>
 #include "ofMain.h"
 #include "BasicVisual.h"
+#include "TextVisual.h"
 
+class HaloRingSettings {
+    
+    public:
+    
+    HaloRingSettings(): numberLeds(0), id(0), fadeCandyInd(1), channel(1){}
+    
+    ~HaloRingSettings(){}
+    
+    public:
+    
+    // Variables
+    int     numberLeds;
+    int     id;
+    int     fadeCandyInd;
+    int     channel;
+
+    
+};
 
 class HaloRing: public BasicVisual {
     
     public:
     
-        HaloRing(const BasicVisual& visual, int id, int numberLeds);
+        HaloRing(const BasicVisual& visual, const HaloRingSettings& settings);
         virtual ~HaloRing();
     
         void setup();
@@ -23,9 +42,11 @@ class HaloRing: public BasicVisual {
         void drawGrabRegion(bool hideArea = false);
         void drawRing();
     
-        int getId(){return m_id;}
+        int getId(){return m_settings.id;}
     
-        int getNumberLeds(){return m_numberLeds;}
+        int getChannel(){return m_settings.channel;}
+    
+        int getFadeCandyNum(){return m_settings.fadeCandyInd;}
     
         void setPreviewPosition(const ofPoint& pos){m_previewPosition = pos;}
 
@@ -40,6 +61,8 @@ class HaloRing: public BasicVisual {
         void updateLeds();
     
         void setupLedRing();
+    
+        void setupTextVisual();
     
         // Draw Unit
         void ledRing();
@@ -56,11 +79,11 @@ class HaloRing: public BasicVisual {
         ofImage     m_screenImage;
         ofPixels    m_screenPixels;
     
-        // Variables
-        int     m_numberLeds;
-        int     m_id;
+        ofPtr<TextVisual>  m_textVisual;
     
         ofPoint   m_previewPosition;
+    
+        HaloRingSettings    m_settings;
     
 };
 
