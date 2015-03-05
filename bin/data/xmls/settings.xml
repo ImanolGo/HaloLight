@@ -20,5 +20,106 @@
 	
   </colors>
 
+  <rings>
+  
+  	<settings num_leds="48"/>
+
+	<ring id="1" channel="1" fadeCandy="1" position="1"/>
+	<ring id="2" channel="2" fadeCandy="1" position="2"/>
+	<ring id="3" channel="3" fadeCandy="1" position="3"/>	
+	<ring id="4" channel="4" fadeCandy="1" position="4"/>
+	<ring id="5" channel="5" fadeCandy="1" position="5"/>
+	<ring id="6" channel="6" fadeCandy="1" position="6"/>
+	<ring id="7" channel="7" fadeCandy="1" position="7"/>
+	<ring id="8" channel="8" fadeCandy="1" position="8"/>
+
+	<ring id="9"  channel="1" fadeCandy="2" position="9"/>
+	<ring id="10" channel="2" fadeCandy="2" position="10"/>
+	<ring id="11" channel="3" fadeCandy="2" position="11"/>	
+	<ring id="12" channel="4" fadeCandy="2" position="12"/>
+	<ring id="13" channel="5" fadeCandy="2" position="13"/>
+	<ring id="14" channel="6" fadeCandy="2" position="14"/>
+	<ring id="15" channel="7" fadeCandy="2" position="15"/>
+	<ring id="16" channel="8" fadeCandy="2" position="16"/>
+
+	<ring id="17"  channel="1" fadeCandy="3" position="17"/>
+	<ring id="18" channel="2" fadeCandy="3" position="18"/>
+	<ring id="19" channel="3" fadeCandy="3" position="19"/>	
+	<ring id="20" channel="4" fadeCandy="3" position="20"/>
+	<ring id="21" channel="5" fadeCandy="3" position="21"/>
+	<ring id="22" channel="6" fadeCandy="3" position="22"/>
+	<ring id="23" channel="7" fadeCandy="3" position="23"/>
+	<ring id="24" channel="8" fadeCandy="3" position="24"/>
+
+	<ring id="25"  channel="1" fadeCandy="4" position="25"/>
+	<ring id="26" channel="2" fadeCandy="4" position="26"/>
+	<ring id="27" channel="3" fadeCandy="4" position="27"/>	
+	<ring id="28" channel="4" fadeCandy="4" position="28"/>
+	<ring id="29" channel="5" fadeCandy="4" position="29"/>
+	<ring id="30" channel="6" fadeCandy="4" position="30"/>
+	<ring id="31" channel="7" fadeCandy="4" position="31"/>
+	<ring id="32" channel="8" fadeCandy="4" position="32"/>
+
+	<ring id="33"  channel="1" fadeCandy="5" position="33"/>
+	<ring id="34" channel="2" fadeCandy="5" position="34"/>
+	<ring id="35" channel="3" fadeCandy="5" position="35"/>	
+	<ring id="36" channel="4" fadeCandy="5" position="36"/>
+	<ring id="37" channel="5" fadeCandy="5" position="37"/>
+	<ring id="38" channel="6" fadeCandy="5" position="38"/>
+	<ring id="39" channel="7" fadeCandy="5" position="39"/>
+	<ring id="40" channel="8" fadeCandy="5" position="40"/>
+
+	<ring id="41"  channel="1" fadeCandy="6" position="41"/>
+	<ring id="42" channel="2" fadeCandy="6" position="42"/>
+	<ring id="43" channel="3" fadeCandy="6" position="43"/>	
+	<ring id="44" channel="4" fadeCandy="6" position="44"/>
+	<ring id="45" channel="5" fadeCandy="6" position="45"/>
+	<ring id="46" channel="6" fadeCandy="6" position="46"/>
+	<ring id="47" channel="7" fadeCandy="6" position="47"/>
+	<ring id="48" channel="8" fadeCandy="6" position="48"/>
+
+	<ring id="49"  channel="1" fadeCandy="7" position="49"/>
+	<ring id="50" channel="2" fadeCandy="7" position="50"/>
+	<ring id="51" channel="3" fadeCandy="7" position="51"/>	
+	<ring id="52" channel="4" fadeCandy="7" position="52"/>
+	<ring id="53" channel="5" fadeCandy="7" position="53"/>
+	<ring id="54" channel="6" fadeCandy="7" position="54"/>
+	<ring id="55" channel="7" fadeCandy="7" position="55"/>
+	<ring id="56" channel="8" fadeCandy="7" position="56"/>
+
+	<ring id="57"  channel="1" fadeCandy="8" position="57"/>
+	<ring id="58" channel="2" fadeCandy="8" position="58"/>
+	<ring id="59" channel="3" fadeCandy="8" position="59"/>	
+	<ring id="60" channel="4" fadeCandy="8" position="60"/>
+	<ring id="61" channel="5" fadeCandy="8" position="61"/>
+	<ring id="62" channel="6" fadeCandy="8" position="62"/>
+	<ring id="63" channel="7" fadeCandy="8" position="63"/>
+	<ring id="64" channel="8" fadeCandy="8" position="64"/>
+
+	<ring id="65"  channel="1" fadeCandy="9" position="65"/>
+	<ring id="66" channel="2" fadeCandy="9" position="66"/>
+	<ring id="67" channel="3" fadeCandy="9" position="67"/>	
+	<ring id="68" channel="4" fadeCandy="9" position="68"/>
+	<ring id="69" channel="5" fadeCandy="9" position="69"/>
+	<ring id="70" channel="6" fadeCandy="9" position="70"/>
+	<ring id="71" channel="7" fadeCandy="9" position="71"/>
+	<ring id="72" channel="8" fadeCandy="9" position="72"/>
+
+	<ring id="73"  channel="1" fadeCandy="10" position="73"/>
+	<ring id="74" channel="2" fadeCandy="10" position="74"/>
+	<ring id="75" channel="3" fadeCandy="10" position="75"/>	
+	<ring id="76" channel="4" fadeCandy="10" position="76"/>
+	<ring id="77" channel="5" fadeCandy="10" position="77"/>
+	<ring id="78" channel="6" fadeCandy="10" position="78"/>
+	<ring id="79" channel="7" fadeCandy="10" position="79"/>
+	<ring id="80" channel="8" fadeCandy="10" position="80"/>
+
+	<ring id="81"  channel="1" fadeCandy="11" position="81"/>
+	<ring id="82" channel="2" fadeCandy="11" position="82"/>
+	<ring id="84" channel="3" fadeCandy="11" position="83"/>	
+	<ring id="85" channel="4" fadeCandy="11" position="84"/>
+		
+  </rings>
+
   
 </settings>

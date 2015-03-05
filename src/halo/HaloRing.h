@@ -3,6 +3,7 @@
 //
 //  Created by Imanol Gomez on 01/03/15.
 //
+#pragma once
 
 #include <iostream>
 #include "ofMain.h"
@@ -13,7 +14,7 @@ class HaloRingSettings {
     
     public:
     
-    HaloRingSettings(): numberLeds(0), id(0), fadeCandyInd(1), channel(1){}
+    HaloRingSettings(): numberLeds(0), id(0), fadeCandyInd(1), channel(1), positionIndex(0){}
     
     ~HaloRingSettings(){}
     
@@ -24,6 +25,7 @@ class HaloRingSettings {
     int     id;
     int     fadeCandyInd;
     int     channel;
+    int     positionIndex;
 
     
 };
