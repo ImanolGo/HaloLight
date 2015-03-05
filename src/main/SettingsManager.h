@@ -20,7 +20,7 @@
  */
 
 typedef             map<string,string>               ResourcesPathMap;       ///< defines a map of path attached to the resources name
-typedef             vector< ofPtr<HaloRingSettings> >  RingSettingsVector;   ///< Defines a vector of Button settings
+typedef             vector< HaloRingSettings >  RingSettingsVector;   ///< Defines a vector of Button settings
 
 class SettingsManager: public Manager
 {

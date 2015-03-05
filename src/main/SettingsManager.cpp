@@ -282,19 +282,19 @@ void SettingsManager::loadHaloRingSettings()
             
             attributes = m_xmlSettings.getAttributes();
             
-            ofPtr<HaloRingSettings> ringSettings = ofPtr<HaloRingSettings>(new HaloRingSettings());
+            HaloRingSettings ringSettings;
             
-            ringSettings->id = ofToInt(attributes["id"]);
-            ringSettings->numberLeds = numLeds;
-            ringSettings->channel = ofToInt(attributes["channel"]);
-            ringSettings->fadeCandyInd = ofToInt(attributes["fadeCandy"]);
-            ringSettings->positionIndex = ofToInt(attributes["position"]);
+            ringSettings.id = ofToInt(attributes["id"]);
+            ringSettings.numberLeds = numLeds;
+            ringSettings.channel = ofToInt(attributes["channel"]);
+            ringSettings.fadeCandyInd = ofToInt(attributes["fadeCandy"]);
+            ringSettings.positionIndex = ofToInt(attributes["position"]);
             
             m_ringSettingsVector.push_back(ringSettings);
             
-            ofLogNotice() <<"SettingsManager::loadHaloRingSettings->  id = " << ringSettings->id  <<", channel = " << ringSettings->channel
-            <<", fadeCandyInd = "<< ringSettings->fadeCandyInd << ", numberLeds = " <<  ringSettings->numberLeds <<
-            ", positionIndex = " <<  ringSettings->positionIndex ;
+            ofLogNotice() <<"SettingsManager::loadHaloRingSettings->  id = " << ringSettings.id  <<", channel = " << ringSettings.channel
+            <<", fadeCandyInd = "<< ringSettings.fadeCandyInd << ", numberLeds = " <<  ringSettings.numberLeds <<
+            ", positionIndex = " <<  ringSettings.positionIndex ;
         }
         while(m_xmlSettings.setToSibling()); // go to the next node
         
