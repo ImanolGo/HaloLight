@@ -151,8 +151,8 @@ void HaloRing::setPixels(const ofRectangle& grabArea, const ofPixels& screenPixe
 {
     for (int i = 0; i < m_ledPositions.size(); i++)
     {
-        float x = grabArea.x - m_ledPositions[i].x - m_position.x - grabArea.getX() + (m_width)*0.5;
-        float y = grabArea.y - m_ledPositions[i].y - m_position.y - grabArea.getY() + (m_height)*0.5;
+        float x = m_ledPositions[i].x  - grabArea.x;
+        float y = m_ledPositions[i].y  - grabArea.y;
         m_ledColors[i] = screenPixels.getColor(x, y);
     }
     
@@ -208,6 +208,6 @@ void HaloRing::drawID(bool hideText)
 void HaloRing::draw()
 {
     m_haloRingPreview->draw();
-    this->drawGrabRegion();
+    //this->drawGrabRegion();
     this->drawID();
 }

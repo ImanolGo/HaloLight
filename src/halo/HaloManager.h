@@ -87,6 +87,7 @@ class HaloManager: public Manager
         ofPixels    m_screenPixels;
     
         float               m_ringSize;
+        float               m_ringPreviewSize;
         ofRectangle         m_imageSpaceRectangle;
         ofRectangle         m_previewRectangle;
 

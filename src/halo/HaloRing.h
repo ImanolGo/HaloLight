@@ -102,7 +102,7 @@ class HaloRing: public BasicVisual {
         // Hold the Position of our Capture points
         vector <ofVec2f> m_ledPositions;
     
-        HaloRingSettings    m_settings;
+        HaloRingSettings            m_settings;
         ofPtr<HaloRingPreview>     m_haloRingPreview;
     
         ofPtr<TextVisual>  m_textVisual;
