@@ -8,12 +8,98 @@
 #include "HaloRing.h"
 
 
-HaloRing::HaloRing(const BasicVisual& visual, const HaloRingSettings& settings): BasicVisual()
+HaloRingPreview::HaloRingPreview(const BasicVisual& visual, int id)
+{
+    m_position = visual.getPosition();
+    m_width = visual.getWidth();
+    m_height = visual.getHeight();
+    m_id = id;
+    
+    this->setup();
+}
+
+HaloRingPreview::~HaloRingPreview()
+{
+    //Intentionaly left empty
+}
+
+void HaloRingPreview::setup()
+{
+    this->setupTextVisual();
+}
+
+void HaloRingPreview::setupTextVisual()
+{
+    string fontPath = "fonts/helvetica-neue-medium.ttf";
+    float fontSize = m_width*0.25;
+    string stringId = ofToString(m_id);
+    
+    m_textVisual = ofPtr<TextVisual>(new TextVisual(m_position,m_width,m_height,true));
+    m_textVisual->setText(stringId,fontPath,fontSize,ofColor::black);
+}
+
+void HaloRingPreview::draw()
+{
+    this->drawLedRing();
+    this->drawID();
+}
+
+void HaloRingPreview::drawLedRing()
+{
+    
+    float pixelSize = 2;
+    float margin = pixelSize*2;
+    
+    ofPushMatrix();
+    ofPushStyle();
+    
+    ofNoFill();
+    ofSetLineWidth(2);
+    ofSetColor(0);
+    ofEllipse(m_position.x , m_position.y, m_width, m_height);
+    ofEllipse(m_position.x , m_position.y, m_width-margin*2, m_height-margin*2);
+    
+    ofFill();
+    for (int i = 0; i < m_ledColors.size(); i++)
+    {
+        
+        float angle = (i * 2.0 * M_PI)/m_ledColors.size();
+        float rx = m_position.x  + 0.5 * (m_width - margin) * cos(angle);
+        float ry = m_position.y + 0.5 * (m_height - margin) * sin(angle);
+        
+        ofSetColor(m_ledColors[i]);
+        ofCircle(rx,ry,pixelSize);
+    }
+    
+    ofPopStyle();
+    ofPopMatrix();
+}
+
+//--------------------------------------------------------------
+void HaloRingPreview::drawID(bool hideText)
+{
+    if (hideText) {
+        return;
+    }
+    
+    ofSetColor(255);
+    m_textVisual->draw();
+}
+
+
+void HaloRing::setHaloRingPreview(const BasicVisual& visual)
+{
+    m_haloRingPreview = ofPtr<HaloRingPreview>(new HaloRingPreview(visual,m_settings.id));
+}
+
+HaloRing::HaloRing(const BasicVisual& visual, const HaloRingSettings& settings): BasicVisual(), m_margin(0.0)
 {
     m_position = visual.getPosition();
     m_width = visual.getWidth();
     m_height = visual.getHeight();
     m_settings = settings;
+    
+    m_haloRingPreview = ofPtr<HaloRingPreview>(new HaloRingPreview(visual,m_settings.id));
     
     this->setup();
 }
@@ -33,15 +119,17 @@ void HaloRing::setup()
 void HaloRing::setupLedRing()
 {
     // Set the pixel data
-    m_screenPixels.allocate(m_width, m_height,GL_RGB);
+    //m_screenPixels.allocate(m_width, m_height,GL_RGB);
+    
+    m_margin = 10;
     
     for (int i = 0; i < m_settings.numberLeds; i++)
     {
         float angle = (i * 2.0 * M_PI)/m_settings.numberLeds;
         
         // Generate the position of the grabber points
-        float rx = m_position.x  + 0.5 * m_width * cos(angle);
-        float ry = m_position.y + 0.5 * m_height * sin(angle);
+        float rx = m_position.x  + 0.5 * (m_width-m_margin) * cos(angle);
+        float ry = m_position.y + 0.5 * (m_height-m_margin) * sin(angle);
         m_ledPositions.push_back(ofVec2f(rx,ry));
         m_ledColors.push_back(ofColor::black);
     }
@@ -50,125 +138,76 @@ void HaloRing::setupLedRing()
 void HaloRing::setupTextVisual()
 {
     string fontPath = "fonts/helvetica-neue-medium.ttf";
-    float fontSize = 16;
+    float fontSize = m_width*0.25;
     string stringId = ofToString(m_settings.id);
     
-    m_textVisual = ofPtr<TextVisual>(new TextVisual(ofVec3f(0),m_width,m_height,true));
+    m_textVisual = ofPtr<TextVisual>(new TextVisual(m_position,m_width,m_height,true));
     m_textVisual->setText(stringId,fontPath,fontSize,ofColor::white);
 }
 
 //--------------------------------------------------------------
-void HaloRing::update()
-{
-    
-    this->grabImageData();
-    this->updateLeds();
-}
 
-void HaloRing::updateLeds()
+void HaloRing::setPixels(const ofRectangle& grabArea, const ofPixels& screenPixels)
 {
-    
-    m_screenPixels.clear();
-    m_screenPixels = m_screenImage.getPixelsRef(); // Transfer grab data to the pixel array
-    
     for (int i = 0; i < m_ledPositions.size(); i++)
     {
-        float x = m_ledPositions[i].x - m_position.x + m_width*0.5;
-        float y = m_ledPositions[i].y - m_position.y + m_height*0.5;
-        m_ledColors[i] = m_screenPixels.getColor(x, y);
+        float x = grabArea.x - m_ledPositions[i].x - m_position.x - grabArea.getX() + (m_width)*0.5;
+        float y = grabArea.y - m_ledPositions[i].y - m_position.y - grabArea.getY() + (m_height)*0.5;
+        m_ledColors[i] = screenPixels.getColor(x, y);
     }
+    
+    m_haloRingPreview->setColors(m_ledColors);
 }
 //--------------------------------------------------------------
-vector <ofColor> HaloRing::colorData()
+const vector <ofColor> & HaloRing::colorData()
 {
     // Transmit Data
     return m_ledColors;
 }
-//--------------------------------------------------------------
-void HaloRing::grabImageData()
-{
-    int margin = 2;
-    m_screenImage.clear();
-    m_screenImage.grabScreen(m_position.x - m_width*0.5, m_position.y - m_height*0.5,m_width+margin,m_height+margin);
-}
+
 //--------------------------------------------------------------
 void HaloRing::drawGrabRegion(bool hideArea)
 {
-    float innerSpace = 24;
     
-    if (hideArea == true)
-    {
+    ofPushStyle();
+    ofNoFill();
+    ofSetLineWidth(2);
+
+    if (hideArea == true){
         // Draw Interaction Area
-        ofPushStyle();
-        ofNoFill();
-        ofSetLineWidth(2);
         ofSetColor(255, 255);
-        ofEllipse(m_position.x, m_position.y, m_width+innerSpace, m_height+innerSpace);
-        ofEllipse(m_position.x, m_position.y, m_width-innerSpace, m_height-innerSpace);
-        ofPopStyle();
-        
-        // Visualise the Grabber
-        ofSetColor(255, 175);
-        ofNoFill();
     }
-    else
-    {
+    else{
         // Visualise the Grabber
         ofSetColor(0, 175);
-        ofNoFill();
     }
     
-    innerSpace = 12;
-    ofEllipse(m_position.x, m_position.y, m_width+innerSpace,m_height+innerSpace);
-    ofEllipse(m_position.x, m_position.y, m_width-innerSpace,m_height-innerSpace);
+    ofEllipse(m_position.x, m_position.y, m_width, m_height);
+    ofEllipse(m_position.x, m_position.y, m_width-m_margin*2, m_height-m_margin*2);
     
+    ofSetLineWidth(1);
     for (int i = 0; i < m_ledPositions.size(); i++)
     {
         ofCircle(m_ledPositions[i],2);
     }
-}
-//--------------------------------------------------------------
-void HaloRing::ledRing()
-{
-    ofPushMatrix();
-    ofPushStyle();
-    ofSetColor(0, 175);
-    float innerSpace = 12;
-    ofNoFill();
-    ofEllipse(0, 0, m_width+innerSpace, m_height+innerSpace);
-    ofEllipse(0, 0, m_width-innerSpace, m_height-innerSpace);
-    ofFill();
-    for (int i = 0; i < m_settings.numberLeds; i++)
-    {
-        ofFill();
-        ofSetColor(m_ledColors[i]);
-        ofCircle(m_ledPositions[i] - m_position,2);
-    }
     
     ofPopStyle();
-    ofPopMatrix();
 }
+
 //--------------------------------------------------------------
-void HaloRing::drawRing()
+void HaloRing::drawID(bool hideText)
 {
-    // Where to draw the ring!
-    ofPushMatrix();
-    ofFill();
-    int width = m_width*1.2;
-    int height = m_height*1.2;
-    ofSetColor(100);
-    ofRect(-width*0.5,-height*0.5,width,height);
-    ledRing();
-    ofPopMatrix();
+    if (hideText) {
+        return;
+    }
+    
+    ofSetColor(0, 175);
+    m_textVisual->draw();
 }
 
 void HaloRing::draw()
 {
+    m_haloRingPreview->draw();
     this->drawGrabRegion();
-    
-    ofPushMatrix();
-    ofTranslate(m_previewPosition.x, m_previewPosition.y);
-    this->drawRing();
-    m_textVisual->draw();
-    ofPopMatrix();
+    this->drawID();
 }

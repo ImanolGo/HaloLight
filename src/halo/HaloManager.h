@@ -51,6 +51,10 @@ class HaloManager: public Manager
 
     private:
     
+        void grabImageData();
+    
+        void setupImageData();
+    
         void setupHaloRings();
     
         void createHaloRings();
@@ -61,7 +65,9 @@ class HaloManager: public Manager
     
         void updateHaloRings();
     
-    void drawHaloRings();
+        void drawHaloRings();
+    
+        void drawRectangles();
     
     private:
     
@@ -76,7 +82,13 @@ class HaloManager: public Manager
         ofxOPC              m_opcClient;                    ///< instance of the Open Pixel Control client
         HaloVisuals         m_haloVisuals;
     
+        // Capture Objects
+        ofImage     m_screenImage;
+        ofPixels    m_screenPixels;
+    
         float               m_ringSize;
+        ofRectangle         m_imageSpaceRectangle;
+        ofRectangle         m_previewRectangle;
 
 };
 

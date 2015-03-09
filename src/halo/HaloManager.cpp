@@ -35,16 +35,23 @@ void HaloManager::setup()
 	if(m_initialized)
 		return;
 
-    ofLogNotice() <<"HaloManager::initialized" ;
 
 	Manager::setup();
     
     m_haloRings.clear();
     this->setupHaloRings();
     this->setupOPC();
+    this->setupImageData();
     
     m_haloVisuals.setup();
     
+    ofLogNotice() <<"HaloManager::initialized" ;
+    
+}
+
+void HaloManager::setupImageData()
+{
+    m_screenPixels.allocate(m_imageSpaceRectangle.getWidth(), m_imageSpaceRectangle.getHeight(),GL_RGB);
 }
 
 
@@ -56,31 +63,55 @@ void HaloManager::setupHaloRings()
 
 void HaloManager::createHaloRingsPositions()
 {
-    float margin = 10;
-    float wallWidth = ofGetWidth()*0.5 - 2*margin;
-    float wallHeight = ofGetHeight()*0.5 - 2*margin;
-    float x = ofGetWidth()*0.5 + margin;
-    float y = ofGetHeight() + margin;
-    ofVec3f wallPosition = ofVec3f(x,y,0);
     
     int maxRingsInRow = 5;
     int minRingsInRow = 4;
+    float numRingsHeight = 10;
+    float numMarginsHeight = numRingsHeight - 1;
+    float numMarginsWidth = maxRingsInRow + minRingsInRow - 1;
+    float marginRatio = 0.3;
+    float scale = 0.1;
     
-    m_ringSize = wallWidth / (maxRingsInRow + maxRingsInRow);
-    ofLogNotice() <<"HaloManager::createHaloRings->  m_ringSize = " << m_ringSize;
-    m_ringSize-= (margin*2*maxRingsInRow);
+    float layyoutMargin = 40;
+    float wallHeight = ofGetHeight() - layyoutMargin*2;
+    m_ringSize = wallHeight/(numRingsHeight + marginRatio*numMarginsHeight);
+    float margin = m_ringSize*marginRatio;
     
-    ofLogNotice() <<"HaloManager::createHaloRings->  m_ringSize = " << m_ringSize;
+    float wallWidth = m_ringSize*(maxRingsInRow + minRingsInRow) + numMarginsWidth*margin;
+    
+    
+    float x = layyoutMargin;
+    float y = layyoutMargin;
+    float w = wallWidth;
+    float h = wallHeight;
+    
+    m_previewRectangle = ofRectangle(x,y,w,h);
+    
+    
+    x = ofGetWidth()*0.5 + 50 + layyoutMargin;
+    y = ofGetHeight()*0.5  + layyoutMargin;
+    w = wallWidth*scale;
+    h = wallHeight*scale;
+    
+    m_imageSpaceRectangle = ofRectangle(x,y,w,h);
+ 
+    
+    ofLogNotice() <<"HaloManager::createHaloRingsPositions->  preview size = " << m_ringSize;
+    ofLogNotice() <<"HaloManager::createHaloRingsPositions->  ring size = " << m_ringSize*scale;
+    
+    ofLogNotice() <<"HaloManager::createHaloRingsPositions->  m_previewRectangle:  x = " << m_previewRectangle.x << ", y = " << m_previewRectangle.y << ", w = " << m_previewRectangle.width << ", h = " << m_previewRectangle.height;
+    
+    ofLogNotice() <<"HaloManager::createHaloRingsPositions->  m_imageSpaceRectangle:  x = " << m_imageSpaceRectangle.x << ", y = " << m_imageSpaceRectangle.y << ", w = " << m_imageSpaceRectangle.height << ", h = " << m_imageSpaceRectangle.width;
     
     RingSettingsVector ringsSettingsVector = AppManager::getInstance().getSettingsManager()->getRingsSettingsVector();
-    
     
     int colInd = 0;
     int rowInd = 0;
     int colMax = minRingsInRow;
-    float leftMargin = margin;
-    float topMargin = margin;
-    for (int i = 1; i <= ringsSettingsVector.size(); i++) {
+    float leftMargin = m_ringSize + margin;
+    
+    ofLogNotice() <<"HaloManager::createHaloRingsPositions->  ringsSettingsVector.size() = " << ringsSettingsVector.size();
+    for (int i = 1; i < ringsSettingsVector.size()+1; i++) {
         
         if(colInd>=colMax){
             colInd=0;
@@ -88,23 +119,27 @@ void HaloManager::createHaloRingsPositions()
             
             if((rowInd%2==0)){
                 colMax = minRingsInRow;
-                leftMargin = 2*margin + m_ringSize;
-                topMargin = margin;
+                leftMargin = m_ringSize + margin;
             }
             else{
-                colMax = minRingsInRow;
-                leftMargin = margin;
-                topMargin = 2*margin + m_ringSize;
+                colMax = maxRingsInRow;
+                leftMargin = 0;
             }
         }
         
-        float x = wallPosition.x + leftMargin + m_ringSize*0.5 + (2*margin + 2*m_ringSize)*colInd;
-        float y = wallPosition.y + topMargin +  m_ringSize*0.5 + (2*margin + 2*m_ringSize)*rowInd;
+        float x = m_previewRectangle.x + leftMargin + m_ringSize*0.5 + (2*m_ringSize + 2*margin)*colInd;
+        float y = m_previewRectangle.y + m_ringSize*0.5 + (m_ringSize*0.5 + margin*0.5)*rowInd;
+        
+        m_haloRingsPreviewPositionMap[i] = ofVec3f(x,y,0);
+       
+        
+        //ofLogNotice() <<"HaloManager::createHaloRingsPreviewPositions->  i = " << i << ", x = " << x << ", y = " << y;
+        
+        x = m_imageSpaceRectangle.x + scale*(leftMargin + m_ringSize*0.5 + (2*m_ringSize + 2*margin)*colInd);
+        y = m_imageSpaceRectangle.y + scale*(m_ringSize*0.5 + margin*rowInd);
         
         m_haloRingsPositionMap[i] = ofVec3f(x,y,0);
         
-        x-=(ofGetWidth()*0.5);
-        m_haloRingsPreviewPositionMap[i] = ofVec3f(x,y,0);
         
         colInd++;
     }
@@ -117,8 +152,11 @@ void HaloManager::createHaloRings()
     
     RingSettingsVector ringsSettingsVector = AppManager::getInstance().getSettingsManager()->getRingsSettingsVector();
     
+    float scale = 0.1;
+    
     for (int i = 0; i < ringsSettingsVector.size(); i++) {
         HaloRingSettings settings = ringsSettingsVector[i];
+        
         
         ofVec3f ringPosition;
         ofVec3f ringPreviewPosition;
@@ -128,14 +166,21 @@ void HaloManager::createHaloRings()
             ringPreviewPosition = m_haloRingsPreviewPositionMap[key];
         }
         
-        BasicVisual basicVisual = BasicVisual(ringPosition, m_ringSize, m_ringSize);
+        //ofLogNotice() <<"HaloManager::createHaloRings->  id = " << settings.id  <<", channel = " << settings.channel
+        //<<", fadeCandyInd = "<< settings.fadeCandyInd << ", numberLeds = " <<  settings.numberLeds <<
+       // ", x = " <<  ringPosition.x <<  ", y = " <<  ringPosition.y ;
+        
+        BasicVisual basicVisual = BasicVisual(ringPosition, m_ringSize*scale, m_ringSize*scale);
+        basicVisual.setWidth(m_ringSize);
+        basicVisual.setHeight(m_ringSize);
         ofPtr<HaloRing> haloRing = ofPtr<HaloRing>(new HaloRing(basicVisual,settings));
-        haloRing->setPreviewPosition(ringPreviewPosition);
+        
+        
+        basicVisual = BasicVisual(ringPreviewPosition, m_ringSize, m_ringSize);
+        haloRing->setHaloRingPreview(basicVisual);
         m_haloRings[settings.id] = haloRing;
         
-        ofLogNotice() <<"HaloManager::createHaloRings->  id = " << settings.id  <<", channel = " << settings.channel
-        <<", fadeCandyInd = "<< settings.fadeCandyInd << ", numberLeds = " <<  settings.numberLeds <<
-        ", x = " <<  ringPosition.x <<  ", y = " <<  ringPosition.y ;
+        
     }
 }
 
@@ -145,8 +190,7 @@ void HaloManager::setupOPC()
     int port = AppManager::getInstance().getSettingsManager()->getPort();
     
     // Connect to the fcserver
-    int numFC = 11;
-    m_opcClient.setup(ipAddress, port, numFC);
+    m_opcClient.setup(ipAddress, port, NUM_FADE_CANDYS);
     
     ofLogNotice() <<"HaloManager::setupOPC -> Connect OPC Client to IP Address: " << ipAddress << ", port: " << port;
     
@@ -154,8 +198,18 @@ void HaloManager::setupOPC()
 
 void HaloManager::update()
 {
-    //this->updateHaloRings();
+    this->grabImageData();
+    this->updateHaloRings();
     m_haloVisuals.update();
+}
+
+
+void HaloManager::grabImageData()
+{
+    m_screenPixels.clear();
+    m_screenImage.clear();
+    m_screenImage.grabScreen(m_imageSpaceRectangle.x,m_imageSpaceRectangle.y,m_imageSpaceRectangle.width,m_imageSpaceRectangle.height);
+    m_screenPixels = m_screenImage.getPixelsRef(); // Transfer grab data to the pixel array
 }
 
 void HaloManager::updateHaloRings()
@@ -168,7 +222,7 @@ void HaloManager::updateHaloRings()
     }
   
     for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
-        it->second->update();
+        it->second->setPixels(m_imageSpaceRectangle, m_screenPixels);
         m_opcClient.writeChannel( it->second->getChannel(), it->second->colorData(), it->second->getFadeCandyNum());
     }
     
@@ -177,6 +231,7 @@ void HaloManager::updateHaloRings()
 void HaloManager::draw()
 {
     m_haloVisuals.draw();
+    this->drawRectangles();
     this->drawHaloRings();
 }
 
@@ -185,4 +240,23 @@ void HaloManager::drawHaloRings()
     for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
         it->second->draw();
     }
+}
+
+void HaloManager::drawRectangles()
+{
+    ofPushMatrix();
+    ofPushStyle();
+    ofNoFill();
+    ofSetLineWidth(4);
+    
+    ofSetColor(255);
+    ofRect(m_imageSpaceRectangle);
+    
+    ofFill();
+    ofSetColor(150);
+    ofRect(m_previewRectangle);
+    
+    ofPopStyle();
+    ofPopMatrix();
+
 }

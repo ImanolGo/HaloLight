@@ -167,7 +167,7 @@ void HaloVisuals::drawEffects()
         {
             ofPushStyle();
             float hue = fmodf(ofGetElapsedTimef()*10,255);
-            int size = 150;
+            int size = 350;
             
             ofColor color = ofColor::fromHsb(hue, 255, 255);
             ofVec3f pos = ofVec3f(ofGetMouseX(), ofGetMouseY());

@@ -5,7 +5,6 @@
 //
 #pragma once
 
-#include <iostream>
 #include "ofMain.h"
 #include "BasicVisual.h"
 #include "TextVisual.h"
@@ -30,6 +29,38 @@ class HaloRingSettings {
     
 };
 
+class HaloRingPreview: public BasicVisual {
+    
+public:
+    
+    HaloRingPreview(const BasicVisual& visual, int id);
+    
+    virtual ~HaloRingPreview();
+    
+    void setup();
+    
+    virtual void draw();
+    
+    void setColors(const vector <ofColor>& colors ) {m_ledColors = colors;}
+    
+private:
+    
+    void setupTextVisual();
+    
+    void drawLedRing();
+    
+    void drawID(bool hideText = false);
+    
+private:
+    
+    vector <ofColor> m_ledColors;
+    
+    int     m_id;
+    
+    ofPtr<TextVisual>  m_textVisual;
+    
+};
+
 class HaloRing: public BasicVisual {
     
     public:
@@ -38,11 +69,8 @@ class HaloRing: public BasicVisual {
         virtual ~HaloRing();
     
         void setup();
-        void update();
+        void setPixels(const ofRectangle& grabArea, const ofPixels& screenPixels);
         void draw();
-    
-        void drawGrabRegion(bool hideArea = false);
-        void drawRing();
     
         int getId(){return m_settings.id;}
     
@@ -50,24 +78,21 @@ class HaloRing: public BasicVisual {
     
         int getFadeCandyNum(){return m_settings.fadeCandyInd;}
     
-        void setPreviewPosition(const ofPoint& pos){m_previewPosition = pos;}
+        void setHaloRingPreview(const BasicVisual& visual);
 
     
         // Return Data Method
-        vector <ofColor> colorData();
+        const vector <ofColor>& colorData();
     
     private:
-    
-        void grabImageData();
-            
-        void updateLeds();
     
         void setupLedRing();
     
         void setupTextVisual();
     
-        // Draw Unit
-        void ledRing();
+        void drawGrabRegion(bool hideArea = false);
+    
+        void drawID(bool hideText = false);
     
     private:
             
@@ -77,15 +102,12 @@ class HaloRing: public BasicVisual {
         // Hold the Position of our Capture points
         vector <ofVec2f> m_ledPositions;
     
-        // Capture Objects
-        ofImage     m_screenImage;
-        ofPixels    m_screenPixels;
+        HaloRingSettings    m_settings;
+        ofPtr<HaloRingPreview>     m_haloRingPreview;
     
         ofPtr<TextVisual>  m_textVisual;
     
-        ofPoint   m_previewPosition;
-    
-        HaloRingSettings    m_settings;
+        float m_margin;
     
 };
 
