@@ -13,7 +13,7 @@ frameIsNew(false),
 autoGainAndShutter(true),
 isInited(false)
 {
-	ofAddListener(ofEvents().exit, this, &ofxMacamPs3Eye::exit);
+	//ofAddListener(ofEvents().exit, this, &ofxMacamPs3Eye::exit);
 }
 ofxMacamPs3Eye::~ofxMacamPs3Eye(){
 	close();

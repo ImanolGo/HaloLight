@@ -104,6 +104,6 @@ protected:
 	void* ps3eye;
 	ofPixels pixels;
 	
-	void exit(ofEventArgs & args){close();};
+	void exit(){close();};
 		
 };

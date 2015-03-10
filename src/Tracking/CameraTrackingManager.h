@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Manager.h"
+#include "ofxMacamPs3Eye.h"
 
 //========================== class CameraTrackingManager ==============================
 //============================================================================
@@ -19,6 +20,10 @@
 
 class CameraTrackingManager: public Manager
 {
+    
+    static const int CAMERA_WIDTH;
+    static const int CAMERA_HEIGHT;
+    
 public:
 
     //! Constructor
@@ -38,12 +43,18 @@ public:
 
 private:
 
-
+    //! Set-up the camera tracking
+    void setupCamera();
+    
+    void updateCamera();
+    
+    void drawCamera();
  
-
 private:
 
-
+    ofxMacamPs3Eye m_cameraPs3Eye;
+    
+    ofPoint     m_cameraPosition;
 
 };
 

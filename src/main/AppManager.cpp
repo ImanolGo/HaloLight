@@ -88,8 +88,9 @@ void AppManager::update()
 void AppManager::draw()
 {
     m_viewManager->draw();
-    m_haloManager->draw();
     m_cameraTrackingManager->draw();
+    m_haloManager->draw();
+    
 }
 
 void AppManager::toggleVerbose()
