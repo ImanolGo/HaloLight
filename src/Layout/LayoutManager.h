@@ -1,17 +1,17 @@
 /*
  *  LayoutManager.h
- *  The Other
+ *  Halo Light
  *
- *  Created by Imanol Gómez on 16/02/15.
+ *  Created by Imanol Gomez on 10/03/15.
  *
  */
 
 #pragma once
 
-#include "../Main/Manager.h"
-#include "../Visuals/TextVisual.h"
-#include "../Visuals/SvgVisual.h"
-#include "../Visuals/ImageVisual.h"
+#include "Manager.h"
+#include "TextVisual.h"
+#include "SvgVisual.h"
+#include "ImageVisual.h"
 
 //========================== class LayoutManager ==============================
 //============================================================================

@@ -1,16 +1,16 @@
 /*
  *  LayoutManager.cpp
- *  The Other
+ *  Halo Light
  *
- *  Created by Imanol Gómez on 16/02/15.
+ *  Created by Imanol Gomez on 10/03/15.
  *
  */
 
 #include "ofMain.h"
 
-#include "../Main/AppManager.h"
-#include "../Main/SettingsManager.h"
-#include "../Visuals/ViewManager.h"
+#include "AppManager.h"
+#include "SettingsManager.h"
+#include "ViewManager.h"
 
 
 #include "LayoutManager.h"

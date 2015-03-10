@@ -42,6 +42,7 @@ void AppManager::createManagers()
     m_layoutManager = ofPtr<LayoutManager>(new LayoutManager());
     m_keyboardManager = ofPtr<KeyboardManager>(new KeyboardManager());
     m_haloManager = ofPtr<HaloManager>(new HaloManager());
+    m_cameraTrackingManager = ofPtr<CameraTrackingManager>(new CameraTrackingManager());
 }
 
 void AppManager::setup()
@@ -72,6 +73,7 @@ void AppManager::setupManagers()
     m_layoutManager->setup();
     m_keyboardManager->setup();
     m_haloManager->setup();
+    m_cameraTrackingManager->setup();
 }
 
 void AppManager::update()
@@ -79,6 +81,7 @@ void AppManager::update()
     m_visualEffectsManager->update();
     m_viewManager->update();
     m_haloManager->update();
+    m_cameraTrackingManager->update();
 }
 
 
@@ -86,6 +89,7 @@ void AppManager::draw()
 {
     m_viewManager->draw();
     m_haloManager->draw();
+    m_cameraTrackingManager->draw();
 }
 
 void AppManager::toggleVerbose()

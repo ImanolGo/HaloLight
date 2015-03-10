@@ -19,6 +19,7 @@
 #include "LayoutManager.h"
 #include "KeyboardManager.h"
 #include "HaloManager.h"
+#include "CameraTrackingManager.h"
 
 //========================== class AppManager ==============================
 //============================================================================
@@ -62,6 +63,9 @@ public:
     
     //! Returns the visual halo manager
     ofPtr<HaloManager>   getHaloManager() { return m_haloManager; }
+    
+    //! Returns the visual camera tracking manager
+    ofPtr<CameraTrackingManager>   getCameraTrackingManager() { return m_cameraTrackingManager; }
 
     
     //==========================================================================
@@ -104,6 +108,7 @@ private:
     ofPtr<LayoutManager>            m_layoutManager;            ///< Manages the layout
     ofPtr<KeyboardManager>          m_keyboardManager;          ///< Manages the keyboard
     ofPtr<HaloManager>              m_haloManager;              ///< Manages the halo lights
+    ofPtr<CameraTrackingManager>    m_cameraTrackingManager;    ///< Manages the camera tracking
 
     bool                            m_logVerbose;
 };

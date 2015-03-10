@@ -53,8 +53,6 @@ class HaloManager: public Manager
     
         void grabImageData();
     
-        void setupImageData();
-    
         void setupHaloRings();
     
         void createHaloRings();

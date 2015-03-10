@@ -56,8 +56,8 @@ void HaloRingPreview::drawLedRing()
     ofNoFill();
     ofSetLineWidth(2);
     ofSetColor(0);
-    ofEllipse(m_position.x , m_position.y, m_width, m_height);
-    ofEllipse(m_position.x , m_position.y, m_width-margin*2, m_height-margin*2);
+    //ofEllipse(m_position.x , m_position.y, m_width, m_height);
+    //ofEllipse(m_position.x , m_position.y, m_width-margin*2, m_height-margin*2);
     
     ofFill();
     for (int i = 0; i < m_ledColors.size(); i++)

@@ -41,17 +41,11 @@ void HaloManager::setup()
     m_haloRings.clear();
     this->setupHaloRings();
     this->setupOPC();
-    this->setupImageData();
     
     m_haloVisuals.setup();
     
     ofLogNotice() <<"HaloManager::initialized" ;
     
-}
-
-void HaloManager::setupImageData()
-{
-    m_screenPixels.allocate(m_imageSpaceRectangle.getWidth(), m_imageSpaceRectangle.getHeight(),GL_RGB);
 }
 
 
@@ -89,10 +83,10 @@ void HaloManager::createHaloRingsPositions()
     m_previewRectangle = ofRectangle(x,y,w,h);
     
     
-    x = ofGetWidth()*0.5 + layoutMargin;
-    y = layoutMargin;
     w = wallWidth*scale;
     h = wallHeight*scale;
+    x = ofGetWidth()*0.75 - w*0.5;
+    y = ofGetHeight()*0.75 - h*0.5;
     
     m_imageSpaceRectangle = ofRectangle(x,y,w,h);
  
