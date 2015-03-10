@@ -60,7 +60,7 @@ void AppManager::setup()
 
 void AppManager::setupOF()
 {
-   ofSetVerticalSync(true);
+   ofSetVerticalSync(false);
 }
 
 
