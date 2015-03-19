@@ -55,7 +55,7 @@ void CameraTrackingManager::setupCamera()
     m_cameraPs3Eye.setFlicker(1);
     
     m_cameraPosition.x = ofGetWidth()*0.75 - CAMERA_WIDTH*0.5;
-    m_cameraPosition.y = 20;
+    m_cameraPosition.y = 40;
     
     
     m_videoGrabber.setDeviceID(0);
@@ -95,5 +95,56 @@ void CameraTrackingManager::drawCamera()
     #else
         m_videoGrabber.draw(m_cameraPosition.x,m_cameraPosition.y);
     #endif
+}
+
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onAutoGainAndShutterChange(bool & value){
+    m_cameraPs3Eye.setAutoGainAndShutter(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onGainChange(float & value){
+    m_cameraPs3Eye.setGain(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onShutterChange(float & value){
+    m_cameraPs3Eye.setShutter(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onGammaChange(float & value){
+    m_cameraPs3Eye.setGamma(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onBrightnessChange(float & value){
+    m_cameraPs3Eye.setBrightness(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onContrastChange(float & value){
+    m_cameraPs3Eye.setContrast(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onHueChange(float & value){
+    m_cameraPs3Eye.setHue(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onLedChange(bool & value){
+    m_cameraPs3Eye.setLed(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onFlickerChange(int & value){
+    m_cameraPs3Eye.setFlicker(value);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onWhiteBalanceChange(int & value){
+    m_cameraPs3Eye.setWhiteBalance(value);
 }
 

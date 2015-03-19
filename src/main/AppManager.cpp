@@ -62,6 +62,7 @@ void AppManager::setup()
 void AppManager::setupOF()
 {
    ofSetVerticalSync(false);
+   ofShowCursor();
 }
 
 
@@ -93,6 +94,7 @@ void AppManager::draw()
     m_viewManager->draw();
     m_cameraTrackingManager->draw();
     m_haloManager->draw();
+    m_guiManager->draw();
     
 }
 

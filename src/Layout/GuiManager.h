@@ -9,10 +9,7 @@
 #pragma once
 
 #include "Manager.h"
-#include "TextVisual.h"
-#include "SvgVisual.h"
-#include "ImageVisual.h"
-
+#include "ofxGui.h"
 //========================== class GuiManager ==============================
 //============================================================================
 /** \class GuiManager GuiManager.h
@@ -23,6 +20,9 @@
 
 class GuiManager: public Manager
 {
+    
+    static const string GUI_SETTINGS_FILE_NAME;
+    
 public:
 
     //! Constructor
@@ -31,16 +31,28 @@ public:
     //! Destructor
     ~GuiManager();
 
-    //! Set-up the layout
+    //! Set-up the gui
     void setup();
+    
+    //! Draw the gui
+    void draw();
+    
+    void saveGuiValues();
+    
+    void loadGuiValues();
+    
+    void hideGui(bool hide){m_hideGui=hide;}
 
 private:
 
-
-
+    void setupCameraGui();
+    
+    void loadCameraValues();
+    
 private:
 
-
+    ofxPanel    m_gui;      //Class creating a gui panel
+    bool        m_hideGui;  //It defines the whether the gui should be shown or not
 };
 
 //==========================================================================
