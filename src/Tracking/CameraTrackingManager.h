@@ -11,6 +11,8 @@
 #include "Manager.h"
 #include "ofxMacamPs3Eye.h"
 
+#define PS3_EYE_CAMERA
+
 //========================== class CameraTrackingManager ==============================
 //============================================================================
 /** \class CameraTrackingManager CameraTrackingManager.h
@@ -52,7 +54,8 @@ private:
  
 private:
 
-    ofxMacamPs3Eye m_cameraPs3Eye;
+    ofxMacamPs3Eye      m_cameraPs3Eye;
+    ofVideoGrabber 		m_videoGrabber;
     
     ofPoint     m_cameraPosition;
 

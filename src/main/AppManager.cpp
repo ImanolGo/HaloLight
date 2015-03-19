@@ -43,6 +43,7 @@ void AppManager::createManagers()
     m_keyboardManager = ofPtr<KeyboardManager>(new KeyboardManager());
     m_haloManager = ofPtr<HaloManager>(new HaloManager());
     m_cameraTrackingManager = ofPtr<CameraTrackingManager>(new CameraTrackingManager());
+    m_guiManager = ofPtr<GuiManager>(new GuiManager());
 }
 
 void AppManager::setup()
@@ -74,6 +75,8 @@ void AppManager::setupManagers()
     m_keyboardManager->setup();
     m_haloManager->setup();
     m_cameraTrackingManager->setup();
+    m_guiManager->setup();
+
 }
 
 void AppManager::update()

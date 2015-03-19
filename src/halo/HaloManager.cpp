@@ -174,7 +174,6 @@ void HaloManager::createHaloRings()
         haloRing->setHaloRingPreview(basicVisual);
         m_haloRings[settings.id] = haloRing;
         
-        
     }
 }
 

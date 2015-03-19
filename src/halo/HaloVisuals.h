@@ -11,6 +11,7 @@
 
 #include "BasicVisual.h"
 #include "ImageVisual.h"
+#include "ofxFluid.h"
 
 //========================== class HaloVisuals ==============================
 //============================================================================
@@ -48,12 +49,19 @@ class HaloVisuals: public BasicVisual {
         void createImageVisuals();
     
         void drawEffects();
+
+        void setupFluid();
+    
+        void updateFluid();
     
     private:
     
         int m_mode;
     
         ofPtr<ImageVisual>  m_imageVisual;
+    
+        ofxFluid m_fluid;
+        ofVec2f m_oldMouse;
 
 };
 

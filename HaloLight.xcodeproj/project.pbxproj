@@ -12,6 +12,7 @@
 		0474D56CC8625F18F57A00A0 /* CameraTrackingManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30FE22CE4933E50849A9D7B7 /* CameraTrackingManager.cpp */; };
 		04DF616AA21AD331DF08C325 /* ftParticleFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D9822CFA7F77387B3BBDBC /* ftParticleFlow.cpp */; };
 		088400152A7A197F66119401 /* MiscTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E59E73BC4B1EC0323C7A13BC /* MiscTools.cpp */; };
+		089FB52C1ABABD3000594A28 /* GuiManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089FB52A1ABABD3000594A28 /* GuiManager.cpp */; };
 		0F56099006231FBD6C72DED8 /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 1B189168F182CE09D77DEF2D /* license.md */; };
 		10071661D0AA59C4EC246B6C /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4A1CE60B1AC164DA8880771 /* ofxGuiGroup.cpp */; };
 		11263DD5787331C9CA71BD36 /* NeoPixelGrid32x32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C52E7BEE6804CC169C6A3CBF /* NeoPixelGrid32x32.cpp */; };
@@ -161,6 +162,8 @@
 		074978820820325AB8737225 /* README.md */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = README.md; path = src/Addons/ofxUnicode/README.md; sourceTree = SOURCE_ROOT; };
 		0758DB960B9BE6F86F84AC84 /* ofxChromaGlitch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxChromaGlitch.h; path = src/Addons/ofxFX/src/filters/ofxChromaGlitch.h; sourceTree = SOURCE_ROOT; };
 		0895DEE02DC4FBBE628CD851 /* MyCameraDriver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MyCameraDriver.h; path = src/Addons/ofxMacamPs3Eye/src/macam/include/MyCameraDriver.h; sourceTree = SOURCE_ROOT; };
+		089FB52A1ABABD3000594A28 /* GuiManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GuiManager.cpp; path = Layout/GuiManager.cpp; sourceTree = "<group>"; };
+		089FB52B1ABABD3000594A28 /* GuiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuiManager.h; path = Layout/GuiManager.h; sourceTree = "<group>"; };
 		08C5194B0C92DDA2A7539395 /* core.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core.h; path = src/Addons/ofxUnicode/libs/utf8cpp/src/utf8_v2_3_1/source/utf8/core.h; sourceTree = SOURCE_ROOT; };
 		09F8F2DF1D53E65319F30B96 /* LightManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LightManager.cpp; path = src/Engine/3D/LightManager.cpp; sourceTree = SOURCE_ROOT; };
 		0A6646403E6DFC818C11E70D /* ofxFBM.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxFBM.h; path = src/Addons/ofxFX/src/generative/ofxFBM.h; sourceTree = SOURCE_ROOT; };
@@ -583,6 +586,8 @@
 		375D8B140B52B55EB32EB487 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				089FB52A1ABABD3000594A28 /* GuiManager.cpp */,
+				089FB52B1ABABD3000594A28 /* GuiManager.h */,
 				4229475864D5EBC7913C8351 /* LayoutManager.cpp */,
 				78E61E440A21EE9FC6156AAD /* LayoutManager.h */,
 			);
@@ -1400,6 +1405,7 @@
 				944C582F1366C745FFE8A0EB /* HaloRing.cpp in Sources */,
 				2E5D91CE9A6415150CD389B4 /* HaloVisuals.cpp in Sources */,
 				93510377552D47B6620A7586 /* LayoutManager.cpp in Sources */,
+				089FB52C1ABABD3000594A28 /* GuiManager.cpp in Sources */,
 				1AF15FCF93D2DDD6D4285C8E /* AppManager.cpp in Sources */,
 				C5CCD16B524E215288E47400 /* HaloLightApp.cpp in Sources */,
 				DA22DA3A4F2E611DF50078F2 /* main.cpp in Sources */,

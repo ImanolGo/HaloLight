@@ -47,7 +47,8 @@ class HaloManager: public Manager
     
         //! Set the mode of the Halo Visuals
         void setMode(int mode) {m_haloVisuals.setMode(mode);}
-
+    
+        const ofRectangle& getRingArea() const {return m_imageSpaceRectangle;}
 
     private:
     

@@ -20,6 +20,7 @@ void ofxOPC::setup(string address, int port, int numFC)
     // Connect to the Server
     connect();
     
+    ofLogNotice()<<"Lenght of Data Section = " <<  numFC * FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL;
     // Determine the length of the data section, as a multiple of the SPCData type
     uint16_t data_length = numFC * FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL * sizeof(OPCPacket_SPCData_t);
     
@@ -97,12 +98,20 @@ void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix, int fadeCandyIdx)
     {
         return;
 
-    } else if(channel < 1 || channel > FADE_CANDY_NUM_CHANNELS) {
+    }
+    
+    if(channel < 1 || channel > FADE_CANDY_NUM_CHANNELS) {
+        // TODO: Emit error
+        return;
+    }
+    
+    if(fadeCandyIdx < 1) {
         // TODO: Emit error
         return;
     }
 
-    uint16_t channel_offset = fadeCandyIdx * (channel - 1) * LEDS_PER_CHANNEL;
+    uint16_t channel_offset = (fadeCandyIdx-1)*LEDS_PER_CHANNEL*FADE_CANDY_NUM_CHANNELS  + (channel - 1) * LEDS_PER_CHANNEL;
+    //channel_offset = (channel - 1) * LEDS_PER_CHANNEL;
     
     // Copy the data
     for (int i = 0; i < pix.size(); i++)

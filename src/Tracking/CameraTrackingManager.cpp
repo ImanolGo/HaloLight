@@ -56,6 +56,11 @@ void CameraTrackingManager::setupCamera()
     
     m_cameraPosition.x = ofGetWidth()*0.75 - CAMERA_WIDTH*0.5;
     m_cameraPosition.y = 20;
+    
+    
+    m_videoGrabber.setDeviceID(0);
+    m_videoGrabber.setDesiredFrameRate(60);
+    m_videoGrabber.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT);
 }
 
 void CameraTrackingManager::update()
@@ -66,6 +71,8 @@ void CameraTrackingManager::update()
 void CameraTrackingManager::updateCamera()
 {
 
+    m_videoGrabber.update();
+    
     m_cameraPs3Eye.update();
     
     // Blink the led everytime there is a new frame
@@ -83,6 +90,10 @@ void CameraTrackingManager::draw()
 
 void CameraTrackingManager::drawCamera()
 {
-    m_cameraPs3Eye.draw(m_cameraPosition.x,m_cameraPosition.y);
+    #ifdef PS3_EYE_CAMERA
+        m_cameraPs3Eye.draw(m_cameraPosition.x,m_cameraPosition.y);
+    #else
+        m_videoGrabber.draw(m_cameraPosition.x,m_cameraPosition.y);
+    #endif
 }
 

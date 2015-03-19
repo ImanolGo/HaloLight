@@ -37,13 +37,13 @@ public:
     
     virtual ~HaloRingPreview();
     
-    void setup();
-    
     virtual void draw();
     
     void setColors(const vector <ofColor>& colors ) {m_ledColors = colors;}
     
 private:
+    
+    void setup();
     
     void setupTextVisual();
     

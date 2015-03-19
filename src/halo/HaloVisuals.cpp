@@ -9,6 +9,9 @@
 
 #include "ofMain.h"
 
+#include "AppManager.h"
+#include "HaloManager.h"
+
 #include "HaloVisuals.h"
 
 
@@ -27,7 +30,9 @@ HaloVisuals::~HaloVisuals()
 void HaloVisuals::setup()
 {
     m_mode = 0;
+    //ofSetCircleResolution(100);
     this->createImageVisuals();
+    this->setupFluid();
     
 }
 
@@ -38,10 +43,59 @@ void HaloVisuals::createImageVisuals()
     m_imageVisual = ofPtr<ImageVisual>(new ImageVisual(ofVec3f(0,0,0),resourceName,true));
 }
 
+void HaloVisuals::setupFluid()
+{
+    ofRectangle area = AppManager::getInstance().getHaloManager()->getRingArea();
+    
+    // Initial Allocation
+    //
+    m_fluid.allocate(area.width, area.height, 0.5);
+    
+    // Seting the gravity set up & injecting the background image
+    //
+    m_fluid.dissipation = 0.99;
+    m_fluid.velocityDissipation = 0.99;
+    
+    m_fluid.setGravity(ofVec2f(0.0,0.0));
+    m_fluid.setGravity(ofVec2f(0.0,0.0098));
+    
+    //  Set obstacle
+    //
+    m_fluid.begin();
+    ofSetColor(0,0);
+    ofSetColor(255);
+    ofCircle(area.width*0.5, area.height*0.5, 80);
+    m_fluid.end();
+    m_fluid.setUseObstacles(false);
+    
+    // Adding constant forces
+    //
+    m_fluid.addConstantForce(ofPoint(area.width*0.5,area.height*0.95), ofPoint(0,-2), ofFloatColor(0.5,0.1,0.0), 10.f);
+    //m_fluid.addConstantForce(ofPoint(area.width*0.5,area.height*0.95), ofPoint(-1,-2), ofFloatColor(0.5,0.1,1.0), 10.f);
+}
+
 
 void HaloVisuals::update()
 {
-    //To be implemented
+    this->updateFluid();
+}
+
+void HaloVisuals::updateFluid()
+{
+    ofRectangle area = AppManager::getInstance().getHaloManager()->getRingArea();
+    
+    // Adding temporal Force
+    //
+    ofPoint m = ofPoint(ofGetMouseX(),ofGetMouseY());
+    ofPoint d = (m - m_oldMouse)*10.0;
+    m_oldMouse = m;
+    ofPoint c = ofPoint(area.width*0.5, area.height*0.5) - m;
+    c.normalize();
+    m_fluid.addTemporalForce(m, d, ofFloatColor(c.x,c.y,0.5)*sin(ofGetElapsedTimef()),3.0f);
+    
+    //  Update
+    //
+    m_fluid.update();
 }
 
 void HaloVisuals::draw()
@@ -67,104 +121,6 @@ void HaloVisuals::drawEffects()
             
         case 1:
         {
-            // Like the processing example draw dot images and rotate
-            int size = 160;
-            ofPushMatrix();
-            ofTranslate(0, 0);
-            ofPushMatrix();
-            ofTranslate(ofGetWidth()/2,ofGetHeight()/2);
-            ofRotateZ(ofGetElapsedTimeMillis()/10);
-            ofPushMatrix();
-            ofTranslate(-size*0.5,-size*0.5);
-            ofEnableBlendMode(OF_BLENDMODE_ADD);
-            ofColor color = ofColor(0, 255,20);
-            ofVec3f pos = ofVec3f(size/4, size/4);
-            m_imageVisual->setWidth(size);
-            m_imageVisual->setHeight(size);
-            m_imageVisual->setColor(color);
-            m_imageVisual->setPosition(pos);
-            m_imageVisual->draw();
-            
-            
-            color = ofColor(255, 0,20);;
-            pos = ofVec3f((size/4*3), size/4);
-            m_imageVisual->setColor(color);
-            m_imageVisual->setPosition(pos);
-            m_imageVisual->draw();
-            
-            color = ofColor(0, 0, 255);
-            pos = ofVec3f(size/4, (size/4*3));
-            m_imageVisual->setColor(color);
-            m_imageVisual->setPosition(pos);
-            m_imageVisual->draw();
-            
-            color = ofColor(255,0,255);
-            pos = ofVec3f((size/4*3),(size/4*3));
-            m_imageVisual->setColor(color);
-            m_imageVisual->setPosition(pos);
-            m_imageVisual->draw();
-                          
-
-            ofDisableBlendMode();
-            ofPopMatrix();
-            ofPopMatrix();
-            ofPopMatrix();
-        }
-            break;
-            
-        case 2:
-        {
-            // Changes the color of a Circle
-            ofPushStyle();
-            ofFill();
-            float hue = fmodf(ofGetElapsedTimef()*10,255);
-            ofColor c = ofColor::fromHsb(hue, 255, 255);
-            ofSetColor(c);
-            ofCircle(ofGetWidth()/2,ofGetHeight()/2,70);
-            ofPopStyle();
-        }
-            break;
-            
-        case 3:
-        {
-            // Fade to full brightness then to zero
-            ofPushStyle();
-            ofFill();
-            ofSetColor((int)(128 + 128 * sin(ofGetElapsedTimef())));
-            ofCircle(ofGetWidth()/2,ofGetHeight()/2,70);
-            ofPopStyle();
-        }
-            break;
-            
-        case 4:
-        {
-            ofEnableBlendMode(OF_BLENDMODE_ADD);
-            ofFill();
-            float rotationAmount = ofGetElapsedTimeMillis()/10;
-            ofSetColor(255, 0, 0);
-            ofPushMatrix();
-            ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-            ofRotateZ(rotationAmount);
-            ofPushMatrix();
-            ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
-            ofCircle(ofGetWidth()/2, ofGetHeight()/2-40, 40);
-            ofPopMatrix();
-            ofPopMatrix();
-            ofSetColor(0, 0, 255);
-            ofPushMatrix();
-            ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-            ofRotateZ(-rotationAmount);
-            ofPushMatrix();
-            ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2);
-            ofCircle(ofGetWidth()/2, ofGetHeight()/2+40, 40);
-            ofPopMatrix();
-            ofPopMatrix();
-            ofDisableBlendMode();
-        }
-            break;
-            
-        case 5:
-        {
             ofPushStyle();
             float hue = fmodf(ofGetElapsedTimef()*10,255);
             int size = 350;
@@ -177,10 +133,25 @@ void HaloVisuals::drawEffects()
             m_imageVisual->setPosition(pos);
             m_imageVisual->setPosition(pos);
             m_imageVisual->draw();
-        
+            
             ofPopStyle();
         }
             break;
+            
+        case 2:
+        {
+            ofRectangle area = AppManager::getInstance().getHaloManager()->getRingArea();
+            
+            m_fluid.draw(area.x,area.y,area.width,area.height);
+        }
+            break;
+            
+        case 3:
+        {
+           
+        }
+            break;
+            
         default:
             break;
     }
