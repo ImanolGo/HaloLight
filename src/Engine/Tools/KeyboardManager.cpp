@@ -46,7 +46,7 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
     ofLogNotice() <<"KeyboardManager::keyPressed-> " + ofToString(key);
     
     if(key == ' ') {
-        AppManager::getInstance().toggleVerbose();
+        AppManager::getInstance().toggleDebugMode();
     }
     
     if(key >= 48 && key <= 57) {

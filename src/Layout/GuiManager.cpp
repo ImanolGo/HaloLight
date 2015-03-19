@@ -18,7 +18,7 @@
 
 const string GuiManager::GUI_SETTINGS_FILE_NAME = "xmls/HaloLightGuiSettings.xml";
 
-GuiManager::GuiManager(): Manager(), m_hideGui(false)
+GuiManager::GuiManager(): Manager(), m_showGui(true)
 {
 	//Intentionally left empty
 }
@@ -102,7 +102,7 @@ void GuiManager::setupCameraGui()
     led->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onLedChange);
     m_gui.add(led);
     
-    //this->loadCameraValues();
+    this->loadCameraValues();
 }
 
 void GuiManager::loadCameraValues()
@@ -138,7 +138,7 @@ void GuiManager::loadCameraValues()
 
 void GuiManager::draw()
 {
-    if(m_hideGui)
+    if(!m_showGui)
         return;
     
     m_gui.draw();

@@ -21,7 +21,7 @@ AppManager& AppManager::getInstance()
 
 }
 
-AppManager::AppManager(): Manager(), m_logVerbose(false)
+AppManager::AppManager(): Manager(), m_debugMode(true)
 {
     this->createManagers();
 }
@@ -55,6 +55,8 @@ void AppManager::setup()
 
 	Manager::setup();
 
+    setDebugMode(m_debugMode);
+    
     this->setupOF();
 	this->setupManagers();
 }
@@ -92,21 +94,35 @@ void AppManager::update()
 void AppManager::draw()
 {
     m_viewManager->draw();
-    m_cameraTrackingManager->draw();
     m_haloManager->draw();
+    m_cameraTrackingManager->draw();
     m_guiManager->draw();
     
 }
 
-void AppManager::toggleVerbose()
+void AppManager::toggleDebugMode()
 {
-    m_logVerbose = !m_logVerbose;
-    if(m_logVerbose){
+    m_debugMode = !m_debugMode;
+    setDebugMode(m_debugMode);
+}
+
+
+void AppManager::setDebugMode(bool showDebug)
+{
+    m_debugMode = showDebug;
+    
+    ofLogNotice()<<"AppManager::setDebugMode-> " << m_debugMode;
+    
+    if(m_debugMode){
         ofSetLogLevel(OF_LOG_VERBOSE);
     }
     else{
         ofSetLogLevel(OF_LOG_NOTICE);
     }
+    
+    m_guiManager->showGui(m_debugMode);
+    m_viewManager->showDebugMode(m_debugMode);
+    
 }
 
 

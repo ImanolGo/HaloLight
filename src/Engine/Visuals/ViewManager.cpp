@@ -37,7 +37,6 @@ void ViewManager::setup()
     //this->setupGL();
     //this->setup3D();
     this->setupTextVisuals();
-    this->addListeners();
 
     ofLogNotice() << "ViewManager::initialized ";
 }
@@ -84,12 +83,6 @@ void ViewManager::setupTextVisuals()
     m_frameRateText = ofPtr<TextVisual> (new TextVisual(position,width,height));
     m_frameRateText->setText(text,fontName,fontSize,textColor);
 }
-
-void ViewManager::addListeners()
-{
-    ofAddListener(ofEvents().keyPressed,this, &ViewManager::keyPressed);
-}
-
 
 void ViewManager::update()
 {
@@ -243,14 +236,6 @@ bool ViewManager::isVisualAlreadyAdded(ofPtr<BasicVisual> visual)
     }
     
     return false;
-}
-
-void ViewManager::keyPressed(ofKeyEventArgs &e)
-{
-    int key = e.key;
-    if(key == ' ') {
-        m_showDebugInfo = !m_showDebugInfo;
-    }
 }
 
 

@@ -67,7 +67,7 @@ void HaloManager::createHaloRingsPositions()
     
     
     float layoutMargin = 40;
-    float wallHeight = ofGetHeight() - layoutMargin*2;
+    float wallHeight = ofGetHeight() - layoutMargin*4;
     m_ringPreviewSize = wallHeight/(numRingsHeight + marginRatio*numMarginsHeight);
     m_ringSize = 30;
     float scale = m_ringSize/m_ringPreviewSize;

@@ -41,7 +41,7 @@ public:
     
     void loadGuiValues();
     
-    void hideGui(bool hide){m_hideGui=hide;}
+    void showGui(bool show){m_showGui=show;}
 
 private:
 
@@ -52,7 +52,7 @@ private:
 private:
 
     ofxPanel    m_gui;      //Class creating a gui panel
-    bool        m_hideGui;  //It defines the whether the gui should be shown or not
+    bool        m_showGui;  //It defines the whether the gui should be shown or not
 };
 
 //==========================================================================

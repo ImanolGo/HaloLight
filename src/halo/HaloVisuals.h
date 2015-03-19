@@ -12,6 +12,10 @@
 #include "BasicVisual.h"
 #include "ImageVisual.h"
 #include "ofxFluid.h"
+#include "ofxFlowTools.h"
+
+#define USE_FASTER_INTERNAL_FORMATS			// about 15% faster but gives errors from ofGLUtils
+using namespace flowTools;
 
 //========================== class HaloVisuals ==============================
 //============================================================================
@@ -52,6 +56,8 @@ class HaloVisuals: public BasicVisual {
 
         void setupFluid();
     
+        void setupFtFluid();
+    
         void updateFluid();
     
     private:
@@ -61,8 +67,14 @@ class HaloVisuals: public BasicVisual {
         ofPtr<ImageVisual>  m_imageVisual;
     
         ofxFluid m_fluid;
-        ofVec2f m_oldMouse;
-
+        ofVec2f m_lastMouse;
+    
+        ftFluidSimulation	m_ftFluid;
+        ftOpticalFlow		m_opticalFlow;
+        ftVelocityMask		m_velocityMask;
+        ftTemperatureField	m_temperatureField;
+        ftDrawForce*		m_flexDrawForces;
+    
 };
 
 

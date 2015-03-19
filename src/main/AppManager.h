@@ -74,7 +74,9 @@ public:
     
     //==========================================================================
     
-    void toggleVerbose();
+    void toggleDebugMode();
+    
+    void setDebugMode(bool showDebug);
     
 
 private:
@@ -115,7 +117,7 @@ private:
     ofPtr<CameraTrackingManager>    m_cameraTrackingManager;    ///< Manages the camera tracking
     ofPtr<GuiManager>               m_guiManager;               ///< Manages the graphical user interface
 
-    bool                            m_logVerbose;
+    bool                            m_debugMode;
 };
 
 //==========================================================================

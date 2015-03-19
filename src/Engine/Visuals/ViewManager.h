@@ -51,6 +51,8 @@ public:
 
     //! Removes an overlay to the list of elements that are rendered
     void removeOverlay(ofPtr<BasicVisual> visual);
+    
+    void showDebugMode(bool show){m_showDebugInfo=show;}
 
     //==========================================================================
 
@@ -61,12 +63,6 @@ private:
     
     //! Setups the OpenGL parameters
     void setupGL();
-    
-    //! Adds the events to be listen to
-    void addListeners();
-
-    //! Function called when a key is pressed
-    void keyPressed(ofKeyEventArgs &e);
     
     //! Draws the background
     void drawBackround();

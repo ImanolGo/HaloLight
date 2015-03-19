@@ -11,7 +11,7 @@
 #include "Manager.h"
 #include "ofxMacamPs3Eye.h"
 
-#define PS3_EYE_CAMERA
+//#define PS3_EYE_CAMERA
 
 //========================== class CameraTrackingManager ==============================
 //============================================================================
@@ -42,6 +42,14 @@ public:
 
     //! Draw camera tracking
     void draw();
+    
+    const int getWidth(){return m_cameraPs3Eye.getWidth();}
+    
+    const int getHeight(){return m_cameraPs3Eye.getHeight();}
+   
+    const bool isFrameNew(){return m_cameraPs3Eye.isFrameNew();}
+    
+    const ofFbo& getCameraFbo(){return m_cameraFbo;}
 
     //! Gui Callback functions
     void onAutoGainAndShutterChange(bool & value);
@@ -79,7 +87,9 @@ private:
     ofxMacamPs3Eye      m_cameraPs3Eye;
     ofVideoGrabber 		m_videoGrabber;
     
-    ofPoint     m_cameraPosition;
+    ofPoint             m_cameraPosition;
+    
+    ofFbo				m_cameraFbo;
 
 };
 
