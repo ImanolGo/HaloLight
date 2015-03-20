@@ -14,7 +14,7 @@ const int CameraTrackingManager::CAMERA_HEIGHT = 480;
 
 CameraTrackingManager::CameraTrackingManager(): Manager()
 {
-	//Intentionally left empty
+    //Intentionally left empty
 }
 
 
@@ -27,12 +27,12 @@ CameraTrackingManager::~CameraTrackingManager()
 
 void CameraTrackingManager::setup()
 {
-	if(m_initialized)
-		return;
-
+    if(m_initialized)
+        return;
+    
     ofLogNotice() <<"CameraTrackingManager::initialized";
-
-	Manager::setup();
+    
+    Manager::setup();
     
     this->setupCamera();
 }
@@ -42,18 +42,30 @@ void CameraTrackingManager::setupCamera()
     m_cameraFbo.allocate(CAMERA_WIDTH, CAMERA_HEIGHT);
     m_cameraFbo.begin(); ofClear(0); m_cameraFbo.end();
     
-    m_videoGrabber.setDeviceID(0);
-    m_videoGrabber.setDesiredFrameRate(60);
-    m_videoGrabber.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT, true);
-    
     m_cameraPs3Eye.listDevices();
     
     //m_cameraPs3Eye.setDesiredFrameRate(60);
-    //m_cameraPs3Eye.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT, true);
+    m_cameraPs3Eye.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT, true);
     
+    m_cameraPs3Eye.setAutoGainAndShutter(false); // otherwise we can't set gain or shutter
+    m_cameraPs3Eye.setGain(0.5);
+    m_cameraPs3Eye.setShutter(0.5);
+    m_cameraPs3Eye.setGamma(0.5);
+    m_cameraPs3Eye.setBrightness(0.5);
+    m_cameraPs3Eye.setContrast(0.5);
+    m_cameraPs3Eye.setHue(0.5);
+    
+    m_cameraPs3Eye.setFlicker(0);
+    m_cameraPs3Eye.setWhiteBalance(4);
     
     m_cameraPosition.x = ofGetWidth()*0.75 - CAMERA_WIDTH*0.5;
     m_cameraPosition.y = 40;
+    
+    
+    
+    //m_videoGrabber.setDeviceID(0);
+    //m_videoGrabber.setDesiredFrameRate(60);
+    //m_videoGrabber.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT);
 }
 
 void CameraTrackingManager::update()
@@ -63,8 +75,9 @@ void CameraTrackingManager::update()
 
 void CameraTrackingManager::updateCamera()
 {
-    m_videoGrabber.update();
-    //m_cameraPs3Eye.update();
+    
+    //m_videoGrabber.update();
+    m_cameraPs3Eye.update();
     
 }
 
@@ -80,16 +93,16 @@ void CameraTrackingManager::drawCamera()
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     m_cameraFbo.begin();
-        
+    
     #ifdef PS3_EYE_CAMERA
         m_cameraPs3Eye.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
-        //m_cameraPs3Eye.draw(0,0);
+    //m_cameraPs3Eye.draw(0,0);
     #else
         m_videoGrabber.draw(0,0);
     #endif
     m_cameraFbo.end();
     ofPopStyle();
-
+    
     m_cameraFbo.draw(m_cameraPosition);
 }
 

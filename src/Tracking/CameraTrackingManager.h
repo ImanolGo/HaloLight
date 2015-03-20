@@ -11,12 +11,12 @@
 #include "Manager.h"
 #include "ofxMacamPs3Eye.h"
 
-//#define PS3_EYE_CAMERA
+#define PS3_EYE_CAMERA
 
 //========================== class CameraTrackingManager ==============================
 //============================================================================
 /** \class CameraTrackingManager CameraTrackingManager.h
- *	\brief Class managing the camera tracking 
+ *	\brief Class managing the camera tracking
  *	\details It creates camera tracker and sends tracking information
  */
 
@@ -27,30 +27,30 @@ class CameraTrackingManager: public Manager
     static const int CAMERA_HEIGHT;
     
 public:
-
+    
     //! Constructor
     CameraTrackingManager();
-
+    
     //! Destructor
     ~CameraTrackingManager();
-
+    
     //! Set-up the camera tracking
     void setup();
-
+    
     //! Update the camera tracking
     void update();
-
+    
     //! Draw camera tracking
     void draw();
     
     const int getWidth(){return m_cameraPs3Eye.getWidth();}
     
     const int getHeight(){return m_cameraPs3Eye.getHeight();}
-   
-    const bool isFrameNew(){return m_cameraPs3Eye.isFrameNew();}
+    
+    const bool isNewFrame(){return m_cameraPs3Eye.isFrameNew();}
     
     const ofFbo& getCameraFbo(){return m_cameraFbo;}
-
+    
     //! Gui Callback functions
     void onAutoGainAndShutterChange(bool & value);
     
@@ -74,23 +74,23 @@ public:
     
     
 private:
-
+    
     //! Set-up the camera tracking
     void setupCamera();
     
     void updateCamera();
     
     void drawCamera();
- 
+    
 private:
-
+    
     ofxMacamPs3Eye      m_cameraPs3Eye;
     ofVideoGrabber 		m_videoGrabber;
     
     ofPoint             m_cameraPosition;
     
     ofFbo				m_cameraFbo;
-
+    
 };
 
 //==========================================================================

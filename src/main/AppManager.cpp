@@ -63,7 +63,7 @@ void AppManager::setup()
 
 void AppManager::setupOF()
 {
-   ofSetVerticalSync(false);
+   ofSetVerticalSync(true);
    ofShowCursor();
 }
 

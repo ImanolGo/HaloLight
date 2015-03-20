@@ -102,7 +102,7 @@ void GuiManager::setupCameraGui()
     led->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onLedChange);
     m_gui.add(led);
     
-    this->loadCameraValues();
+    //this->loadCameraValues();
 }
 
 void GuiManager::loadCameraValues()
