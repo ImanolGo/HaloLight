@@ -13,18 +13,18 @@ class HaloRingSettings {
     
     public:
     
-    HaloRingSettings(): numberLeds(0), id(0), fadeCandyInd(1), channel(1), positionIndex(0){}
+    HaloRingSettings(): numberLeds(0), id(""), fadeCandyInd(1), channel(1), positionIndex(0){}
     
     ~HaloRingSettings(){}
     
     public:
     
     // Variables
-    int     numberLeds;
-    int     id;
-    int     fadeCandyInd;
-    int     channel;
-    int     positionIndex;
+    int         numberLeds;
+    string      id;
+    int         fadeCandyInd;
+    int         channel;
+    int         positionIndex;
 
     
 };
@@ -33,7 +33,7 @@ class HaloRingPreview: public BasicVisual {
     
 public:
     
-    HaloRingPreview(const BasicVisual& visual, int id);
+    HaloRingPreview(const BasicVisual& visual, string id);
     
     virtual ~HaloRingPreview();
     
@@ -55,7 +55,7 @@ private:
     
     vector <ofColor> m_ledColors;
     
-    int     m_id;
+    string     m_id;
     
     ofPtr<TextVisual>  m_textVisual;
     
@@ -72,7 +72,7 @@ class HaloRing: public BasicVisual {
         void setPixels(const ofRectangle& grabArea, const ofPixels& screenPixels);
         void draw();
     
-        int getId(){return m_settings.id;}
+        string getId(){return m_settings.id;}
     
         int getChannel(){return m_settings.channel;}
     

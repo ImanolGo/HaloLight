@@ -71,7 +71,7 @@ class HaloManager: public Manager
     private:
     
         typedef             ofPtr<HaloRing>                 HaloRingPtr;
-        typedef             map<int,HaloRingPtr>            HaloRingMap;            ///< defines a map of Halo Rings attached to its id
+        typedef             map<string,HaloRingPtr>            HaloRingMap;            ///< defines a map of Halo Rings attached to its id
         typedef             map<int,ofVec3f>                HaloRingPositionMap;    ///< defines a map of Halo Rings position attached to relative position index
     
         HaloRingPositionMap m_haloRingsPositionMap;

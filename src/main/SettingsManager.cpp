@@ -284,7 +284,7 @@ void SettingsManager::loadHaloRingSettings()
             
             HaloRingSettings ringSettings;
             
-            ringSettings.id = ofToInt(attributes["id"]);
+            ringSettings.id = ofToString(attributes["id"]);
             ringSettings.numberLeds = numLeds;
             ringSettings.channel = ofToInt(attributes["channel"]);
             ringSettings.fadeCandyInd = ofToInt(attributes["fadeCandy"]);

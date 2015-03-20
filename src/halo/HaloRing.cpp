@@ -8,7 +8,7 @@
 #include "HaloRing.h"
 
 
-HaloRingPreview::HaloRingPreview(const BasicVisual& visual, int id)
+HaloRingPreview::HaloRingPreview(const BasicVisual& visual, string id)
 {
     m_position = visual.getPosition();
     m_width = visual.getWidth();
@@ -32,10 +32,9 @@ void HaloRingPreview::setupTextVisual()
 {
     string fontPath = "fonts/helvetica-neue-medium.ttf";
     float fontSize = m_width*0.25;
-    string stringId = ofToString(m_id);
     
     m_textVisual = ofPtr<TextVisual>(new TextVisual(m_position,m_width,m_height,true));
-    m_textVisual->setText(stringId,fontPath,fontSize,ofColor::black);
+    m_textVisual->setText(m_id,fontPath,fontSize,ofColor::black);
 }
 
 void HaloRingPreview::draw()
@@ -63,7 +62,7 @@ void HaloRingPreview::drawLedRing()
     float offsetAngle = M_PI*0.5 + angleStep*0.5;
     
     ofFill();
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < m_ledColors.size(); i++)
     {
         float angle = offsetAngle + i * angleStep;
         float rx = m_position.x  + 0.5 * (m_width - margin) * cos(angle);
@@ -124,7 +123,7 @@ void HaloRing::setupLedRing()
     //m_screenPixels.allocate(m_width, m_height,GL_RGB);
     
     float angleStep = (2.0 * M_PI)/m_settings.numberLeds;
-    float offsetAngle = angleStep*M_PI*0.5;
+    float offsetAngle = M_PI*0.5 + angleStep*0.5;
     m_margin = 10;
     
     for (int i = 0; i < m_settings.numberLeds; i++)
@@ -172,7 +171,6 @@ const vector <ofColor> & HaloRing::colorData()
 //--------------------------------------------------------------
 void HaloRing::drawGrabRegion(bool hideArea)
 {
-    
     ofPushStyle();
     ofNoFill();
     ofSetLineWidth(2);
