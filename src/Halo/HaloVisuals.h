@@ -52,11 +52,13 @@ private:
     
     void createImageVisuals();
     
-    void drawEffects();
+    void drawVisuals();
     
     void setupGui();
     
     void setupFluid();
+    
+    void setupDisplayArea();
     
     void updateFluid();
     
@@ -106,6 +108,13 @@ private:
     void				setVisualisationLineSmooth(bool& _value) { m_velocityField.setLineSmooth(_value); }
     
     
+    
+    void setOffsetX(float & dx);
+    void setOffsetY(float & dy);
+    void setScaleX(float & sx);
+    void setScaleY(float & sy);
+    
+    
     ftOpticalFlow		m_opticalFlow;
     ftVelocityMask		m_velocityMask;
     ftFluidSimulation	m_fluid;
@@ -116,6 +125,10 @@ private:
     
     int					m_numDrawForces;
     ftDrawForce*		m_flexDrawForces;
+    
+    ofRectangle         m_displayArea;
+    ofPoint             m_displayOffset;
+    ofPoint             m_displayScale;
     
 };
 

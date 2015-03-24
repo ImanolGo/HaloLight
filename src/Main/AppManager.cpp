@@ -76,8 +76,8 @@ void AppManager::setupManagers()
     m_visualEffectsManager->setup();
     m_layoutManager->setup();
     m_keyboardManager->setup();
-    m_haloManager->setup();
     m_cameraTrackingManager->setup();
+    m_haloManager->setup();
     m_guiManager->setup();
 
 }

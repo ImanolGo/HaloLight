@@ -29,9 +29,10 @@ HaloVisuals::~HaloVisuals()
 
 void HaloVisuals::setup()
 {
-    m_mode = 1;
+    m_mode = 3;
     this->createImageVisuals();
     this->setupFluid();
+    this->setupDisplayArea();
     
 }
 
@@ -59,11 +60,11 @@ void HaloVisuals::setupFluid()
     m_velocityMask.setup(drawWidth, drawHeight);
     
     // m_fluid
-#ifdef USE_FASTER_INTERNAL_FORMATS
-    m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, true);
-#else
-    m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, false);
-#endif
+    #ifdef USE_FASTER_INTERNAL_FORMATS
+        m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, true);
+    #else
+        m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, false);
+    #endif
     
     
     // Visualisation
@@ -171,6 +172,22 @@ void HaloVisuals::setupGui()
     toggleGuiDraw = true;
 }
 
+void HaloVisuals::setupDisplayArea()
+{
+    m_displayScale = ofPoint(1);
+    m_displayOffset = ofPoint(0);
+    
+    m_displayArea = AppManager::getInstance().getHaloManager()->getRingArea();
+    m_displayArea.width = AppManager::getInstance().getCameraTrackingManager()->getWidth();
+    m_displayArea.height = AppManager::getInstance().getCameraTrackingManager()->getHeight();
+    
+    const ofRectangle& ringArea = AppManager::getInstance().getHaloManager()->getRingArea();
+    m_displayArea.scaleTo(ringArea, OF_SCALEMODE_FILL);
+    
+    m_displayArea.scaleFromCenter(m_displayScale);
+    m_displayArea.translate(m_displayOffset);
+}
+
 
 void HaloVisuals::update()
 {
@@ -183,10 +200,10 @@ void HaloVisuals::updateFluid()
 
 void HaloVisuals::draw()
 {
-    this->drawEffects();
+    this->drawVisuals();
 }
 
-void HaloVisuals::drawEffects()
+void HaloVisuals::drawVisuals()
 {
     switch (m_mode) {
         case 1:
@@ -252,9 +269,9 @@ void HaloVisuals::drawFluid()
     bool newFrame = AppManager::getInstance().getCameraTrackingManager()->isNewFrame();
     double dt = ofGetLastFrameTime();
     
+    ofFbo cameraFbo = AppManager::getInstance().getCameraTrackingManager()->getCameraFbo();
+    
     if (newFrame) {
-        ofFbo cameraFbo = AppManager::getInstance().getCameraTrackingManager()->getCameraFbo();
-        
         m_opticalFlow.setSource(cameraFbo.getTextureReference());
         m_opticalFlow.update(dt);
         
@@ -298,16 +315,9 @@ void HaloVisuals::drawFluid()
     
     m_fluid.update();
     
-    //ofClear(0,0);
-    
     ofPushStyle();
-    ofEnableBlendMode(OF_BLENDMODE_DISABLED);
-    //cameraFbo.draw(windowWidth*0.5,40, 640, 480);
-    
-    const ofRectangle& ringArea = AppManager::getInstance().getHaloManager()->getRingArea();
-    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    m_fluid.draw(ringArea.x, ringArea.y, ringArea.width,ringArea.height);
+    m_fluid.draw(m_displayArea.x, m_displayArea.y, m_displayArea.width, m_displayArea.height);
     ofPopStyle();
     
     if (toggleGuiDraw) {
@@ -324,7 +334,7 @@ void HaloVisuals::drawPaintFluid()
     mouse.set(ofGetMouseX() / (float)ofGetWindowWidth(), ofGetMouseY()  / (float)ofGetWindowHeight());
     ofVec2f velocity = mouse - m_lastMouse;
     
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<(m_numDrawForces/2); i++) {
         if (m_flexDrawForces[i].getType() == FT_VELOCITY)
             m_flexDrawForces[i].setForce(velocity);
         m_flexDrawForces[i].applyForce(mouse);
@@ -333,7 +343,7 @@ void HaloVisuals::drawPaintFluid()
     m_lastMouse.set(mouse.x, mouse.y);
     
     double dt = ofGetLastFrameTime();
-    for (int i=0; i<6; i++) {
+    for (int i=0; i<m_numDrawForces; i++) {
         m_flexDrawForces[i].update();
         if (m_flexDrawForces[i].didChange()) {
             // if a force is constant multiply by deltaTime
@@ -365,8 +375,6 @@ void HaloVisuals::drawPaintFluid()
     m_fluid.update();
     
     
-    ofRectangle area = AppManager::getInstance().getHaloManager()->getRingArea();
-    
     const ofRectangle& ringArea = AppManager::getInstance().getHaloManager()->getRingArea();
     
     ofPushStyle();
@@ -375,3 +383,30 @@ void HaloVisuals::drawPaintFluid()
     //m_fluid.draw(ringArea.x, ringArea.y, ringArea.width,ringArea.height);
     ofPopStyle();
 }
+
+
+
+void HaloVisuals::setOffsetX(float & dx)
+{
+    m_displayOffset.x = dx;
+    m_displayArea.translate(m_displayOffset);
+}
+
+void HaloVisuals::setOffsetY(float & dy)
+{
+    m_displayOffset.y = dy;
+    m_displayArea.translate(m_displayOffset);
+}
+
+void HaloVisuals::setScaleX(float & sx)
+{
+    m_displayScale.x = sx;
+    m_displayArea.scaleFromCenter(m_displayScale.x, m_displayScale.y);
+}
+
+void HaloVisuals::setScaleY(float & sy)
+{
+    m_displayScale.y = sy;
+    m_displayArea.scaleFromCenter(m_displayScale.x, m_displayScale.y);
+}
+
