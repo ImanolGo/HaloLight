@@ -367,8 +367,11 @@ void HaloVisuals::drawPaintFluid()
     
     ofRectangle area = AppManager::getInstance().getHaloManager()->getRingArea();
     
+    const ofRectangle& ringArea = AppManager::getInstance().getHaloManager()->getRingArea();
+    
     ofPushStyle();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     m_fluid.draw(0, 0, ofGetWidth(),ofGetHeight());
+    //m_fluid.draw(ringArea.x, ringArea.y, ringArea.width,ringArea.height);
     ofPopStyle();
 }

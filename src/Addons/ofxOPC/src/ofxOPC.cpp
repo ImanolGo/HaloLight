@@ -20,9 +20,9 @@ void ofxOPC::setup(string address, int port, int numFC)
     // Connect to the Server
     connect();
     
-    ofLogNotice()<<"Lenght of Data Section = " <<  numFC * FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL;
+    ofLogNotice()<<"Lenght of Data Section = " <<  FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL;
     // Determine the length of the data section, as a multiple of the SPCData type
-    uint16_t data_length = numFC * FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL * sizeof(OPCPacket_SPCData_t);
+    uint16_t data_length = FADE_CANDY_NUM_CHANNELS * LEDS_PER_CHANNEL * sizeof(OPCPacket_SPCData_t);
     
     // Add the header-section's length to the data-section's to determine the total packet length; allocate the packet
     OPC_SPC_packet_length = sizeof(OPCPacket_Header_t) + data_length;
@@ -53,45 +53,45 @@ void ofxOPC::update()
 //--------------------------------------------------------------
 void ofxOPC::writeChannelOne(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_ONE, pix,fadeCandyIdx);
+    writeChannel(CHANNEL_ONE, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelTwo(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_TWO, pix, fadeCandyIdx);
+    writeChannel(CHANNEL_TWO, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelThree(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_THREE, pix),fadeCandyIdx;
+    writeChannel(CHANNEL_THREE, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelFour(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_FOUR, pix,fadeCandyIdx);
+    writeChannel(CHANNEL_FOUR, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelFive(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_FIVE, pix,fadeCandyIdx);
+    writeChannel(CHANNEL_FIVE, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelSix(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_SIX, pix,fadeCandyIdx);
+    writeChannel(CHANNEL_SIX, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelSeven(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_SEVEN, pix,fadeCandyIdx);
+    writeChannel(CHANNEL_SEVEN, pix);
 }
 //--------------------------------------------------------------
 void ofxOPC::writeChannelEight(vector<ofColor>pix, int fadeCandyIdx)
 {
-    writeChannel(CHANNEL_EIGHT, pix,fadeCandyIdx);
+    writeChannel(CHANNEL_EIGHT, pix);
 }
 //--------------------------------------------------------------
-void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix, int fadeCandyIdx)
+void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix)
 {
     // Bail early if there's no pixel data
     if(pix.empty())
@@ -105,12 +105,7 @@ void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix, int fadeCandyIdx)
         return;
     }
     
-    if(fadeCandyIdx < 1) {
-        // TODO: Emit error
-        return;
-    }
-
-    uint16_t channel_offset = (fadeCandyIdx-1)*LEDS_PER_CHANNEL*FADE_CANDY_NUM_CHANNELS  + (channel - 1) * LEDS_PER_CHANNEL;
+    uint16_t channel_offset = (channel - 1) * LEDS_PER_CHANNEL;
     //channel_offset = (channel - 1) * LEDS_PER_CHANNEL;
     
     // Copy the data
@@ -125,6 +120,28 @@ void ofxOPC::writeChannel(uint8_t channel, vector<ofColor>pix, int fadeCandyIdx)
     client.sendRawBytes((char *)(OPC_SPC_packet), OPC_SPC_packet_length);
 }
 
+void ofxOPC::writeFadeCandy(uint8_t channel, vector<ofColor>pix)
+{
+    // Bail early if there's no pixel data
+    if(pix.empty())
+    {
+        return;
+        
+    }
+    
+    // Copy the data
+    for (int i = 0; i < pix.size(); i++)
+    {
+        OPC_SPC_packet_data[i].r = pix[i].r;
+        OPC_SPC_packet_data[i].g = pix[i].g;
+        OPC_SPC_packet_data[i].b = pix[i].b;
+    }
+    
+    OPC_SPC_packet->header.channel = channel;
+    
+    // Send the data
+    client.sendRawBytes((char *)(OPC_SPC_packet), OPC_SPC_packet_length);
+}
 
 //--------------------------------------------------------------
 void ofxOPC::writeChannel(uint8_t channel, vector <ofColor> pix1,vector <ofColor> pix2,vector <ofColor> pix3)

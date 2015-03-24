@@ -6,7 +6,6 @@
 //
 #include "ofMain.h"
 #include "ofxNetwork.h"
-#include "ofxNeoPixels.h"
 
 #define FADE_CANDY_NUM_CHANNELS 8
 #define LEDS_PER_CHANNEL 64
@@ -55,7 +54,10 @@ class ofxOPC  {
         void sendFirmwareConfigPacket(); // Not used
     
         // For writing custom channels
-        void writeChannel(uint8_t channel, vector <ofColor> pix, int fadeCandyIdx = 1);
+        void writeChannel(uint8_t channel, vector <ofColor> pix);
+    
+        // For writing custom fadecandy
+        void writeFadeCandy(uint8_t channel, vector <ofColor> pix);
     
         // Write Channels or Pin data
         void writeChannelOne(vector <ofColor> pix, int fadeCandyIdx = 1);

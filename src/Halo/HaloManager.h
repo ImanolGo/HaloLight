@@ -11,6 +11,7 @@
 
 #include "Manager.h"
 #include "HaloRing.h"
+#include "HaloFadeCandy.h"
 #include "HaloVisuals.h"
 #include "ofxOPC.h"
 
@@ -56,28 +57,32 @@ class HaloManager: public Manager
     
         void setupHaloRings();
     
+        void setupOPC();
+    
         void createHaloRings();
     
         void createHaloRingsPositions();
     
-        void setupOPC();
+        ofPtr<HaloRing> createSingleHaloRing(const HaloRingSettings& settings);
     
-        void updateHaloRings();
+        void addHaloRing(ofPtr<HaloRing> haloRing);
     
-        void drawHaloRings();
+        void updateFadeCandys();
+    
+        void drawHaloFadeCandys();
     
         void drawRectangles();
     
     private:
     
-        typedef             ofPtr<HaloRing>                 HaloRingPtr;
-        typedef             map<string,HaloRingPtr>            HaloRingMap;            ///< defines a map of Halo Rings attached to its id
+        typedef             ofPtr<HaloFadeCandy>            HaloFadeCandyPtr;
+        typedef             map<int,HaloFadeCandyPtr>       HaloFadeCandyMap;            ///< defines a map of Halo Rings attached to its id
         typedef             map<int,ofVec3f>                HaloRingPositionMap;    ///< defines a map of Halo Rings position attached to relative position index
     
         HaloRingPositionMap m_haloRingsPositionMap;
         HaloRingPositionMap m_haloRingsPreviewPositionMap;
 
-        HaloRingMap         m_haloRings;
+        HaloFadeCandyMap    m_haloFadeCandys;
         ofxOPC              m_opcClient;                    ///< instance of the Open Pixel Control client
         HaloVisuals         m_haloVisuals;
     

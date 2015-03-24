@@ -161,12 +161,6 @@ void HaloRing::setPixels(const ofRectangle& grabArea, const ofPixels& screenPixe
     
     m_haloRingPreview->setColors(m_ledColors);
 }
-//--------------------------------------------------------------
-const vector <ofColor> & HaloRing::colorData()
-{
-    // Transmit Data
-    return m_ledColors;
-}
 
 //--------------------------------------------------------------
 void HaloRing::drawGrabRegion(bool hideArea)

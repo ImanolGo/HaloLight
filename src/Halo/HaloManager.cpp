@@ -38,7 +38,7 @@ void HaloManager::setup()
 
 	Manager::setup();
     
-    m_haloRings.clear();
+    m_haloFadeCandys.clear();
     this->setupHaloRings();
     this->setupOPC();
     
@@ -145,36 +145,50 @@ void HaloManager::createHaloRingsPositions()
 
 void HaloManager::createHaloRings()
 {
-    
     RingSettingsVector ringsSettingsVector = AppManager::getInstance().getSettingsManager()->getRingsSettingsVector();
-    
-    float scale = 0.1;
     
     for (int i = 0; i < ringsSettingsVector.size(); i++) {
         HaloRingSettings settings = ringsSettingsVector[i];
-        
-        
-        ofVec3f ringPosition;
-        ofVec3f ringPreviewPosition;
-        int key = settings.positionIndex;
-        if (m_haloRingsPositionMap.find(key)!= m_haloRingsPositionMap.end()) {
-            ringPosition = m_haloRingsPositionMap[key];
-            ringPreviewPosition = m_haloRingsPreviewPositionMap[key];
-        }
-        
-        //ofLogNotice() <<"HaloManager::createHaloRings->  id = " << settings.id  <<", channel = " << settings.channel
-        //<<", fadeCandyInd = "<< settings.fadeCandyInd << ", numberLeds = " <<  settings.numberLeds <<
-       // ", x = " <<  ringPosition.x <<  ", y = " <<  ringPosition.y ;
-        
-        BasicVisual basicVisual = BasicVisual(ringPosition, m_ringSize, m_ringSize);
-        ofPtr<HaloRing> haloRing = ofPtr<HaloRing>(new HaloRing(basicVisual,settings));
-        
-        
-        basicVisual = BasicVisual(ringPreviewPosition, m_ringPreviewSize, m_ringPreviewSize);
-        haloRing->setHaloRingPreview(basicVisual);
-        m_haloRings[settings.id] = haloRing;
+        ofPtr<HaloRing> haloRing= this->createSingleHaloRing(settings);
+        this->addHaloRing(haloRing);
         
     }
+}
+
+ofPtr<HaloRing> HaloManager::createSingleHaloRing(const HaloRingSettings& settings)
+{
+    ofVec3f ringPosition;
+    ofVec3f ringPreviewPosition;
+    int key = settings.positionIndex;
+    if (m_haloRingsPositionMap.find(key)!= m_haloRingsPositionMap.end()) {
+        ringPosition = m_haloRingsPositionMap[key];
+        ringPreviewPosition = m_haloRingsPreviewPositionMap[key];
+    }
+    
+    //ofLogNotice() <<"HaloManager::createHaloRings->  id = " << settings.id  <<", channel = " << settings.channel
+    //<<", fadeCandyInd = "<< settings.fadeCandyInd << ", numberLeds = " <<  settings.numberLeds <<
+    // ", x = " <<  ringPosition.x <<  ", y = " <<  ringPosition.y ;
+    
+    BasicVisual basicVisual = BasicVisual(ringPosition, m_ringSize, m_ringSize);
+    ofPtr<HaloRing> haloRing = ofPtr<HaloRing>(new HaloRing(basicVisual,settings));
+    
+    
+    basicVisual = BasicVisual(ringPreviewPosition, m_ringPreviewSize, m_ringPreviewSize);
+    haloRing->setHaloRingPreview(basicVisual);
+    
+    return haloRing;
+}
+
+void HaloManager::addHaloRing(ofPtr<HaloRing> haloRing)
+{
+    int fadeCandyId = haloRing->getFadeCandyNum();
+    
+    if(m_haloFadeCandys.find(fadeCandyId)==m_haloFadeCandys.end()){
+         ofPtr<HaloFadeCandy> haloFadeCandy = ofPtr<HaloFadeCandy>(new HaloFadeCandy(fadeCandyId));
+         m_haloFadeCandys[fadeCandyId] = haloFadeCandy;
+    }
+   
+    m_haloFadeCandys[fadeCandyId]->addHaloRing(haloRing);
 }
 
 void HaloManager::setupOPC()
@@ -192,7 +206,7 @@ void HaloManager::setupOPC()
 void HaloManager::update()
 {
     this->grabImageData();
-    this->updateHaloRings();
+    this->updateFadeCandys();
     m_haloVisuals.update();
 }
 
@@ -205,7 +219,7 @@ void HaloManager::grabImageData()
     m_screenPixels = m_screenImage.getPixelsRef(); // Transfer grab data to the pixel array
 }
 
-void HaloManager::updateHaloRings()
+void HaloManager::updateFadeCandys()
 {
     // If the client is not connected do not try and send information
     if (!m_opcClient.isConnected()){
@@ -214,9 +228,9 @@ void HaloManager::updateHaloRings()
         return;
     }
   
-    for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
-        it->second->setPixels(m_imageSpaceRectangle, m_screenPixels);
-        m_opcClient.writeChannel( it->second->getChannel(), it->second->colorData(), it->second->getFadeCandyNum());
+    for(HaloFadeCandyMap::iterator it = m_haloFadeCandys.begin(); it != m_haloFadeCandys.end(); it++){
+        it->second->updateHaloRings(m_imageSpaceRectangle, m_screenPixels);
+        m_opcClient.writeFadeCandy( it->second->getId(), it->second->getColorData());
     }
     
 }
@@ -225,12 +239,12 @@ void HaloManager::draw()
 {
     m_haloVisuals.draw();
     this->drawRectangles();
-    this->drawHaloRings();
+    this->drawHaloFadeCandys();
 }
 
-void HaloManager::drawHaloRings()
+void HaloManager::drawHaloFadeCandys()
 {
-    for(HaloRingMap::iterator it = m_haloRings.begin(); it != m_haloRings.end(); it++){
+    for(HaloFadeCandyMap::iterator it = m_haloFadeCandys.begin(); it != m_haloFadeCandys.end(); it++){
         it->second->draw();
     }
 }

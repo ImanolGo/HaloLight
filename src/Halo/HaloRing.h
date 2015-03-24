@@ -82,7 +82,7 @@ class HaloRing: public BasicVisual {
 
     
         // Return Data Method
-        const vector <ofColor>& colorData();
+        const vector <ofColor>& colorData(){return m_ledColors;}
     
     private:
     
