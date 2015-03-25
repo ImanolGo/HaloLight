@@ -63,7 +63,7 @@ void AppManager::setup()
 
 void AppManager::setupOF()
 {
-   ofSetVerticalSync(true);
+   ofSetVerticalSync(false);
    ofShowCursor();
 }
 
@@ -120,7 +120,6 @@ void AppManager::setDebugMode(bool showDebug)
         ofSetLogLevel(OF_LOG_NOTICE);
     }
     
-    m_guiManager->showGui(m_debugMode);
     m_viewManager->showDebugMode(m_debugMode);
     
 }

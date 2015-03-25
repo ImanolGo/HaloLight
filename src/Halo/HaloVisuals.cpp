@@ -88,89 +88,10 @@ void HaloVisuals::setupFluid()
     m_flexDrawForces[5].setup(flowWidth, flowHeight, FT_TEMPERATURE, false);
     m_flexDrawForces[5].setName("draw flow res 2");
     
-    setupGui();
-    
     m_lastMouse.set(0,0);
     
 }
 
-
-void HaloVisuals::setupGui()
-{
-    gui.setup("settings");
-    gui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
-    gui.setDefaultFillColor(ofColor(160, 160, 160, 160));
-    gui.add(guiFPS.set("FPS", 0, 0, 60));
-    
-    int guiColorSwitch = 0;
-    ofColor guiHeaderColor[2];
-    guiHeaderColor[0].set(160, 160, 80, 200);
-    guiHeaderColor[1].set(80, 160, 160, 200);
-    ofColor guiFillColor[2];
-    guiFillColor[0].set(160, 160, 80, 200);
-    guiFillColor[1].set(80, 160, 160, 200);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(m_opticalFlow.parameters);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(m_velocityMask.parameters);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(m_fluid.parameters);
-    
-    visualisationParameters.setName("visualisation");
-    visualisationParameters.add(showScalar.set("show scalar", true));
-    visualisationParameters.add(showField.set("show field", true));
-    visualisationParameters.add(displayScalarScale.set("display scalar scale", 0.25, 0.05, 0.5));
-    displayScalarScale.addListener(this, &HaloVisuals::setDisplayScalarScale);
-    visualisationParameters.add(velocityFieldArrowScale.set("arrow scale", 0.6, 0.2, 1));
-    velocityFieldArrowScale.addListener(this, &HaloVisuals::setVelocityFieldArrowScale);
-    visualisationParameters.add(temperatureFieldBarScale.set("temperature scale", 0.25, 0.05, 0.5));
-    temperatureFieldBarScale.addListener(this, &HaloVisuals::setTemperatureFieldBarScale);
-    visualisationParameters.add(visualisationLineSmooth.set("line smooth", false));
-    visualisationLineSmooth.addListener(this, &HaloVisuals::setVisualisationLineSmooth);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(visualisationParameters);
-    
-    leftButtonParameters.setName("mouse left button");
-    for (int i=0; i<3; i++) {
-        leftButtonParameters.add(m_flexDrawForces[i].parameters);
-    }
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(leftButtonParameters);
-    
-    rightButtonParameters.setName("mouse right button");
-    for (int i=3; i<6; i++) {
-        rightButtonParameters.add(m_flexDrawForces[i].parameters);
-    }
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(rightButtonParameters);
-    
-    gui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    gui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(doResetDrawForces.set("reset draw forces (D)", false));
-    doResetDrawForces.addListener(this,  &HaloVisuals::resetDrawForces);
-    
-    gui.loadFromFile("settings.xml");
-    gui.minimizeAll();
-    
-    toggleGuiDraw = true;
-}
 
 void HaloVisuals::setupDisplayArea()
 {
@@ -319,11 +240,6 @@ void HaloVisuals::drawFluid()
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     m_fluid.draw(m_displayArea.x, m_displayArea.y, m_displayArea.width, m_displayArea.height);
     ofPopStyle();
-    
-    if (toggleGuiDraw) {
-        guiFPS = ofGetFrameRate();
-        gui.draw();
-    }
     
 }
 

@@ -45,9 +45,18 @@ void KeyboardManager::keyPressed(ofKeyEventArgs &e)
     
     ofLogNotice() <<"KeyboardManager::keyPressed-> " + ofToString(key);
     
-    if(key == ' ') {
+    if(key == 'd' || key == 'D') {
         AppManager::getInstance().toggleDebugMode();
     }
+    
+    if(key == 'g' || key == 'G') {
+        AppManager::getInstance().getGuiManager()->toggleGui();
+    }
+    
+    if(key == ' ') {
+        AppManager::getInstance().getHaloManager()->toggleRingsPreview();
+    }
+
     
     if(key >= 48 && key <= 57) {
         AppManager::getInstance().getHaloManager()->setMode(key - 48);

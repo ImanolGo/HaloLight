@@ -21,7 +21,8 @@
 class GuiManager: public Manager
 {
     
-    static const string GUI_SETTINGS_FILE_NAME;
+    static const string GUI_CAMERA_SETTINGS_FILE_NAME;
+    static const string GUI_FLUID_SETTINGS_FILE_NAME;
     
 public:
 
@@ -41,17 +42,49 @@ public:
     
     void loadGuiValues();
     
+    void toggleGui();
+    
     void showGui(bool show){m_showGui=show;}
 
 private:
 
     void setupCameraGui();
     
+    void setupFluidGui();
+    
     void loadCameraValues();
     
 private:
+    
+    // Fluid GUI
+    ofxPanel			gui;
+    
+    ofParameter<float>	guiFPS;
+    ofParameter<bool>	doFullScreen;
+    void				setFullScreen(bool& _value) { ofSetFullscreen(_value);}
+    ofParameter<bool>	toggleGuiDraw;
+    ofParameter<bool>	doFlipCamera;
+    ofParameter<int>	visualisationMode;
+    ofParameter<string> visualisationName;
+    int					numVisualisationModes;
+    string				*visualisationModeTitles;
+    ofParameterGroup	visualisationParameters;
+    
+    ofParameterGroup	drawForceParameters;
+    ofParameter<bool>	doResetDrawForces;
+    ofParameterGroup	leftButtonParameters;
+    ofParameterGroup	rightButtonParameters;
+    ofParameter<bool>	showScalar;
+    ofParameter<bool>	showField;
+    ofParameter<float>	displayScalarScale;
+    ofParameter<float>	velocityFieldArrowScale;
+    ofParameter<float>	temperatureFieldBarScale;
+    ofParameter<bool>	visualisationLineSmooth;
+    
+    ofxPanel    m_fluidGui;      //Class creating a fluid gui panel
 
-    ofxPanel    m_gui;      //Class creating a gui panel
+    // Camera GUI
+    ofxPanel    m_cameraGui;      //Class creating a camera gui panel
     bool        m_showGui;  //It defines the whether the gui should be shown or not
 };
 

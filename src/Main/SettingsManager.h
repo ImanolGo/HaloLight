@@ -24,6 +24,9 @@ typedef             vector< HaloRingSettings >  RingSettingsVector;   ///< Defin
 
 class SettingsManager: public Manager
 {
+    
+    static const string APPLICATION_SETTINGS_FILE_NAME;
+    
     public:
     
         //! Destructor

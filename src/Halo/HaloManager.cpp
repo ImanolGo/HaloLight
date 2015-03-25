@@ -18,7 +18,7 @@ const int HaloManager::NUM_FADE_CANDYS = 11;
 const int HaloManager::NUM_HALO_RINGS = 85;
 const int HaloManager::NUM_HALO_LEDS = 48;
 
-HaloManager::HaloManager(): Manager(), m_ringSize(0.0)
+HaloManager::HaloManager(): Manager(), m_ringSize(0.0), showRingsPreview(true)
 {
 	//Intentionally left empty
 }
@@ -238,8 +238,12 @@ void HaloManager::updateFadeCandys()
 void HaloManager::draw()
 {
     m_haloVisuals.draw();
-    this->drawRectangles();
-    this->drawHaloFadeCandys();
+    
+    if (showRingsPreview) {
+        this->drawRectangles();
+        this->drawHaloFadeCandys();
+    }
+   
 }
 
 void HaloManager::drawHaloFadeCandys()
@@ -266,4 +270,9 @@ void HaloManager::drawRectangles()
     ofPopStyle();
     ofPopMatrix();
 
+}
+
+void HaloManager::toggleRingsPreview()
+{
+    showRingsPreview = !showRingsPreview;
 }

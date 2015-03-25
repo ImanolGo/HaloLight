@@ -50,6 +50,10 @@ class HaloManager: public Manager
         void setMode(int mode) {m_haloVisuals.setMode(mode);}
     
         const ofRectangle& getRingArea() const {return m_imageSpaceRectangle;}
+    
+        HaloVisuals& getHaloVisuals(){return m_haloVisuals;}
+    
+        void toggleRingsPreview();
 
     private:
     
@@ -94,6 +98,8 @@ class HaloManager: public Manager
         float               m_ringPreviewSize;
         ofRectangle         m_imageSpaceRectangle;
         ofRectangle         m_previewRectangle;
+    
+        bool showRingsPreview;
 
 };
 

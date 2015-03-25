@@ -12,6 +12,9 @@
 #include "SettingsManager.h"
 
 
+const string SettingsManager::APPLICATION_SETTINGS_FILE_NAME = "xmls/ApplicationSettings.xml";
+
+
 SettingsManager::SettingsManager(): Manager(), m_appHeight(0.0), m_appWidth(0.0)
 {
     //Intentionally left empty
@@ -51,14 +54,13 @@ void SettingsManager::loadAllSettings()
 
 bool SettingsManager::loadSettingsFile()
 {
-	string settingsFilePath = "xmls/settings.xml";
 
-	if(!m_xmlSettings.load(settingsFilePath)){
-        ofLogNotice() <<"SettingsManager::loadSettingsFile-> unable to load file: " << settingsFilePath ;
+	if(!m_xmlSettings.load(APPLICATION_SETTINGS_FILE_NAME)){
+        ofLogNotice() <<"SettingsManager::loadSettingsFile-> unable to load file: " << APPLICATION_SETTINGS_FILE_NAME ;
         return false;
     }
 
-    ofLogNotice() <<"SettingsManager::loadSettingsFile->  successfully loaded settings.xml " ;
+    ofLogNotice() <<"SettingsManager::loadSettingsFile->  successfully loaded " << APPLICATION_SETTINGS_FILE_NAME ;
     return true;
 }
 
