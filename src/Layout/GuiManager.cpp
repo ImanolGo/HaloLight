@@ -123,8 +123,10 @@ void GuiManager::setupFluidGui()
 void GuiManager::setupCameraGui()
 {
     
+    ofRectangle fluidRectangle = m_fluidGui.getShape();
+    
     m_cameraGui.setup("CameraGUI", GUI_CAMERA_SETTINGS_FILE_NAME);
-    m_cameraGui.setPosition(ofGetWidth()*0.5 + 100,40);
+    m_cameraGui.setPosition(fluidRectangle.getRight() + 20,fluidRectangle.y);
     
     ofPtr<CameraTrackingManager> cameraTrackingManager = AppManager::getInstance().getCameraTrackingManager();
     
@@ -164,6 +166,12 @@ void GuiManager::setupCameraGui()
     hue->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onHueChange);
     m_cameraGui.add(hue);
     
+    ofxFloatSlider * hueAlpha = new ofxFloatSlider();
+    hueAlpha->setup("Hue Alpha", 0.5, 0.0, 1.0);
+    hueAlpha->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onHueAlphaChange);
+    m_cameraGui.add(hueAlpha);
+    
+    
     ofxIntSlider * flicker = new ofxIntSlider();
     flicker->setup("Flicker Type", 0, 0, 2);
     flicker->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onFlickerChange);
@@ -179,7 +187,7 @@ void GuiManager::setupCameraGui()
     led->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onLedChange);
     m_cameraGui.add(led);
     
-    //this->loadCameraValues();
+    this->loadCameraValues();
 }
 
 void GuiManager::loadCameraValues()

@@ -34,12 +34,14 @@ void CameraTrackingManager::setup()
     
     Manager::setup();
     
+    m_hueColor = ofColor::red;
+    m_hueColor.a = 50;
     this->setupCamera();
 }
 
 void CameraTrackingManager::setupCamera()
 {
-    m_cameraFbo.allocate(CAMERA_WIDTH, CAMERA_HEIGHT);
+    m_cameraFbo.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, GL_RGBA);
     m_cameraFbo.begin(); ofClear(0); m_cameraFbo.end();
     
     m_cameraPs3Eye.listDevices();
@@ -62,8 +64,6 @@ void CameraTrackingManager::setupCamera()
     m_cameraArea.height = m_cameraArea.width*CAMERA_HEIGHT/CAMERA_WIDTH;
     m_cameraArea.x = ofGetWidth()*0.75 -  m_cameraArea.width*0.5;
     m_cameraArea.y = ofGetWidth()*0.25 -  m_cameraArea.height*0.5;;
-    
-    
     
     //m_videoGrabber.setDeviceID(0);
     //m_videoGrabber.setDesiredFrameRate(60);
@@ -102,12 +102,28 @@ void CameraTrackingManager::drawCamera()
     #else
         m_videoGrabber.draw(0,0);
     #endif
+    
+    this->drawHueColor();
+    
     m_cameraFbo.end();
-    ofPopStyle();
+    
     
     m_cameraFbo.draw(m_cameraArea.x,m_cameraArea.y,m_cameraArea.width,m_cameraArea.height);
+    
+    
 }
 
+void CameraTrackingManager::drawHueColor()
+{
+    ofPushStyle();
+    ofEnableAlphaBlending();
+    ofSetColor(m_hueColor);
+    ofFill();
+    ofRect(0,0,m_cameraFbo.getWidth(), m_cameraFbo.getHeight());
+    ofDisableAlphaBlending();
+    ofPopStyle();
+
+}
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onAutoGainAndShutterChange(bool & value){
@@ -147,7 +163,12 @@ void CameraTrackingManager::onContrastChange(float & value){
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onHueChange(float & value){
-    m_cameraPs3Eye.setHue(value);
+    m_hueColor.setHueAngle(value*255);
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onHueAlphaChange(float & value){
+    m_hueColor.a = value*255;
 }
 
 //--------------------------------------------------------------
@@ -164,4 +185,5 @@ void CameraTrackingManager::onFlickerChange(int & value){
 void CameraTrackingManager::onWhiteBalanceChange(int & value){
     m_cameraPs3Eye.setWhiteBalance(value);
 }
+
 

@@ -118,6 +118,41 @@ void HaloVisuals::update()
 
 void HaloVisuals::updateFluid()
 {
+    double dt = ofGetLastFrameTime();
+    
+    m_fluid.addVelocity(m_opticalFlow.getOpticalFlowDecay());
+    m_fluid.addDensity(m_velocityMask.getColorMask());
+    m_fluid.addTemperature(m_velocityMask.getLuminanceMask());
+    
+    for (int i=0; i<m_numDrawForces; i++) {
+        m_flexDrawForces[i].update();
+        if (m_flexDrawForces[i].didChange()) {
+            // if a force is constant multiply by deltaTime
+            float strength = m_flexDrawForces[i].getStrength();
+            if (!m_flexDrawForces[i].getIsTemporary())
+                strength *=dt;
+            switch (m_flexDrawForces[i].getType()) {
+                case FT_DENSITY:
+                    m_fluid.addDensity(m_flexDrawForces[i].getTextureReference(), strength);
+                    break;
+                case FT_VELOCITY:
+                    m_fluid.addVelocity(m_flexDrawForces[i].getTextureReference(), strength);
+                    break;
+                case FT_TEMPERATURE:
+                    m_fluid.addTemperature(m_flexDrawForces[i].getTextureReference(), strength);
+                    break;
+                case FT_PRESSURE:
+                    m_fluid.addPressure(m_flexDrawForces[i].getTextureReference(), strength);
+                    break;
+                case FT_OBSTACLE:
+                    m_fluid.addTempObstacle(m_flexDrawForces[i].getTextureReference());
+                default:
+                    break;
+            }
+        }
+    }
+    
+    m_fluid.update();
 }
 
 void HaloVisuals::draw()
@@ -158,6 +193,7 @@ void HaloVisuals::drawVisuals()
 void HaloVisuals::drawCircle()
 {
     // Mouse Circle
+    ofSetCircleResolution(100);
     ofPushStyle();
     float hue = fmodf(ofGetElapsedTimef()*10,255);
     ofColor c = ofColor::fromHsb(hue, 255, 255);
@@ -202,47 +238,7 @@ void HaloVisuals::drawFluid()
         m_velocityMask.update();
     }
     
-    
-    m_fluid.addVelocity(m_opticalFlow.getOpticalFlowDecay());
-    m_fluid.addDensity(m_velocityMask.getColorMask());
-    m_fluid.addTemperature(m_velocityMask.getLuminanceMask());
-    
-    for (int i=0; i<m_numDrawForces; i++) {
-        m_flexDrawForces[i].update();
-        if (m_flexDrawForces[i].didChange()) {
-            // if a force is constant multiply by deltaTime
-            float strength = m_flexDrawForces[i].getStrength();
-            if (!m_flexDrawForces[i].getIsTemporary())
-                strength *=dt;
-            switch (m_flexDrawForces[i].getType()) {
-                case FT_DENSITY:
-                    m_fluid.addDensity(m_flexDrawForces[i].getTextureReference(), strength);
-                    break;
-                case FT_VELOCITY:
-                    m_fluid.addVelocity(m_flexDrawForces[i].getTextureReference(), strength);
-                    break;
-                case FT_TEMPERATURE:
-                    m_fluid.addTemperature(m_flexDrawForces[i].getTextureReference(), strength);
-                    break;
-                case FT_PRESSURE:
-                    m_fluid.addPressure(m_flexDrawForces[i].getTextureReference(), strength);
-                    break;
-                case FT_OBSTACLE:
-                    m_fluid.addTempObstacle(m_flexDrawForces[i].getTextureReference());
-                default:
-                    break;
-            }
-        }
-    }
-    
-    m_fluid.update();
-    
-    ofPushMatrix();
-    //ofTranslate(m_displayOffset.x, m_displayOffset.y);
-    //ofScale(m_displayScale.x, m_displayScale.y);
     m_fluid.draw(m_calibratedDisplayArea.x, m_calibratedDisplayArea.y, m_calibratedDisplayArea.width, m_calibratedDisplayArea.height);
-    ofPopMatrix();
-    
 }
 
 void HaloVisuals::drawPaintFluid()

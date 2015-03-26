@@ -66,6 +66,8 @@ public:
     
     void onHueChange(float & value);
     
+    void onHueAlphaChange(float & value);
+    
     void onLedChange(bool & value);
     
     void onFlickerChange(int & value);
@@ -82,11 +84,14 @@ private:
     
     void drawCamera();
     
+    void drawHueColor();
+    
 private:
     
     ofxMacamPs3Eye      m_cameraPs3Eye;
     ofVideoGrabber 		m_videoGrabber;
     
+    ofColor             m_hueColor;
     ofRectangle         m_cameraArea;
     
     ofFbo				m_cameraFbo;

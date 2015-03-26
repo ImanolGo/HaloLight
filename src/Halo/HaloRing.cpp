@@ -46,6 +46,8 @@ void HaloRingPreview::draw()
 void HaloRingPreview::drawLedRing()
 {
     
+    ofSetCircleResolution(10);
+    
     float pixelSize = 1;
     float margin = pixelSize*2;
     

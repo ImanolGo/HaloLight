@@ -1,5 +1,5 @@
 <xmls_FluidGuiSettings.xml>
-	<FPS>52.1249</FPS>
+	<FPS>51.1513</FPS>
 	<optical_flow>
 		<strength>100</strength>
 		<offset>5</offset>
@@ -14,7 +14,7 @@
 		</time_blur>
 	</optical_flow>
 	<velocity_mask>
-		<strength>1.58163</strength>
+		<strength>1.78571</strength>
 		<saturation>3.14286</saturation>
 		<blur_passes>5</blur_passes>
 		<blur_radius>1.47959</blur_radius>
