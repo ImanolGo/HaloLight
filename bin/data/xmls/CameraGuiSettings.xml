@@ -17,10 +17,10 @@
 		<Gamma>0.5</Gamma>
 		<Brightness>0.5</Brightness>
 		<Contrast>0.5</Contrast>
-		<Hue>0.97</Hue>
+		<Hue>0.13</Hue>
 		<Flicker_Type>0</Flicker_Type>
 		<White_Balance_Mode>4</White_Balance_Mode>
 		<LED>1</LED>
-	<Hue_Alpha>0.145</Hue_Alpha>
+	<Hue_Alpha>0.19</Hue_Alpha>
 	</CameraGUI>
 </HaloLight>

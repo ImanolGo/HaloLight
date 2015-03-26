@@ -18,7 +18,7 @@ const int HaloManager::NUM_FADE_CANDYS = 11;
 const int HaloManager::NUM_HALO_RINGS = 85;
 const int HaloManager::NUM_HALO_LEDS = 48;
 
-HaloManager::HaloManager(): Manager(), m_ringSize(0.0), showRingsPreview(true)
+HaloManager::HaloManager(): Manager(), m_ringSize(0.0), m_showRingsPreview(true)
 {
 	//Intentionally left empty
 }
@@ -241,7 +241,7 @@ void HaloManager::draw()
 {
     m_haloVisuals.draw();
     
-    if (showRingsPreview) {
+    if (m_showRingsPreview) {
         this->drawRectangles();
         this->drawHaloFadeCandys();
     }
@@ -274,7 +274,3 @@ void HaloManager::drawRectangles()
 
 }
 
-void HaloManager::toggleRingsPreview()
-{
-    showRingsPreview = !showRingsPreview;
-}

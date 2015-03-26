@@ -47,7 +47,7 @@ void GuiManager::setupFluidGui()
     
     HaloVisuals& haloVisuals = AppManager::getInstance().getHaloManager()->getHaloVisuals();
     
-    m_fluidGui.setup(GUI_FLUID_SETTINGS_FILE_NAME);
+    m_fluidGui.setup("FluidGUI", GUI_FLUID_SETTINGS_FILE_NAME);
     m_fluidGui.setDefaultBackgroundColor(ofColor(0, 0, 0, 127));
     m_fluidGui.setDefaultFillColor(ofColor(160, 160, 160, 160));
     m_fluidGui.add(guiFPS.set("FPS", 0, 0, 60));

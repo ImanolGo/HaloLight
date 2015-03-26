@@ -107,10 +107,9 @@ void CameraTrackingManager::drawCamera()
     
     m_cameraFbo.end();
     
-    
-    m_cameraFbo.draw(m_cameraArea.x,m_cameraArea.y,m_cameraArea.width,m_cameraArea.height);
-    
-    
+    if(m_showCamera){
+         m_cameraFbo.draw(m_cameraArea.x,m_cameraArea.y,m_cameraArea.width,m_cameraArea.height);
+    }
 }
 
 void CameraTrackingManager::drawHueColor()

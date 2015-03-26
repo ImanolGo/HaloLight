@@ -54,11 +54,11 @@ void AppManager::setup()
     ofLogNotice() << "AppManager::initialized";
 
 	Manager::setup();
-
-    setDebugMode(m_debugMode);
     
     this->setupOF();
 	this->setupManagers();
+    
+    setDebugMode(m_debugMode);
 }
 
 void AppManager::setupOF()
@@ -126,7 +126,11 @@ void AppManager::setDebugMode(bool showDebug)
         ofSetLogLevel(OF_LOG_NOTICE);
     }
     
-    m_viewManager->showDebugMode(m_debugMode);
+    m_haloManager->showRingsPreview(m_debugMode);
+    m_guiManager->showGui(m_debugMode);
+    m_cameraTrackingManager->showCamera(m_debugMode);
+    
+    //m_viewManager->showDebugMode(m_debugMode);
     
 }
 

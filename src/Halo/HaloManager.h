@@ -53,7 +53,7 @@ class HaloManager: public Manager
     
         HaloVisuals& getHaloVisuals(){return m_haloVisuals;}
     
-        void toggleRingsPreview();
+        void showRingsPreview(bool show){m_showRingsPreview=show;}
 
     private:
     
@@ -99,7 +99,7 @@ class HaloManager: public Manager
         ofRectangle         m_imageSpaceRectangle;
         ofRectangle         m_previewRectangle;
     
-        bool showRingsPreview;
+        bool                m_showRingsPreview;
 
 };
 

@@ -43,6 +43,8 @@ public:
     //! Draw camera tracking
     void draw();
     
+    void showCamera(bool show){m_showCamera = show;}
+    
     const int getWidth(){return m_cameraPs3Eye.getWidth();}
     
     const int getHeight(){return m_cameraPs3Eye.getHeight();}
@@ -95,6 +97,8 @@ private:
     ofRectangle         m_cameraArea;
     
     ofFbo				m_cameraFbo;
+    
+    bool                m_showCamera;
     
 };
 
