@@ -58,8 +58,10 @@ void CameraTrackingManager::setupCamera()
     m_cameraPs3Eye.setFlicker(0);
     m_cameraPs3Eye.setWhiteBalance(4);
     
-    m_cameraPosition.x = ofGetWidth()*0.75 - CAMERA_WIDTH*0.5;
-    m_cameraPosition.y = 40;
+    m_cameraArea.width = ofGetWidth()*0.5 - 40;
+    m_cameraArea.height = m_cameraArea.width*CAMERA_HEIGHT/CAMERA_WIDTH;
+    m_cameraArea.x = ofGetWidth()*0.75 -  m_cameraArea.width*0.5;
+    m_cameraArea.y = ofGetWidth()*0.25 -  m_cameraArea.height*0.5;;
     
     
     
@@ -103,7 +105,7 @@ void CameraTrackingManager::drawCamera()
     m_cameraFbo.end();
     ofPopStyle();
     
-    m_cameraFbo.draw(m_cameraPosition);
+    m_cameraFbo.draw(m_cameraArea.x,m_cameraArea.y,m_cameraArea.width,m_cameraArea.height);
 }
 
 

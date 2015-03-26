@@ -66,19 +66,21 @@ void HaloManager::createHaloRingsPositions()
     float marginRatio = 0.3;
     
     
-    float layoutMargin = 40;
-    float wallHeight = ofGetHeight() - layoutMargin*4;
-    m_ringPreviewSize = wallHeight/(numRingsHeight + marginRatio*numMarginsHeight);
+    float layoutMargin = 20;
+    float wallWidth = ofGetWidth()*0.5 - layoutMargin*2;
+    m_ringPreviewSize = wallWidth/(maxRingsInRow + minRingsInRow + numMarginsWidth*marginRatio);
+    
+    //float wallHeight = ofGetHeight() - layoutMargin*4;
+    //m_ringPreviewSize = wallHeight/(numRingsHeight + marginRatio*numMarginsHeight);
     m_ringSize = 30;
     float scale = m_ringSize/m_ringPreviewSize;
     float margin = m_ringPreviewSize*marginRatio;
-    float wallWidth = m_ringPreviewSize*(maxRingsInRow + minRingsInRow) + numMarginsWidth*margin;
+    float wallHeight = m_ringPreviewSize*(numRingsHeight) + numMarginsHeight*margin;
     
-    
-    float x = layoutMargin;
-    float y = layoutMargin;
     float w = wallWidth;
     float h = wallHeight;
+    float x = ofGetWidth()*0.25 - w*0.5;
+    float y = ofGetHeight()*0.5 - h*0.5;
     
     m_previewRectangle = ofRectangle(x,y,w,h);
     

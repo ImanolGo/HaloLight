@@ -60,11 +60,11 @@ void HaloVisuals::setupFluid()
     m_velocityMask.setup(drawWidth, drawHeight);
     
     // m_fluid
-    #ifdef USE_FASTER_INTERNAL_FORMATS
-        m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, true);
-    #else
-        m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, false);
-    #endif
+#ifdef USE_FASTER_INTERNAL_FORMATS
+    m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, true);
+#else
+    m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, false);
+#endif
     
     
     // Visualisation
@@ -99,14 +99,15 @@ void HaloVisuals::setupDisplayArea()
     m_displayOffset = ofPoint(0);
     
     m_displayArea = AppManager::getInstance().getHaloManager()->getRingArea();
+    
+    ofLogNotice()<< "HaloVisuals::setupDisplayArea-> x = " << m_displayArea.x  << ", y = " << m_displayArea.y;
     m_displayArea.width = AppManager::getInstance().getCameraTrackingManager()->getWidth();
     m_displayArea.height = AppManager::getInstance().getCameraTrackingManager()->getHeight();
     
     const ofRectangle& ringArea = AppManager::getInstance().getHaloManager()->getRingArea();
     m_displayArea.scaleTo(ringArea, OF_SCALEMODE_FILL);
     
-    m_displayArea.scaleFromCenter(m_displayScale);
-    m_displayArea.translate(m_displayOffset);
+    this->calibrateDisplayArea();
 }
 
 
@@ -236,10 +237,11 @@ void HaloVisuals::drawFluid()
     
     m_fluid.update();
     
-    ofPushStyle();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    m_fluid.draw(m_displayArea.x, m_displayArea.y, m_displayArea.width, m_displayArea.height);
-    ofPopStyle();
+    ofPushMatrix();
+    //ofTranslate(m_displayOffset.x, m_displayOffset.y);
+    //ofScale(m_displayScale.x, m_displayScale.y);
+    m_fluid.draw(m_calibratedDisplayArea.x, m_calibratedDisplayArea.y, m_calibratedDisplayArea.width, m_calibratedDisplayArea.height);
+    ofPopMatrix();
     
 }
 
@@ -305,24 +307,36 @@ void HaloVisuals::drawPaintFluid()
 void HaloVisuals::setOffsetX(float & dx)
 {
     m_displayOffset.x = dx;
-    m_displayArea.translate(m_displayOffset);
+    this->calibrateDisplayArea();
 }
 
 void HaloVisuals::setOffsetY(float & dy)
 {
     m_displayOffset.y = dy;
-    m_displayArea.translate(m_displayOffset);
+    this->calibrateDisplayArea();
 }
 
 void HaloVisuals::setScaleX(float & sx)
 {
     m_displayScale.x = sx;
-    m_displayArea.scaleFromCenter(m_displayScale.x, m_displayScale.y);
+    this->calibrateDisplayArea();
 }
 
 void HaloVisuals::setScaleY(float & sy)
 {
     m_displayScale.y = sy;
-    m_displayArea.scaleFromCenter(m_displayScale.x, m_displayScale.y);
+    this->calibrateDisplayArea();
 }
 
+void HaloVisuals::calibrateDisplayArea()
+{
+    m_calibratedDisplayArea = m_displayArea;
+    ofPoint center = m_calibratedDisplayArea.getCenter() + m_displayOffset;
+    ofPoint area;
+    area.x = m_calibratedDisplayArea.getWidth()*m_displayScale.x;
+    area.y = m_calibratedDisplayArea.getHeight()*m_displayScale.y;
+    
+    
+    m_calibratedDisplayArea.setFromCenter(center, area.x, area.y);
+    
+}

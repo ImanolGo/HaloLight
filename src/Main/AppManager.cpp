@@ -21,7 +21,7 @@ AppManager& AppManager::getInstance()
 
 }
 
-AppManager::AppManager(): Manager(), m_debugMode(true)
+AppManager::AppManager(): Manager(), m_debugMode(false)
 {
     this->createManagers();
 }
@@ -64,6 +64,12 @@ void AppManager::setup()
 void AppManager::setupOF()
 {
    ofSetVerticalSync(false);
+   ofDisableAlphaBlending();
+   ofDisableSmoothing();
+   ofDisableDepthTest();
+   ofDisableLighting();
+   ofDisableBlendMode();
+   ofDisableAntiAliasing();
    ofShowCursor();
 }
 

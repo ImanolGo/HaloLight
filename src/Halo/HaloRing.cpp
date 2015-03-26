@@ -46,7 +46,7 @@ void HaloRingPreview::draw()
 void HaloRingPreview::drawLedRing()
 {
     
-    float pixelSize = 2;
+    float pixelSize = 1;
     float margin = pixelSize*2;
     
     ofPushMatrix();
@@ -59,12 +59,13 @@ void HaloRingPreview::drawLedRing()
     //ofEllipse(m_position.x , m_position.y, m_width-margin*2, m_height-margin*2);
     
     float angleStep = (2.0 * M_PI)/m_ledColors.size();
-    float offsetAngle = M_PI*0.5 + angleStep*0.5;
+    float offsetAngle = M_PI*0.5 - angleStep*0.5;
     
     ofFill();
     for (int i = 0; i < m_ledColors.size(); i++)
     {
-        float angle = offsetAngle + i * angleStep;
+        float angle =  i * angleStep - offsetAngle;
+        angle = 2*M_PI - angle; // Inverse the angle
         float rx = m_position.x  + 0.5 * (m_width - margin) * cos(angle);
         float ry = m_position.y + 0.5 * (m_height - margin) * sin(angle);
         
@@ -123,13 +124,13 @@ void HaloRing::setupLedRing()
     //m_screenPixels.allocate(m_width, m_height,GL_RGB);
     
     float angleStep = (2.0 * M_PI)/m_settings.numberLeds;
-    float offsetAngle = M_PI*0.5 + angleStep*0.5;
+    float offsetAngle = M_PI*0.5 - angleStep*0.5;
     m_margin = 10;
     
     for (int i = 0; i < m_settings.numberLeds; i++)
     {
-        float angle = offsetAngle + i * angleStep;
-        
+        float angle =  i * angleStep - offsetAngle;
+        angle = 2*M_PI - angle; // Inverse the angle
         // Generate the position of the grabber points
         float rx = m_position.x  + 0.5 * (m_width-m_margin) * cos(angle);
         float ry = m_position.y + 0.5 * (m_height-m_margin) * sin(angle);

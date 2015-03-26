@@ -1,0 +1,25 @@
+<HaloLight>
+	<Auto_Gain_and_Shutter>1</Auto_Gain_and_Shutter>
+	<Gain>0.215</Gain>
+	<Shutter>0.29</Shutter>
+	<Gamma>0.39</Gamma>
+	<Brightness>0.46</Brightness>
+	<Contrast>0.49</Contrast>
+	<Hue>0.44</Hue>
+	<Flicker_Type>0</Flicker_Type>
+	<White_Balance_Mode>4</White_Balance_Mode>
+	<LED>1</LED>
+<HaloLight/>
+<CameraGUI>
+		<Auto_Gain_and_Shutter>0</Auto_Gain_and_Shutter>
+		<Gain>0.5</Gain>
+		<Shutter>0.5</Shutter>
+		<Gamma>0.5</Gamma>
+		<Brightness>0.5</Brightness>
+		<Contrast>0.5</Contrast>
+		<Hue>0.5</Hue>
+		<Flicker_Type>0</Flicker_Type>
+		<White_Balance_Mode>4</White_Balance_Mode>
+		<LED>1</LED>
+	</CameraGUI>
+</HaloLight>

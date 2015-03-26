@@ -24,6 +24,7 @@ GuiManager::GuiManager(): Manager(), m_showGui(true)
 
 GuiManager::~GuiManager()
 {
+    this->saveGuiValues();
     ofLogNotice() <<"GuiManager::Destructor";
 }
 
@@ -72,7 +73,22 @@ void GuiManager::setupFluidGui()
     m_fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
     m_fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
     guiColorSwitch = 1 - guiColorSwitch;
-    gui.add(haloVisuals.m_fluid.parameters);
+    m_fluidGui.add(haloVisuals.m_fluid.parameters);
+    
+    pictureCalibrationParameters.setName("calibration");
+    pictureCalibrationParameters.add(offsetX.set("Offset X", 0, -50, 50));
+    offsetX.addListener(&haloVisuals, &HaloVisuals::setOffsetX);
+    pictureCalibrationParameters.add(offsetY.set("Offset Y", 0, -50, 50));
+    offsetY.addListener(&haloVisuals, &HaloVisuals::setOffsetY);
+    pictureCalibrationParameters.add(scaleX.set("Scale X", 1, 0, 2));
+    scaleX.addListener(&haloVisuals, &HaloVisuals::setScaleX);
+    pictureCalibrationParameters.add(scaleY.set("Scale Y", 1, 0, 2));
+    scaleY.addListener(&haloVisuals, &HaloVisuals::setScaleY);
+    
+    m_fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
+    m_fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
+    guiColorSwitch = 1 - guiColorSwitch;
+    m_fluidGui.add(pictureCalibrationParameters);
     
     visualisationParameters.setName("visualisation");
     visualisationParameters.add(showScalar.set("show scalar", true));
@@ -100,21 +116,6 @@ void GuiManager::setupFluidGui()
     guiColorSwitch = 1 - guiColorSwitch;
     m_fluidGui.add(leftButtonParameters);
     
-    rightButtonParameters.setName("mouse right button");
-    for (int i=3; i<6; i++) {
-        rightButtonParameters.add(haloVisuals.m_flexDrawForces[i].parameters);
-    }
-    m_fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    m_fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    m_fluidGui.add(rightButtonParameters);
-    
-    m_fluidGui.setDefaultHeaderBackgroundColor(guiHeaderColor[guiColorSwitch]);
-    m_fluidGui.setDefaultFillColor(guiFillColor[guiColorSwitch]);
-    guiColorSwitch = 1 - guiColorSwitch;
-    m_fluidGui.add(doResetDrawForces.set("reset draw forces (D)", false));
-    doResetDrawForces.addListener(&haloVisuals,  &HaloVisuals::resetDrawForces);
-    
     m_fluidGui.loadFromFile(GUI_FLUID_SETTINGS_FILE_NAME);
     m_fluidGui.minimizeAll();
 }
@@ -122,7 +123,7 @@ void GuiManager::setupFluidGui()
 void GuiManager::setupCameraGui()
 {
     
-    m_cameraGui.setup("Camera GUI", GUI_CAMERA_SETTINGS_FILE_NAME);
+    m_cameraGui.setup("CameraGUI", GUI_CAMERA_SETTINGS_FILE_NAME);
     m_cameraGui.setPosition(ofGetWidth()*0.5 + 100,40);
     
     ofPtr<CameraTrackingManager> cameraTrackingManager = AppManager::getInstance().getCameraTrackingManager();

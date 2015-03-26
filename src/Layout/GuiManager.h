@@ -70,16 +70,20 @@ private:
     string				*visualisationModeTitles;
     ofParameterGroup	visualisationParameters;
     
-    ofParameterGroup	drawForceParameters;
     ofParameter<bool>	doResetDrawForces;
     ofParameterGroup	leftButtonParameters;
-    ofParameterGroup	rightButtonParameters;
     ofParameter<bool>	showScalar;
     ofParameter<bool>	showField;
     ofParameter<float>	displayScalarScale;
     ofParameter<float>	velocityFieldArrowScale;
     ofParameter<float>	temperatureFieldBarScale;
     ofParameter<bool>	visualisationLineSmooth;
+    
+    ofParameterGroup	pictureCalibrationParameters;
+    ofParameter<float>	offsetX;
+    ofParameter<float>	offsetY;
+    ofParameter<float>	scaleX;
+    ofParameter<float>	scaleY;
     
     ofxPanel    m_fluidGui;      //Class creating a fluid gui panel
 

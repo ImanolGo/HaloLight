@@ -87,7 +87,7 @@ private:
     ofxMacamPs3Eye      m_cameraPs3Eye;
     ofVideoGrabber 		m_videoGrabber;
     
-    ofPoint             m_cameraPosition;
+    ofRectangle         m_cameraArea;
     
     ofFbo				m_cameraFbo;
     
