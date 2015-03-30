@@ -9,9 +9,9 @@
 #pragma once
 
 #include "Manager.h"
-#include "ofxMacamPs3Eye.h"
 
-#define PS3_EYE_CAMERA
+#include "ofxPS3EyeGrabber.h"
+
 
 //========================== class CameraTrackingManager ==============================
 //============================================================================
@@ -45,22 +45,26 @@ public:
     
     void showCamera(bool show){m_showCamera = show;}
     
-    const int getWidth(){return m_cameraPs3Eye.getWidth();}
+    const int getWidth(){return m_videoGrabber.getWidth();}
     
-    const int getHeight(){return m_cameraPs3Eye.getHeight();}
+    const int getHeight(){return m_videoGrabber.getHeight();}
     
-    const bool isNewFrame(){return m_cameraPs3Eye.isFrameNew();}
+    const bool isNewFrame(){return m_videoGrabber.isFrameNew();}
     
     const ofFbo& getCameraFbo(){return m_cameraFbo;}
     
+    
+    
     //! Gui Callback functions
-    void onAutoGainAndShutterChange(bool & value);
+    void onAutoGain(bool & value);
+    
+    void onAutoWhiteBalance(bool & value);
     
     void onGainChange(float & value);
     
-    void onShutterChange(float & value);
+    void onSharpnessChange(float & value);
     
-    void onGammaChange(float & value);
+    void onExposureChange(float & value);
     
     void onBrightnessChange(float & value);
     
@@ -69,13 +73,7 @@ public:
     void onHueChange(float & value);
     
     void onHueAlphaChange(float & value);
-    
-    void onLedChange(bool & value);
-    
-    void onFlickerChange(int & value);
-    
-    void onWhiteBalanceChange(int & value);
-    
+   
     
 private:
     
@@ -90,8 +88,10 @@ private:
     
 private:
     
-    ofxMacamPs3Eye      m_cameraPs3Eye;
-    ofVideoGrabber 		m_videoGrabber;
+    
+    ofxPS3EyeGrabber m_videoGrabber;
+    ofTexture       m_videoTexture;
+
     
     ofColor             m_hueColor;
     ofRectangle         m_cameraArea;

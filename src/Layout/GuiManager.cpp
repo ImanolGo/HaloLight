@@ -129,27 +129,34 @@ void GuiManager::setupCameraGui()
     m_cameraGui.setPosition(fluidRectangle.getRight() + 20,fluidRectangle.y);
     
     ofPtr<CameraTrackingManager> cameraTrackingManager = AppManager::getInstance().getCameraTrackingManager();
+   
     
+    ofxToggle * autoGain = new ofxToggle();
+    autoGain->setup("Auto Gain", false);
+    autoGain->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onAutoGain);
+    m_cameraGui.add(autoGain);
     
-    ofxToggle * autoGainAndShutter = new ofxToggle();
-    autoGainAndShutter->setup("Auto Gain and Shutter", false);
-    autoGainAndShutter->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onAutoGainAndShutterChange);
-    m_cameraGui.add(autoGainAndShutter);
+    ofxToggle * autoWhiteBalance = new ofxToggle();
+    autoWhiteBalance->setup("Auto White Balance", false);
+    autoWhiteBalance->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onAutoWhiteBalance);
+    m_cameraGui.add(autoWhiteBalance);
     
     ofxFloatSlider * gain = new ofxFloatSlider();
     gain->setup("Gain", 0.5, 0.0, 1.0);
     gain->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onGainChange);
     m_cameraGui.add(gain);
     
-    ofxFloatSlider * shutter = new ofxFloatSlider();
-    shutter->setup("Shutter", 0.5, 0.0, 1.0);
-    shutter->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onShutterChange);
-    m_cameraGui.add(shutter);
+    ofxFloatSlider * sharpness = new ofxFloatSlider();
+    sharpness->setup("Sharpness", 0.5, 0.0, 1.0);
+    sharpness->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onSharpnessChange);
+    m_cameraGui.add(sharpness);
     
-    ofxFloatSlider * gamma = new ofxFloatSlider();
-    gamma->setup("Gamma", 0.5, 0.0, 1.0);
-    gamma->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onGammaChange);
-    m_cameraGui.add(gamma);
+    
+    ofxFloatSlider * exposure = new ofxFloatSlider();
+    exposure->setup("Exposure", 0.5, 0.0, 1.0);
+    exposure->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onExposureChange);
+    m_cameraGui.add(exposure);
+
     
     ofxFloatSlider * brightness = new ofxFloatSlider();
     brightness->setup("Brightness", 0.5, 0.0, 1.0);
@@ -171,55 +178,9 @@ void GuiManager::setupCameraGui()
     hueAlpha->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onHueAlphaChange);
     m_cameraGui.add(hueAlpha);
     
-    
-    ofxIntSlider * flicker = new ofxIntSlider();
-    flicker->setup("Flicker Type", 0, 0, 2);
-    flicker->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onFlickerChange);
-    m_cameraGui.add(flicker);
-    
-    ofxIntSlider * wb = new ofxIntSlider();
-    wb->setup("White Balance Mode", 4, 1, 4);
-    wb->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onFlickerChange);
-    m_cameraGui.add(wb);
-    
-    ofxToggle * led = new ofxToggle();
-    led->setup("LED", true);
-    led->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onLedChange);
-    m_cameraGui.add(led);
-    
-    this->loadCameraValues();
+    m_cameraGui.loadFromFile(GUI_CAMERA_SETTINGS_FILE_NAME);
 }
 
-void GuiManager::loadCameraValues()
-{
-    
-    ofPtr<CameraTrackingManager> cameraTrackingManager = AppManager::getInstance().getCameraTrackingManager();
-    
-    m_cameraGui.loadFromFile(GUI_CAMERA_SETTINGS_FILE_NAME);
-    bool b;
-    float f;
-    int i;
-    b = m_cameraGui.getToggle("Auto Gain and Shutter");
-    cameraTrackingManager->onAutoGainAndShutterChange(b);
-    f = m_cameraGui.getFloatSlider("Gain");
-    cameraTrackingManager->onGainChange(f);
-    f = m_cameraGui.getFloatSlider("Shutter");
-    cameraTrackingManager->onShutterChange(f);
-    f = m_cameraGui.getFloatSlider("Gamma");
-    cameraTrackingManager->onGammaChange(f);
-    f = m_cameraGui.getFloatSlider("Brightness");
-    cameraTrackingManager->onBrightnessChange(f);
-    f = m_cameraGui.getFloatSlider("Contrast");
-    cameraTrackingManager->onContrastChange(f);
-    f = m_cameraGui.getFloatSlider("Hue");
-    cameraTrackingManager->onHueChange(f);
-    b = m_cameraGui.getToggle("LED");
-    cameraTrackingManager->onLedChange(b);
-    i = m_cameraGui.getIntSlider("Flicker Type");
-    cameraTrackingManager->onFlickerChange(i);
-    i = m_cameraGui.getIntSlider("White Balance Mode");
-    cameraTrackingManager->onWhiteBalanceChange(i);
-}
 
 void GuiManager::draw()
 {
@@ -241,7 +202,8 @@ void GuiManager::saveGuiValues()
 
 void GuiManager::loadGuiValues()
 {
-    this->loadCameraValues();
+     m_fluidGui.loadFromFile(GUI_FLUID_SETTINGS_FILE_NAME);
+     m_cameraGui.loadFromFile(GUI_CAMERA_SETTINGS_FILE_NAME);
 }
 
 void GuiManager::toggleGui()

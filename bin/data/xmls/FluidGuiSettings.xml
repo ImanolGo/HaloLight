@@ -92,7 +92,7 @@
 	</mouse_left_button>
 <xmls_FluidGuiSettings.xml/>
 <FluidGUI>
-		<FPS>60.0122</FPS>
+		<FPS>37.1876</FPS>
 		<optical_flow>
 			<strength>100</strength>
 			<offset>3</offset>
@@ -107,7 +107,7 @@
 			</time_blur>
 		</optical_flow>
 		<velocity_mask>
-			<strength>3.11224</strength>
+			<strength>3.16327</strength>
 			<saturation>3.5102</saturation>
 			<blur_passes>1</blur_passes>
 			<blur_radius>6</blur_radius>

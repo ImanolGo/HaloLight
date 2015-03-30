@@ -2,7 +2,7 @@
  *  CameraTrackingManager.cpp
  *  Halo Light
  *
- *  Created by Imanol GÃ³mez on 10/03/15.
+ *  Created by Imanol G—mez on 10/03/15.
  *
  */
 
@@ -20,7 +20,6 @@ CameraTrackingManager::CameraTrackingManager(): Manager()
 
 CameraTrackingManager::~CameraTrackingManager()
 {
-    m_cameraPs3Eye.close();
     ofLogNotice() <<"CameraTrackingManager::Destructor";
 }
 
@@ -43,31 +42,16 @@ void CameraTrackingManager::setupCamera()
 {
     m_cameraFbo.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, GL_RGBA);
     m_cameraFbo.begin(); ofClear(0); m_cameraFbo.end();
-    
-    m_cameraPs3Eye.listDevices();
-    
-    //m_cameraPs3Eye.setDesiredFrameRate(60);
-    m_cameraPs3Eye.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT, true);
-    
-    m_cameraPs3Eye.setAutoGainAndShutter(false); // otherwise we can't set gain or shutter
-    m_cameraPs3Eye.setGain(0.5);
-    m_cameraPs3Eye.setShutter(0.5);
-    m_cameraPs3Eye.setGamma(0.5);
-    m_cameraPs3Eye.setBrightness(0.5);
-    m_cameraPs3Eye.setContrast(0.5);
-    m_cameraPs3Eye.setHue(0.5);
-    
-    m_cameraPs3Eye.setFlicker(0);
-    m_cameraPs3Eye.setWhiteBalance(4);
+
+    m_videoGrabber.setDeviceID(0);
+    m_videoGrabber.setDesiredFrameRate(60);
+    m_videoGrabber.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT);
     
     m_cameraArea.width = ofGetWidth()*0.5 - 40;
     m_cameraArea.height = m_cameraArea.width*CAMERA_HEIGHT/CAMERA_WIDTH;
     m_cameraArea.x = ofGetWidth()*0.75 -  m_cameraArea.width*0.5;
-    m_cameraArea.y = ofGetWidth()*0.25 -  m_cameraArea.height*0.5;;
+    m_cameraArea.y = ofGetWidth()*0.25 -  m_cameraArea.height*0.5;
     
-    //m_videoGrabber.setDeviceID(0);
-    //m_videoGrabber.setDesiredFrameRate(60);
-    //m_videoGrabber.initGrabber(CAMERA_WIDTH,CAMERA_HEIGHT);
 }
 
 void CameraTrackingManager::update()
@@ -77,10 +61,10 @@ void CameraTrackingManager::update()
 
 void CameraTrackingManager::updateCamera()
 {
-    
-    //m_videoGrabber.update();
-    m_cameraPs3Eye.update();
-    
+    m_videoGrabber.update();
+    if (m_videoGrabber.isFrameNew()){
+        m_videoTexture.loadData(m_videoGrabber.getPixelsRef());
+    }
 }
 
 
@@ -96,19 +80,13 @@ void CameraTrackingManager::drawCamera()
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     m_cameraFbo.begin();
     
-    #ifdef PS3_EYE_CAMERA
-        m_cameraPs3Eye.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
-    //m_cameraPs3Eye.draw(0,0);
-    #else
-        m_videoGrabber.draw(0,0);
-    #endif
-    
+    m_videoTexture.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
     this->drawHueColor();
     
     m_cameraFbo.end();
     
     if(m_showCamera){
-         m_cameraFbo.draw(m_cameraArea.x,m_cameraArea.y,m_cameraArea.width,m_cameraArea.height);
+        m_cameraFbo.draw(m_cameraArea.x,m_cameraArea.y,m_cameraArea.width,m_cameraArea.height);
     }
 }
 
@@ -121,44 +99,50 @@ void CameraTrackingManager::drawHueColor()
     ofRect(0,0,m_cameraFbo.getWidth(), m_cameraFbo.getHeight());
     ofDisableAlphaBlending();
     ofPopStyle();
-
+    
 }
 
 //--------------------------------------------------------------
-void CameraTrackingManager::onAutoGainAndShutterChange(bool & value){
-    m_cameraPs3Eye.setAutoGainAndShutter(value);
+void CameraTrackingManager::onAutoGain(bool & value){
+    m_videoGrabber.setAutogain(value);
 }
+
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onAutoWhiteBalance(bool & value){
+    m_videoGrabber.setAutoWhiteBalance(value);
+}
+
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onGainChange(float & value){
     
-    if(!m_cameraPs3Eye.getAutoGainAndShutter()){
-        m_cameraPs3Eye.setGain(value);
+    if(!m_videoGrabber.getAutogain()){
+        m_videoGrabber.setGain(value*63);
     }
     
 }
 
 //--------------------------------------------------------------
-void CameraTrackingManager::onShutterChange(float & value){
-    if(!m_cameraPs3Eye.getAutoGainAndShutter()){
-        m_cameraPs3Eye.setShutter(value);
-    }
+void CameraTrackingManager::onSharpnessChange(float & value){
+    m_videoGrabber.setSharpness(value*255);
 }
 
 //--------------------------------------------------------------
-void CameraTrackingManager::onGammaChange(float & value){
-    m_cameraPs3Eye.setGamma(value);
+void CameraTrackingManager::onExposureChange(float & value){
+    m_videoGrabber.setExposure(value*255);
 }
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onBrightnessChange(float & value){
-    m_cameraPs3Eye.setBrightness(value);
+    m_videoGrabber.setBrightness(value*255);
 }
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onContrastChange(float & value){
-    m_cameraPs3Eye.setContrast(value);
+    m_videoGrabber.setContrast(value*255);
 }
+
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onHueChange(float & value){
@@ -169,20 +153,4 @@ void CameraTrackingManager::onHueChange(float & value){
 void CameraTrackingManager::onHueAlphaChange(float & value){
     m_hueColor.a = value*255;
 }
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onLedChange(bool & value){
-    m_cameraPs3Eye.setLed(value);
-}
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onFlickerChange(int & value){
-    m_cameraPs3Eye.setFlicker(value);
-}
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onWhiteBalanceChange(int & value){
-    m_cameraPs3Eye.setWhiteBalance(value);
-}
-
 

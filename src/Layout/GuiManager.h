@@ -52,8 +52,6 @@ private:
     
     void setupFluidGui();
     
-    void loadCameraValues();
-    
 private:
     
     // Fluid GUI
