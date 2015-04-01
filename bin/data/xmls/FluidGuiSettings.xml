@@ -92,7 +92,7 @@
 	</mouse_left_button>
 <xmls_FluidGuiSettings.xml/>
 <FluidGUI>
-		<FPS>37.1876</FPS>
+		<FPS>39.0019</FPS>
 		<optical_flow>
 			<strength>100</strength>
 			<offset>3</offset>
@@ -102,13 +102,13 @@
 			<inverse_y>0</inverse_y>
 			<do_time_blur>1</do_time_blur>
 			<time_blur>
-				<Decay>0.1</Decay>
+				<Decay>0.0733028</Decay>
 				<Decay_Blur_Radius>2</Decay_Blur_Radius>
 			</time_blur>
 		</optical_flow>
 		<velocity_mask>
-			<strength>3.16327</strength>
-			<saturation>3.5102</saturation>
+			<strength>1.12245</strength>
+			<saturation>1.63265</saturation>
 			<blur_passes>1</blur_passes>
 			<blur_radius>6</blur_radius>
 		</velocity_mask>
@@ -117,7 +117,7 @@
 			<speed>9.69388</speed>
 			<cell_size>1.25</cell_size>
 			<iterations>40</iterations>
-			<viscosity>1</viscosity>
+			<viscosity>0.841837</viscosity>
 			<vorticity>0.270408</vorticity>
 			<dissipation>0.0055102</dissipation>
 			<advanced_dissipation>

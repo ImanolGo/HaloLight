@@ -82,6 +82,8 @@ private:
     
     void updateCamera();
     
+    void updateHue();
+    
     void drawCamera();
     
     void drawHueColor();
@@ -89,9 +91,7 @@ private:
 private:
     
     
-    ofxPS3EyeGrabber m_videoGrabber;
-    ofTexture       m_videoTexture;
-
+    ofVideoGrabber      m_videoGrabber;
     
     ofColor             m_hueColor;
     ofRectangle         m_cameraArea;

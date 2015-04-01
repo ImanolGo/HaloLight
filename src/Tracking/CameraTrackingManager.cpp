@@ -57,14 +57,18 @@ void CameraTrackingManager::setupCamera()
 void CameraTrackingManager::update()
 {
     this->updateCamera();
+    this->updateHue();
 }
 
 void CameraTrackingManager::updateCamera()
 {
     m_videoGrabber.update();
-    if (m_videoGrabber.isFrameNew()){
-        m_videoTexture.loadData(m_videoGrabber.getPixelsRef());
-    }
+}
+
+void CameraTrackingManager::updateHue()
+{
+    float value = fmodf(ofGetElapsedTimef(),255);
+    m_hueColor.setHue(value);
 }
 
 
@@ -80,7 +84,7 @@ void CameraTrackingManager::drawCamera()
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     m_cameraFbo.begin();
     
-    m_videoTexture.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
+    //m_videoGrabber.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
     this->drawHueColor();
     
     m_cameraFbo.end();
@@ -104,43 +108,41 @@ void CameraTrackingManager::drawHueColor()
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onAutoGain(bool & value){
-    m_videoGrabber.setAutogain(value);
+    //m_videoGrabber.setAutogain(value);
 }
 
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onAutoWhiteBalance(bool & value){
-    m_videoGrabber.setAutoWhiteBalance(value);
+    //m_videoGrabber.setAutoWhiteBalance(value);
 }
 
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onGainChange(float & value){
     
-    if(!m_videoGrabber.getAutogain()){
-        m_videoGrabber.setGain(value*63);
-    }
+    //
     
 }
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onSharpnessChange(float & value){
-    m_videoGrabber.setSharpness(value*255);
+    //m_videoGrabber.setSharpness(value*255);
 }
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onExposureChange(float & value){
-    m_videoGrabber.setExposure(value*255);
+    //m_videoGrabber.setExposure(value*255);
 }
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onBrightnessChange(float & value){
-    m_videoGrabber.setBrightness(value*255);
+    //m_videoGrabber.setBrightness(value*255);
 }
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onContrastChange(float & value){
-    m_videoGrabber.setContrast(value*255);
+    //m_videoGrabber.setContrast(value*255);
 }
 
 
