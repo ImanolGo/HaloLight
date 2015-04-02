@@ -6,7 +6,8 @@
  *
  */
 
-#include "ofMain.h"
+#include "AppManager.h"
+
 #include "CameraTrackingManager.h"
 
 const int CameraTrackingManager::CAMERA_WIDTH = 640;
@@ -67,8 +68,8 @@ void CameraTrackingManager::updateCamera()
 
 void CameraTrackingManager::updateHue()
 {
-    float value = fmodf(ofGetElapsedTimef(),255);
-    m_hueColor.setHue(value);
+    float value = fmodf(ofGetElapsedTimef()*10,255);
+    AppManager::getInstance().getGuiManager()->setHue(value/255.0);
 }
 
 
@@ -84,7 +85,7 @@ void CameraTrackingManager::drawCamera()
     ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     m_cameraFbo.begin();
     
-    //m_videoGrabber.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
+    m_videoGrabber.draw(m_cameraFbo.getWidth(), 0, -m_cameraFbo.getWidth(), m_cameraFbo.getHeight() );
     this->drawHueColor();
     
     m_cameraFbo.end();
@@ -106,49 +107,10 @@ void CameraTrackingManager::drawHueColor()
     
 }
 
-//--------------------------------------------------------------
-void CameraTrackingManager::onAutoGain(bool & value){
-    //m_videoGrabber.setAutogain(value);
-}
-
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onAutoWhiteBalance(bool & value){
-    //m_videoGrabber.setAutoWhiteBalance(value);
-}
-
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onGainChange(float & value){
-    
-    //
-    
-}
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onSharpnessChange(float & value){
-    //m_videoGrabber.setSharpness(value*255);
-}
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onExposureChange(float & value){
-    //m_videoGrabber.setExposure(value*255);
-}
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onBrightnessChange(float & value){
-    //m_videoGrabber.setBrightness(value*255);
-}
-
-//--------------------------------------------------------------
-void CameraTrackingManager::onContrastChange(float & value){
-    //m_videoGrabber.setContrast(value*255);
-}
-
 
 //--------------------------------------------------------------
 void CameraTrackingManager::onHueChange(float & value){
-    m_hueColor.setHueAngle(value*255);
+    m_hueColor.setHue(value*255);
 }
 
 //--------------------------------------------------------------

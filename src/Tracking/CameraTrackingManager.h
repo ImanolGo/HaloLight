@@ -53,23 +53,6 @@ public:
     
     const ofFbo& getCameraFbo(){return m_cameraFbo;}
     
-    
-    
-    //! Gui Callback functions
-    void onAutoGain(bool & value);
-    
-    void onAutoWhiteBalance(bool & value);
-    
-    void onGainChange(float & value);
-    
-    void onSharpnessChange(float & value);
-    
-    void onExposureChange(float & value);
-    
-    void onBrightnessChange(float & value);
-    
-    void onContrastChange(float & value);
-    
     void onHueChange(float & value);
     
     void onHueAlphaChange(float & value);

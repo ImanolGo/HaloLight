@@ -45,6 +45,8 @@ public:
     void toggleGui();
     
     void showGui(bool show){m_showGui=show;}
+    
+    void setHue(float hue);
 
 private:
 

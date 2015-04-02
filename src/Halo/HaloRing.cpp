@@ -133,6 +133,7 @@ void HaloRing::setupLedRing()
     {
         float angle =  i * angleStep - offsetAngle;
         angle = 2*M_PI - angle; // Inverse the angle
+        
         // Generate the position of the grabber points
         float rx = m_position.x  + 0.5 * (m_width-m_margin) * cos(angle);
         float ry = m_position.y + 0.5 * (m_height-m_margin) * sin(angle);

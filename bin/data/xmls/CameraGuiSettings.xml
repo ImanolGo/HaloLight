@@ -1,12 +1,5 @@
 <CameraGUI>
-	<Auto_Gain>0</Auto_Gain>
-	<Auto_White_Balance>0</Auto_White_Balance>
-	<Gain>0.5</Gain>
-	<Sharpness>0.5</Sharpness>
-	<Exposure>0.5</Exposure>
-	<Brightness>0.5</Brightness>
-	<Contrast>0.5</Contrast>
-	<Hue>0.525</Hue>
-	<Hue_Alpha>0.315</Hue_Alpha>
+	<Hue>0.150539</Hue>
+	<Hue_Alpha>0.57</Hue_Alpha>
 <CameraGUI/>
 </CameraGUI>

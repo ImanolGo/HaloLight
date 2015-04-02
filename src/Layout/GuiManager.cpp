@@ -130,44 +130,6 @@ void GuiManager::setupCameraGui()
     
     ofPtr<CameraTrackingManager> cameraTrackingManager = AppManager::getInstance().getCameraTrackingManager();
    
-    
-    ofxToggle * autoGain = new ofxToggle();
-    autoGain->setup("Auto Gain", false);
-    autoGain->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onAutoGain);
-    m_cameraGui.add(autoGain);
-    
-    ofxToggle * autoWhiteBalance = new ofxToggle();
-    autoWhiteBalance->setup("Auto White Balance", false);
-    autoWhiteBalance->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onAutoWhiteBalance);
-    m_cameraGui.add(autoWhiteBalance);
-    
-    ofxFloatSlider * gain = new ofxFloatSlider();
-    gain->setup("Gain", 0.5, 0.0, 1.0);
-    gain->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onGainChange);
-    m_cameraGui.add(gain);
-    
-    ofxFloatSlider * sharpness = new ofxFloatSlider();
-    sharpness->setup("Sharpness", 0.5, 0.0, 1.0);
-    sharpness->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onSharpnessChange);
-    m_cameraGui.add(sharpness);
-    
-    
-    ofxFloatSlider * exposure = new ofxFloatSlider();
-    exposure->setup("Exposure", 0.5, 0.0, 1.0);
-    exposure->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onExposureChange);
-    m_cameraGui.add(exposure);
-
-    
-    ofxFloatSlider * brightness = new ofxFloatSlider();
-    brightness->setup("Brightness", 0.5, 0.0, 1.0);
-    brightness->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onBrightnessChange);
-    m_cameraGui.add(brightness);
-    
-    ofxFloatSlider * contrast = new ofxFloatSlider();
-    contrast->setup("Contrast", 0.5, 0.0, 1.0);
-    contrast->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onContrastChange);
-    m_cameraGui.add(contrast);
-    
     ofxFloatSlider * hue = new ofxFloatSlider();
     hue->setup("Hue", 0.5, 0.0, 1.0);
     hue->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onHueChange);
@@ -181,6 +143,12 @@ void GuiManager::setupCameraGui()
     m_cameraGui.loadFromFile(GUI_CAMERA_SETTINGS_FILE_NAME);
 }
 
+void GuiManager::setHue(float hue)
+{
+    ofxFloatSlider & hueSlider = m_cameraGui.getFloatSlider("Hue");
+    hueSlider = hue;
+    
+}
 
 void GuiManager::draw()
 {

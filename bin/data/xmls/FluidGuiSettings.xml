@@ -92,7 +92,7 @@
 	</mouse_left_button>
 <xmls_FluidGuiSettings.xml/>
 <FluidGUI>
-		<FPS>39.0019</FPS>
+		<FPS>58.1621</FPS>
 		<optical_flow>
 			<strength>100</strength>
 			<offset>3</offset>
