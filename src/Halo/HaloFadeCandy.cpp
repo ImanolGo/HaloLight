@@ -54,10 +54,8 @@ void HaloFadeCandy::updateHaloRings(const ofRectangle &grabArea, const ofPixels 
             vector<ofColor> colorData =  it->second->colorData();
             std::copy ( colorData.begin(), colorData.end(), m_ledColors.begin() + offset);
 
-        }        
-        
+        }
     }
-    
 }
 
 

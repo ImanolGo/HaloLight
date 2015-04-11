@@ -48,8 +48,8 @@ void HaloVisuals::setupFluid()
 {
     ofSetVerticalSync(false);
     
-    int drawWidth = 1280;
-    int drawHeight = 720;
+    int drawWidth = 1280*0.1;
+    int drawHeight = 720*0.1;
     
     // process all but the density on 16th resolution
     int flowWidth = drawWidth/4;
@@ -60,11 +60,11 @@ void HaloVisuals::setupFluid()
     m_velocityMask.setup(drawWidth, drawHeight);
     
     // m_fluid
-#ifdef USE_FASTER_INTERNAL_FORMATS
-    m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, true);
-#else
-    m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, false);
-#endif
+    #ifdef USE_FASTER_INTERNAL_FORMATS
+        m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, true);
+    #else
+        m_fluid.setup(flowWidth, flowHeight, drawWidth, drawHeight, false);
+    #endif
     
     
     // Visualisation

@@ -8,6 +8,9 @@
 
 echo '-> Halo Light Script'
 
+dir=$(dirname $0)
+cd $dir
+
 echo '-> Starting Fade Candy Server'
 
 cd ../fcserver
@@ -16,6 +19,6 @@ cd ../fcserver
 
 echo '-> Starting Halo Light Application'
 
-cd ../bin
-open HaloLight.app &
+cd ../bin/HaloLight.app/Contents/MacOS/
+./HaloLight
 
