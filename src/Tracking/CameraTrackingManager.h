@@ -56,6 +56,8 @@ public:
     void onHueChange(float & value);
     
     void onHueAlphaChange(float & value);
+    
+    void onHueChangeRate(float & value);
    
     
 private:
@@ -76,6 +78,7 @@ private:
     
     ofVideoGrabber      m_videoGrabber;
     
+    float               m_hueChangeRate; //It tells you how many seconds do you need to have a unit hue change
     ofColor             m_hueColor;
     ofRectangle         m_cameraArea;
     

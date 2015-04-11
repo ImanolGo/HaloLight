@@ -36,6 +36,7 @@ void CameraTrackingManager::setup()
     
     m_hueColor = ofColor::red;
     m_hueColor.a = 50;
+    m_hueChangeRate = 1; //One Hue change every second
     this->setupCamera();
 }
 
@@ -68,7 +69,7 @@ void CameraTrackingManager::updateCamera()
 
 void CameraTrackingManager::updateHue()
 {
-    float value = fmodf(ofGetElapsedTimef()*10,255);
+    float value = fmodf(ofGetElapsedTimef()/m_hueChangeRate,255);
     AppManager::getInstance().getGuiManager()->setHue(value/255.0);
 }
 
@@ -116,5 +117,10 @@ void CameraTrackingManager::onHueChange(float & value){
 //--------------------------------------------------------------
 void CameraTrackingManager::onHueAlphaChange(float & value){
     m_hueColor.a = value*255;
+}
+
+//--------------------------------------------------------------
+void CameraTrackingManager::onHueChangeRate(float & value){
+    m_hueChangeRate = value;
 }
 

@@ -140,6 +140,11 @@ void GuiManager::setupCameraGui()
     hueAlpha->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onHueAlphaChange);
     m_cameraGui.add(hueAlpha);
     
+    ofxFloatSlider * hueChangeRate = new ofxFloatSlider();
+    hueChangeRate->setup("Hue Change Rate (s)", 1.0, 0.01, 10.0);
+    hueChangeRate->addListener(cameraTrackingManager.get(), &CameraTrackingManager::onHueChangeRate);
+    m_cameraGui.add(hueChangeRate);
+    
     m_cameraGui.loadFromFile(GUI_CAMERA_SETTINGS_FILE_NAME);
 }
 
